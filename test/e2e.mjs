@@ -252,6 +252,30 @@ async function main() {
   ok('простое «как устроено»', $$('#aboutHow li').length >= 6, 'n=' + $$('#aboutHow li').length);
   ok('нет тех-простыни', !$('#aboutTech'));
 
+  // ── 9b. «Открытый проект», бренд-каскад, i18n-аудит ────────
+  step('открытый проект');
+  ok('пункт меню «Открытый проект»', !!$('.nav__link[data-route="open"]'));
+  click($('.nav__link[data-route="open"]'));
+  await wait(80);
+  ok('экран open виден', $('#screen-open') && !$('#screen-open').hidden);
+  ok('ссылки отрисованы', $$('#openLinks .olink').length >= 7, 'n=' + $$('#openLinks .olink').length);
+  ok('карта проекта — 10 пунктов', $$('#openMap li').length === 10, 'n=' + $$('#openMap li').length);
+  ok('инструкция запуска — 5 шагов', $$('#openRun li').length === 5, 'n=' + $$('#openRun li').length);
+  ok('ссылка VK разработчика (id715180861)', !!$('#openLinks a[href="https://vk.com/id715180861"]'));
+  ok('ссылка на сайт OuRi Corp', !!$('#openLinks a[href="corp/index.html"]'));
+  ok('кнопка «Открыть сайт OuRi Corp»', !!$('.open-corp-btn[href="corp/index.html"]'));
+  ok('i18n: словари RU и EN совпадают по ключам', (() => {
+    const d = window.OURI_I18N;
+    const rk = Object.keys(d.ru).sort().join('|'), ek = Object.keys(d.en).sort().join('|');
+    return rk === ek || ('diff: ' + Object.keys(d.ru).filter(k => !(k in d.en)).concat(Object.keys(d.en).filter(k => !(k in d.ru))).join(','));
+  })());
+  step('каскад QKC');
+  click($('.brand'));
+  ok('каскад слов QKC запускается по клику', $('#brandDrop') && $('#brandDrop').classList.contains('is-on'));
+  ok('в каскаде три слова', $$('#brandDrop span').length === 3);
+  click($('.nav__link[data-route="home"]'));
+  await wait(40);
+
   // ── 10. ошибок в консоли нет ───────────────────────────────
   const realErrors = errors.filter(e => !/getContext/.test(e));
   ok('нет ошибок выполнения', realErrors.length === 0, realErrors.slice(0, 3).join(' | ').slice(0, 400));

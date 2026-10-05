@@ -649,12 +649,14 @@ kbd{ font-family:var(--font-mono); font-size:.74rem; border:1px solid var(--line
   .dash__cols{ grid-template-columns:1fr }
   .foot__in{ grid-template-columns:1fr 1fr }
 }
-@media (max-width:860px){
+@media (max-width:1180px){
   .nav__links{ position:fixed; inset:var(--nav-h) 0 auto 0; flex-direction:column; gap:2px; padding:14px var(--gap) 22px;
     background:var(--bg2); border-bottom:1px solid var(--line); display:none }
   .nav__links.is-open{ display:flex; animation:fadeUp .25s var(--ease-out) }
   .nav__burger{ display:inline-flex }
   .nav__links{ margin-left:0 }
+}
+@media (max-width:860px){
   #btnCmd kbd{ display:none }
   .hero__stats{ grid-template-columns:1fr 1fr }
   .result__hero{ grid-template-columns:1fr; justify-items:center; text-align:center }
@@ -811,3 +813,53 @@ kbd{ font-family:var(--font-mono); font-size:.74rem; border:1px solid var(--line
 
 .code{ margin:14px 0 0; padding:14px 16px; border:1px solid var(--line); border-radius:var(--r-sm); background:var(--bg2);
   font-family:var(--font-mono); font-size:.82rem; line-height:1.6; overflow:auto; color:var(--text2) }
+
+/* ---------- каскад слов QKC (тап по логотипу) ---------- */
+.brand-drop{
+  position:fixed; z-index:120; left:16px; top:calc(var(--nav-h) + 10px);
+  display:flex; flex-direction:column; align-items:flex-start; gap:6px;
+  pointer-events:none; opacity:0; visibility:hidden;
+}
+.brand-drop.is-on{ opacity:1; visibility:visible }
+.brand-drop span{
+  display:inline-block; padding:7px 14px; border:1px solid var(--line2); border-radius:999px;
+  background:var(--bg2); color:var(--text); font-family:var(--font-d); font-weight:600;
+  font-size:.86rem; letter-spacing:.02em; box-shadow:var(--shadow);
+  opacity:0; transform:translateY(-14px);
+}
+.brand-drop.is-on span{ animation:dropWord .5s var(--ease-out) forwards }
+.brand-drop.is-on span:nth-child(2){ animation-delay:.13s; margin-left:16px }
+.brand-drop.is-on span:nth-child(3){ animation-delay:.26s; margin-left:32px }
+.brand-drop.is-out span{ animation:dropWordOut .35s var(--ease) forwards }
+@keyframes dropWord{ to{ opacity:1; transform:translateY(0) } }
+@keyframes dropWordOut{ from{ opacity:1 } to{ opacity:0; transform:translateY(-10px) } }
+@media (prefers-reduced-motion:reduce){
+  .brand-drop.is-on span{ animation-duration:.01s }
+  .brand-drop.is-on span:nth-child(2),.brand-drop.is-on span:nth-child(3){ animation-delay:0s }
+}
+
+/* ---------- экран «Открытый проект» ---------- */
+.olinks{ display:grid; gap:10px; margin-top:14px }
+.olink{
+  display:flex; align-items:center; gap:14px; padding:13px 16px;
+  border:1px solid var(--line); border-radius:var(--r-sm); background:var(--bg2);
+  transition:border-color .2s, transform .2s var(--ease-out), background .2s;
+}
+a.olink:hover{ border-color:var(--line2); background:var(--surface2); transform:translateX(4px) }
+.olink__ico{ flex:none; width:34px; height:34px; display:grid; place-items:center; border:1px solid var(--line); border-radius:9px; background:var(--surface) }
+.olink__ico svg{ width:17px; height:17px }
+.olink__body{ min-width:0; flex:1 }
+.olink__t{ font-weight:600; font-size:.95rem }
+.olink__d{ font-size:.82rem; color:var(--muted); margin-top:2px }
+.olink__u{ font-family:var(--font-mono); font-size:.72rem; color:var(--muted2); margin-top:3px; word-break:break-all }
+.olink__arrow{ flex:none; color:var(--muted); font-size:1rem; transition:transform .2s }
+a.olink:hover .olink__arrow{ transform:translate(3px,-3px); color:var(--text) }
+.open-corp-btn{ margin-top:16px }
+#openMap code,#openRun code{ font-family:var(--font-mono); font-size:.84em; background:var(--surface2); border:1px solid var(--line); border-radius:5px; padding:1px 6px; color:var(--text) }
+.olink__t,.olink__d,.olink__u{ display:block }
+
+.nav__link{ white-space:nowrap }
+@media (max-width:700px){
+  .brand:hover .brand__name .ltr i,.brand:focus-visible .brand__name .ltr i{ max-width:0!important; opacity:0!important }
+  .brand:hover .brand__name .ltr,.brand:focus-visible .brand__name .ltr{ padding-right:0 }
+}

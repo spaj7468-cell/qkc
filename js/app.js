@@ -1696,10 +1696,49 @@ SCREENS.about = {
     $('#contactBox').innerHTML =
       '<a href="mailto:juravlev.aleksandr2020@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>juravlev.aleksandr2020@gmail.com</a>' +
       '<a href="https://vk.ru/im/channels/-242032915" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 8c1 6 4 9 8 9h1v-3c1.5 0 3 1 4 3h3c-1-3-3-4.5-4-5 1-.5 3-2 4-5h-3c-1 2-2.5 3-4 3V7h-2c-4 0-6-1-7-3z" transform="scale(.9) translate(1,1)"/></svg>' + esc(t('contacts.vk')) + '</a>' +
+      '<a href="https://vk.com/id715180861" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 8c1 6 4 9 8 9h1v-3c1.5 0 3 1 4 3h3c-1-3-3-4.5-4-5 1-.5 3-2 4-5h-3c-1 2-2.5 3-4 3V7h-2c-4 0-6-1-7-3z" transform="scale(.9) translate(1,1)"/></svg>' + esc(t('contacts.vkDev')) + '</a>' +
+      '<a href="https://github.com/spaj7468-cell" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4 1.5-4-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 4.5-1.4 4.5-4.7a4 4 0 0 0-1.1-2.8c.3-.9.2-1.9-.2-2.8 0 0-1.2-.2-3 1.4a10 10 0 0 0-5.4 0C7.4 3.2 6.2 3.4 6.2 3.4c-.4.9-.5 1.9-.2 2.8A4 4 0 0 0 5 9c0 3.3 1.7 4.4 4.5 4.7-.6.6-.6 1.2-.5 2V19"/></svg>' + esc(t('contacts.ghDev')) + '</a>' +
       '<span class="soon">' + esc(t('contacts.tg')) + '</span>' +
       '<span class="soon">' + esc(t('contacts.wa')) + '</span>';
   }
 };
+
+/* ─────────── 16o. экран «Открытый проект» ─────────── */
+const OPEN_ICONS = {
+  site: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14 0 18M12 3c-3 3.5-3 14 0 18"/></svg>',
+  git: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="6" cy="6" r="2.3"/><circle cx="6" cy="18" r="2.3"/><circle cx="18" cy="9" r="2.3"/><path d="M6 8.3v7.4M8.3 6h4.4a3 3 0 0 1 3 3v0M16.4 10.6 8.6 17"/></svg>',
+  folder: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>',
+  doc: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></svg>',
+  user: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>',
+  chat: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-8 8H4l2-3a8 8 0 1 1 15-5z"/></svg>',
+  mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>'
+};
+function renderOpen() {
+  const L = [
+    ['site', 'open.l1n', 'open.l1d', 'spaj7468-cell.github.io/qkc', 'https://spaj7468-cell.github.io/qkc/', 1],
+    ['git', 'open.l2n', 'open.l2d', 'github.com/spaj7468-cell/qkc', 'https://github.com/spaj7468-cell/qkc', 1],
+    ['folder', 'open.l4n', 'open.l4d', 'corp/index.html', 'corp/index.html', 0],
+    ['doc', 'open.l3n', 'open.l3d', 'PR #12650 · js.org/js.org', 'https://github.com/js-org/js.org/pull/12650', 1],
+    ['user', 'open.l5n', 'open.l5d', 'github.com/spaj7468-cell', 'https://github.com/spaj7468-cell', 1],
+    ['chat', 'open.l6n', 'open.l6d', 'vk.com/id715180861', 'https://vk.com/id715180861', 1],
+    ['chat', 'open.l7n', 'open.l7d', 'vk.ru/im/channels/-242032915', 'https://vk.ru/im/channels/-242032915', 1],
+    ['mail', 'open.l8n', 'open.l8d', 'juravlev.aleksandr2020@gmail.com', 'mailto:juravlev.aleksandr2020@gmail.com', 0]
+  ];
+  $('#openLinks').innerHTML = L.map(x =>
+    '<a class="olink" href="' + x[4] + '"' + (x[5] ? ' target="_blank" rel="noopener noreferrer"' : '') + '>' +
+      '<span class="olink__ico">' + OPEN_ICONS[x[0]] + '</span>' +
+      '<span class="olink__body"><span class="olink__t">' + esc(t(x[1])) + '</span>' +
+      '<span class="olink__d">' + esc(t(x[2])) + '</span>' +
+      '<span class="olink__u">' + esc(x[3]) + '</span></span>' +
+      '<span class="olink__arrow">↗</span></a>').join('');
+  let h = '';
+  for (let i = 1; i <= 10; i++) h += '<li>' + t('open.m' + i) + '</li>';
+  $('#openMap').innerHTML = h;
+  h = '';
+  for (let i = 1; i <= 5; i++) h += '<li>' + t('open.r' + i) + '</li>';
+  $('#openRun').innerHTML = h;
+}
+SCREENS.open = { enter() { renderOpen(); } };
 
 /* ─────────── 17. настройки ─────────── */
 function applySettings() {
@@ -1780,6 +1819,9 @@ const Cmd = {
     add(t('nav.setup'), t('cmd.goto'), () => Router.go('setup'), 'setup');
     add(t('nav.dash'), t('cmd.goto'), () => Router.go('dash'), 'progress');
     add(t('nav.library'), t('cmd.goto'), () => Router.go('library'), 'library');
+    add(t('nav.open'), t('cmd.goto'), () => Router.go('open'), 'open source github');
+    add(t('nav.program'), t('cmd.goto'), () => Router.go('program'), 'program');
+    add(t('nav.solvers'), t('cmd.goto'), () => Router.go('solvers'), 'solvers');
     add(t('nav.about'), t('cmd.goto'), () => Router.go('about'), 'about');
     add(t('settings.title'), t('cmd.action'), openSettings, '⚙');
     add('Сменить тему', t('cmd.action'), toggleTheme, '◐');
@@ -1891,13 +1933,15 @@ function announce(msg) { const l = $('#live'); if (l) l.textContent = msg; }
 function renderAllStatic() {
   applyI18n();
   const nav = $('#footNav');
-  if (nav) nav.innerHTML = [['home', 'nav.home'], ['setup', 'nav.setup'], ['dash', 'nav.dash'], ['library', 'nav.library'], ['about', 'nav.about']]
+  if (nav) nav.innerHTML = [['home', 'nav.home'], ['setup', 'nav.setup'], ['dash', 'nav.dash'], ['library', 'nav.library'], ['open', 'nav.open'], ['about', 'nav.about']]
     .map(x => '<a href="#' + x[0] + '" data-route="' + x[0] + '">' + esc(t(x[1])) + '</a>').join('');
   $('#footVersion').textContent = 'v' + (META.version || '1.0.0') + ' · ' + fmtNum(TOTAL_Q) + ' ' + t('common.q');
   $('#footYear').textContent = new Date().getFullYear();
   renderTicker();
   if (Router.cur === 'home') SCREENS.home.enter();
   if (Router.cur === 'dash') renderDash();
+  if (Router.cur === 'about') SCREENS.about.enter();
+  if (Router.cur === 'open') renderOpen();
   syncNavXP(); syncQuick();
 }
 
@@ -1915,6 +1959,22 @@ function bindEvents() {
     applyHashParams();
   });
   $('#btnBurger').onclick = () => { const n = $('#navLinks'); const o = n.classList.toggle('is-open'); $('#btnBurger').setAttribute('aria-expanded', o ? 'true' : 'false'); };
+  // тап/клик по QKC — слова красиво падают вниз каскадом (работает на телефонах)
+  const brandEl = $('.brand'), brandDrop = $('#brandDrop');
+  if (brandEl && brandDrop) {
+    let bdT1 = 0, bdT2 = 0;
+    brandEl.addEventListener('click', () => {
+      const r = brandEl.getBoundingClientRect();
+      brandDrop.style.left = Math.max(10, r.left) + 'px';
+      brandDrop.style.top = (r.bottom + 10) + 'px';
+      brandDrop.classList.remove('is-on', 'is-out');
+      void brandDrop.offsetWidth;
+      brandDrop.classList.add('is-on');
+      clearTimeout(bdT1); clearTimeout(bdT2);
+      bdT1 = setTimeout(() => brandDrop.classList.add('is-out'), 2300);
+      bdT2 = setTimeout(() => brandDrop.classList.remove('is-on', 'is-out'), 2900);
+    });
+  }
   $('#heroStart').onclick = () => { Router.go('setup'); };
   $('#ctaStart').onclick = () => { Router.go('setup'); };
   $('#heroSurprise').onclick = randomTest;

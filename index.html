@@ -53,6 +53,7 @@
       <a href="#solvers" data-route="solvers" class="nav__link" data-i18n="nav.solvers">Решатели</a>
       <a href="#dash" data-route="dash" class="nav__link" data-i18n="nav.dash">Прогресс</a>
       <a href="#library" data-route="library" class="nav__link" data-i18n="nav.library">Библиотека</a>
+      <a href="#open" data-route="open" class="nav__link" data-i18n="nav.open">Открытый проект</a>
       <a href="#about" data-route="about" class="nav__link" data-i18n="nav.about">О OuRi</a>
     </nav>
 
@@ -87,6 +88,9 @@
     </div>
   </div>
 </header>
+
+<!-- каскад слов QKC: тап/клик по логотипу роняет Quick → Knowledge → Check вниз -->
+<div class="brand-drop" id="brandDrop" aria-hidden="true"><span>Quick</span><span>Knowledge</span><span>Check</span></div>
 
 <main id="main">
 
@@ -558,6 +562,49 @@
   </div>
 </section>
 
+<!-- ══════════ ОТКРЫТЫЙ ПРОЕКТ ══════════ -->
+<section class="screen" id="screen-open" data-screen="open" hidden>
+  <div class="about">
+    <span class="kicker" data-i18n="open.kicker">Open-source</span>
+    <h2 class="h1" data-i18n="open.title">Открытый проект</h2>
+    <p class="lead" data-i18n="open.lead">
+      QKC делается открыто: код, база из 42 135 вопросов, тесты и даже заявка на домен — всё на виду.
+      Здесь собраны все ссылки и карта проекта: где что лежит, как запустить у себя и куда написать.
+    </p>
+
+    <div class="panel panel--wide">
+      <h3 class="panel__t" data-i18n="open.linksT">Ссылки — где нас найти</h3>
+      <div class="olinks" id="openLinks"></div>
+    </div>
+
+    <div class="panel panel--wide">
+      <h3 class="panel__t" data-i18n="open.mapT">Карта проекта — где что находится</h3>
+      <p class="muted" data-i18n="open.mapSub">Репозиторий github.com/spaj7468-cell/qkc — всё в одном месте, лицензия MIT.</p>
+      <ul class="tick" id="openMap"></ul>
+    </div>
+
+    <div class="panel panel--wide">
+      <h3 class="panel__t" data-i18n="open.runT">Как запустить у себя</h3>
+      <ul class="tick" id="openRun"></ul>
+      <pre class="code"><code>git clone https://github.com/spaj7468-cell/qkc.git
+cd qkc
+python3 -m http.server 8080   # или просто открой index.html в браузере</code></pre>
+    </div>
+
+    <div class="panel panel--wide">
+      <h3 class="panel__t" data-i18n="open.corpT">OuRi Corp — сайт компании</h3>
+      <p class="muted" data-i18n="open.corpTxt">
+        Второй связанный сайт: кто делает QKC, почему всё открыто и как с нами связаться.
+        Живёт в этом же репозитории в папке /corp — сайты связаны переходами в обе стороны.
+      </p>
+      <a class="btn btn--primary open-corp-btn" href="corp/index.html"><span data-i18n="open.corpBtn">Открыть сайт OuRi Corp</span>
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+
+    <p class="lead beta-note"><span class="beta">BETA</span> <span data-i18n="open.beta">Нашёл ошибку в коде, базе или переводах — открой issue на GitHub или напиши через форму на экране «О OuRi». Починим.</span></p>
+  </div>
+</section>
+
 <!-- ══════════ О КОМПАНИИ ══════════ -->
 <section class="screen" id="screen-about" data-screen="about" hidden>
   <div class="about">
@@ -596,6 +643,7 @@
       <div class="contact">
         <a href="https://github.com/spaj7468-cell/qkc" target="_blank" rel="noopener noreferrer">github.com/spaj7468-cell/qkc</a>
         <a href="https://github.com/spaj7468-cell/qkc/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">CONTRIBUTING.md</a>
+        <a href="corp/index.html" data-i18n="about.devCorp">OuRi Corp — сайт компании</a>
       </div>
     </div>
     <div class="panel panel--wide">
@@ -642,6 +690,9 @@
     <div class="foot__contacts" aria-label="Контакты">
       <a class="foot__c" href="mailto:juravlev.aleksandr2020@gmail.com">juravlev.aleksandr2020@gmail.com</a>
       <a class="foot__c" href="https://vk.ru/im/channels/-242032915" target="_blank" rel="noopener noreferrer" data-i18n="contacts.vk">Канал во ВКонтакте</a>
+      <a class="foot__c" href="https://vk.com/id715180861" target="_blank" rel="noopener noreferrer" data-i18n="contacts.vkDev">VK разработчика</a>
+      <a class="foot__c" href="https://github.com/spaj7468-cell" target="_blank" rel="noopener noreferrer" data-i18n="contacts.ghDev">GitHub разработчика</a>
+      <a class="foot__c" href="corp/index.html" data-i18n="contacts.corp">OuRi Corp</a>
       <span class="foot__c foot__c--soon" data-i18n="contacts.tg">Telegram — скоро</span>
       <span class="foot__c foot__c--soon" data-i18n="contacts.wa">WhatsApp — скоро</span>
     </div>
