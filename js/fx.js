@@ -110,4 +110,72 @@
     });
     mo.observe(root, { attributes: true, attributeFilter: ['data-theme'] });
   }
+
+  /* ── 7. scroll-reveal для [rv] ────────────────────────────── */
+  var rv = doc.querySelectorAll('.rv');
+  if (rv.length) {
+    if ('IntersectionObserver' in window && !reduce) {
+      var ioR = new IntersectionObserver(function (es) {
+        es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('is-in'); ioR.unobserve(en.target); } });
+      }, { threshold: .12, rootMargin: '0px 0px -6% 0px' });
+      rv.forEach(function (n) { ioR.observe(n); });
+    } else { rv.forEach(function (n) { n.classList.add('is-in'); }); }
+  }
+
+  /* ── 8. магнитные кнопки (тонкий отклик на курсор) ────────── */
+  if (fine && !reduce) {
+    doc.addEventListener('pointermove', function (e) {
+      var b = e.target && e.target.closest ? e.target.closest('.btn--primary') : null;
+      if (!b) return;
+      var r = b.getBoundingClientRect();
+      var dx = (e.clientX - (r.left + r.width / 2)) / r.width;
+      var dy = (e.clientY - (r.top + r.height / 2)) / r.height;
+      b.style.transform = 'translate(' + (dx * 5).toFixed(1) + 'px,' + (dy * 4).toFixed(1) + 'px)';
+    }, { passive: true });
+    doc.addEventListener('pointerout', function (e) {
+      var b = e.target && e.target.closest ? e.target.closest('.btn--primary') : null;
+      if (b && !b.contains(e.relatedTarget)) b.style.transform = '';
+    }, { passive: true });
+  }
+
+  /* ── 9. монохромное конфетти на рекорды ───────────────────── */
+  function confetti() {
+    if (reduce) return;
+    var c = doc.createElement('canvas');
+    c.className = 'fx-conf'; c.setAttribute('aria-hidden', 'true');
+    var dpr = Math.min(2, window.devicePixelRatio || 1);
+    c.width = innerWidth * dpr; c.height = innerHeight * dpr;
+    doc.body.appendChild(c);
+    var g = c.getContext('2d'); g.scale(dpr, dpr);
+    var cs = getComputedStyle(root);
+    var ink = cs.getPropertyValue('--text').trim() || '#fff';
+    var P = [];
+    for (var i = 0; i < 110; i++) {
+      P.push({
+        x: innerWidth / 2 + (Math.random() - .5) * innerWidth * .5,
+        y: -20 - Math.random() * innerHeight * .25,
+        w: 3 + Math.random() * 6, h: 5 + Math.random() * 9,
+        vy: 2.2 + Math.random() * 3.4, vx: (Math.random() - .5) * 2.2,
+        r: Math.random() * Math.PI, vr: (Math.random() - .5) * .22,
+        a: .35 + Math.random() * .65
+      });
+    }
+    var t0 = Date.now();
+    (function frame() {
+      var el = Date.now() - t0;
+      g.clearRect(0, 0, innerWidth, innerHeight);
+      var fade = el > 2000 ? Math.max(0, 1 - (el - 2000) / 700) : 1;
+      P.forEach(function (p) {
+        p.x += p.vx; p.y += p.vy; p.vy += .045; p.r += p.vr;
+        g.save(); g.translate(p.x, p.y); g.rotate(p.r);
+        g.globalAlpha = p.a * fade; g.fillStyle = ink;
+        g.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+        g.restore();
+      });
+      if (el < 2700) requestAnimationFrame(frame);
+      else c.remove();
+    })();
+  }
+  window.FX = window.FX || {};
+  window.FX.confetti = confetti;
 })();

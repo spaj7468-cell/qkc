@@ -286,7 +286,9 @@ const BG = {
 function toast(title, sub, icon) {
   const box = $('#toasts'); if (!box) return;
   const n = el('div', 'toast');
-  n.innerHTML = '<span class="toast__i">' + (icon || '•') + '</span><span><b>' + esc(title) + '</b>' + (sub ? '<span>' + esc(sub) + '</span>' : '') + '</span>';
+  n.innerHTML = '<span class="toast__i">' + (icon || '•') + '</span><span><b>' + esc(title) + '</b>' + (sub ? '<span>' + esc(sub) + '</span>' : '') + '</span>' +
+    '<button class="toast__x" aria-label="' + esc(t('common.close')) + '"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>';
+  const x = n.querySelector('.toast__x'); if (x) x.onclick = () => { n.classList.add('is-out'); setTimeout(() => n.remove(), 300); };
   box.appendChild(n);
   setTimeout(() => { n.classList.add('is-out'); setTimeout(() => n.remove(), 320); }, 3600);
   while (box.children.length > 4) box.firstChild.remove();
@@ -603,7 +605,7 @@ function renderDaily() {
 function renderRecent() {
   const box = $('#recentBox'); if (!box) return;
   const h = (D().history || []).slice(0, 5);
-  if (!h.length) { box.innerHTML = '<div class="empty">' + esc(t('dash.empty')) + '</div>'; return; }
+  if (!h.length) { box.innerHTML = '<div class="empty">' + esc(t('dash.empty')) + '<br><button class="btn btn--ghost btn--sm" data-route="setup">' + esc(t('dash.emptyCta')) + '</button></div>'; return; }
   box.innerHTML = '';
   h.forEach(x => {
     const n = el('div', 'recent__i');
@@ -1316,6 +1318,7 @@ function checkAchievements(res) {
 let lastResult = null;
 function renderResult(res) {
   lastResult = res;
+  if (res.pct >= 80 && window.FX && window.FX.confetti) setTimeout(() => { try { window.FX.confetti(); } catch (e) {} }, 420);
   const grade = res.pct >= 90 ? 'res.grade5' : res.pct >= 75 ? 'res.grade4' : res.pct >= 50 ? 'res.grade3' : res.pct >= 25 ? 'res.grade2' : 'res.grade0';
   $('#resKicker').textContent = t('res.kicker');
   $('#resTitle').textContent = t(grade);
@@ -1503,7 +1506,7 @@ function renderHeat(d) {
 function renderSubjectBars(d) {
   const box = $('#dashSubjects'); if (!box) return;
   const keys = Object.keys(d.bySubject || {}).sort((a, b) => d.bySubject[b].n - d.bySubject[a].n).slice(0, 10);
-  if (!keys.length) { box.innerHTML = '<div class="empty">' + esc(t('dash.empty')) + '</div>'; return; }
+  if (!keys.length) { box.innerHTML = '<div class="empty">' + esc(t('dash.empty')) + '<br><button class="btn btn--ghost btn--sm" data-route="setup">' + esc(t('dash.emptyCta')) + '</button></div>'; return; }
   box.innerHTML = '';
   keys.forEach(k => {
     const v = d.bySubject[k], p = Math.round(v.c / v.n * 100);
@@ -1533,7 +1536,7 @@ function renderAch(d) {
 function renderHistory(d) {
   const box = $('#histList'); if (!box) return;
   box.innerHTML = '';
-  if (!d.history.length) { box.innerHTML = '<div class="empty">' + esc(t('dash.empty')) + '</div>'; return; }
+  if (!d.history.length) { box.innerHTML = '<div class="empty">' + esc(t('dash.empty')) + '<br><button class="btn btn--ghost btn--sm" data-route="setup">' + esc(t('dash.emptyCta')) + '</button></div>'; return; }
   d.history.forEach(h => {
     const n = el('div', 'hist__i');
     const dt = new Date(h.date);
@@ -2184,8 +2187,19 @@ function buildShareUrl() {
 /* ─────────── 22. service worker ─────────── */
 function registerSW() {
   if (!('serviceWorker' in navigator)) return;
+  let hadController = !!navigator.serviceWorker.controller;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (hadController) toast(t('app.upd'), t('app.updSub'), '↻');
+    else hadController = true;
+  });
   if (location.protocol !== 'https:' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') return;
-  window.addEventListener('load', () => { navigator.serviceWorker.register('sw.js').catch(() => {}); });
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').then(reg => {
+      const chk = () => { try { reg.update(); } catch (e) {} };
+      setInterval(chk, 45 * 60 * 1000);
+      document.addEventListener('visibilitychange', () => { if (!document.hidden) chk(); });
+    }).catch(() => {});
+  });
 }
 
 
