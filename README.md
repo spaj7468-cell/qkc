@@ -92,7 +92,8 @@ NODE_PATH=/tmp/node_modules node test/e2e.mjs   # 74 проверки, jsdom
 
 Папка самодостаточна: залей её содержимое в корень домена (или открой локально). Service worker включается на https/localhost и кэширует сайт и банк вопросов.
 
-Бесплатный поддомен для открытого проекта: **qkc.js.org** (имя свободно) — пошагово в **[JSORG.md](JSORG.md)**.
+Проект уже в сети: **https://spaj7468-cell.github.io/qkc/** · репозиторий **https://github.com/spaj7468-cell/qkc**
+Бесплатный поддомен **qkc.js.org**: pull request в js-org открыт (**js-org/js.org#12650**) — после merge сайт переедет на https://qkc.js.org. Подробно — в **[JSORG.md](JSORG.md)**.
 Подробная инструкция по остальным бесплатным поддоменам и доменам — в **[DEPLOY.md](DEPLOY.md)**:
 проверенные свободные имена (`ouri.netlify.app`, `ouri.vercel.app`, `qkc.pages.dev`, `ouri.neocities.org`),
 шесть способов деплоя (Netlify Drop, Cloudflare Pages, Vercel, Surge, GitHub Pages, Neocities)

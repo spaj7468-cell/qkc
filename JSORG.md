@@ -1,5 +1,10 @@
 # Как получить `qkc.js.org` — пошагово
 
+> **Статус 05.10.2026:** шаги 1–3 выполнены автоматически.
+> Репозиторий: https://github.com/spaj7468-cell/qkc · Сайт жив: https://spaj7468-cell.github.io/qkc/
+> **Pull request: https://github.com/js-org/js.org/pull/12650** — ждём merge волонтёрами.
+> После merge: вернуть CNAME одной командой (ниже, шаг 5).
+
 js.org даёт бесплатный поддомен проектам с GitHub Pages. Наши имена **свободны** (проверено 05.10.2026):
 `qkc.js.org`, `ouri.js.org`. Имя поддомена должно совпадать с **именем репозитория** (или логином),
 поэтому репозиторий называем `qkc` — тогда имеем право на `qkc.js.org`.
@@ -71,7 +76,18 @@ for school subjects (kindergarten–grade 11, 42k+ questions).
 После_merge DNS обновится **в течение 24 часов** → сайт заработает на **https://qkc.js.org**
 (HTTPS js.org включает сам).
 
-## Шаг 4. Проверка и запасные варианты
+## Шаг 5. После merge PR (до 24 ч)
+
+```bash
+git mv CNAME.qkc-jsorg CNAME
+git commit -m "chore: enable CNAME qkc.js.org after js.org merge"
+git push
+```
+
+GitHub выпустит HTTPS-сертификат для `qkc.js.org` за пару минут, DNS js.org обновится до 24 ч.
+Проверка: https://qkc.js.org
+
+## Шаг 6. Проверка и запасные варианты
 
 - `https://qkc.js.org` — основной адрес (он же в `CNAME`);
 - если вдруг имя `qkc` отклонят из-за созвучия с чужим брендом — запасной вариант: репозиторий `ouri` → `ouri.js.org`

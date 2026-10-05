@@ -580,6 +580,25 @@
       <ul class="tick" id="aboutHow"></ul>
     </div>
     <div class="panel panel--wide">
+      <h3 class="panel__t" data-i18n="dev.title">Разработчикам JavaScript</h3>
+      <p class="muted" data-i18n="dev.lead">QKC — это открытый движок тестов на чистом vanilla JS: ноль зависимостей, ноль сборщиков, один исходник. Банк вопросов раздаётся обычными JS-модулями, которые можно подключить в любой проект.</p>
+      <ul class="tick">
+        <li data-i18n="dev.p1">Движок: js/app.js — тесты, хранилище, i18n, PWA, доступность; css/style.css — дизайн-система без препроцессоров.</li>
+        <li data-i18n="dev.p2">Банк: assets/bank-&lt;класс&gt;.js задаёт window.OURI_BANKS[класс][предмет][четверть] — массив вопросов {t, ty, o, c, e, tp}.</li>
+        <li data-i18n="dev.p3">Генераторы: gen/*.py (Python) собирают банк по классам и четвертям; добавить свой предмет = один файл данных.</li>
+        <li data-i18n="dev.p4">Лицензия MIT: берите движок и банк в свои проекты, ссылка на репозиторий приветствуется.</li>
+      </ul>
+      <pre class="code"><code>&lt;script src="assets/bank-7.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  const q = window.OURI_BANKS[7]["algebra"]["1"][0];
+  console.log(q.t, "→", q.c);   // вопрос и правильный ответ
+&lt;/script&gt;</code></pre>
+      <div class="contact">
+        <a href="https://github.com/spaj7468-cell/qkc" target="_blank" rel="noopener noreferrer">github.com/spaj7468-cell/qkc</a>
+        <a href="https://github.com/spaj7468-cell/qkc/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">CONTRIBUTING.md</a>
+      </div>
+    </div>
+    <div class="panel panel--wide">
       <h3 class="panel__t" data-i18n="fb.title">Сообщить об ошибке или оставить отзыв</h3>
       <p class="muted sm" data-i18n="fb.sub">Заполни поля и нажми «Отправить» — откроется готовое письмо в Gmail, останется только нажать кнопку отправки в письме.</p>
       <form class="fb" id="fbForm" novalidate>

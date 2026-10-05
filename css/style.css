@@ -808,3 +808,6 @@ kbd{ font-family:var(--font-mono); font-size:.74rem; border:1px solid var(--line
 @media (max-width:700px){ .fb__grid{ grid-template-columns:1fr } .rus-line{ flex-direction:column; gap:4px } .rus-line b{ min-width:0 } }
 @media (max-width:1200px){ .nav__link{ padding:8px 10px; font-size:.82rem } }
 @media (max-width:1000px){ .nav__links{ } }
+
+.code{ margin:14px 0 0; padding:14px 16px; border:1px solid var(--line); border-radius:var(--r-sm); background:var(--bg2);
+  font-family:var(--font-mono); font-size:.82rem; line-height:1.6; overflow:auto; color:var(--text2) }
