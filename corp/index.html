@@ -7,7 +7,7 @@
 <meta name="description" content="OuRi Corp — микро-компания, которая делает QKC (Quick Knowledge Check). Создана одним человеком и искусственным интеллектом, поэтому все проекты открыты: код, база вопросов и деплой — open source.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="OuRi Corp — один человек, один ИИ, открытый код">
-<meta property="og:description" content="Микро-компания, которая делает QKC. Всё открыто: код, база из 42 135 вопросов, деплой. Связь через GitHub и VK.">
+<meta property="og:description" content="Микро-компания, которая делает QKC. Всё открыто: код, база из 42 823 вопросов, деплой. Связь через GitHub и VK.">
 <meta property="og:url" content="https://spaj7468-cell.github.io/qkc/corp/">
 <meta property="og:image" content="https://spaj7468-cell.github.io/qkc/assets/icon-512.png">
 <meta name="twitter:card" content="summary">
@@ -70,11 +70,11 @@
     <h1>
       <span class="line"><i>Один человек.</i></span>
       <span class="line"><i>Один <em>ИИ</em>.</i></span>
-      <span class="line"><i>Открытый код.</i></span>
+      <span class="line"><i data-scramble>Открытый код.</i></span>
     </h1>
     <p class="hero__sub">
       OuRi Corp делает <b>QKC — Quick Knowledge Check</b>: чёрно-белый тренажёр школьных знаний
-      с базой из 42 135 вопросов. Компанию создали один человек и искусственный интеллект —
+      с базой из 42 823 вопросов. Компанию создали один человек и искусственный интеллект —
       и именно поэтому всё, что мы делаем, открыто: код, база, тесты и даже заявка на домен.
     </p>
     <div class="hero__cta">
@@ -89,12 +89,19 @@
     <div class="stats">
       <div><b>1</b><span>разработчик-человек</span></div>
       <div><b>ИИ</b><span>соавтор кода и базы</span></div>
-      <div><b>42 135</b><span>вопросов в базе</span></div>
-      <div><b>20</b><span>школьных предметов</span></div>
+      <div><b data-fx-count="42823">42 823</b><span>вопросов в базе</span></div>
+      <div><b data-fx-count="20">20</b><span>школьных предметов</span></div>
       <div><b>0</b><span>серверов и аккаунтов</span></div>
       <div><b>MIT</b><span>лицензия на всё</span></div>
     </div>
   </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>OPEN SOURCE</span><span>MIT</span><span>ОДИН ЧЕЛОВЕК</span><span>ОДИН ИИ</span><span>QKC</span><span>0 СЕРВЕРОВ</span><span>0 ТРЕКИНГА</span><span>100% МОНОХРОМ</span>
+      <span>OPEN SOURCE</span><span>MIT</span><span>ОДИН ЧЕЛОВЕК</span><span>ОДИН ИИ</span><span>QKC</span><span>0 СЕРВЕРОВ</span><span>0 ТРЕКИНГА</span><span>100% МОНОХРОМ</span>
+    </div>
+  </div>
 
   <!-- ══════════ о компании ══════════ -->
   <section class="blk" id="about">
@@ -115,7 +122,7 @@
         вызывает только недоверие. Поэтому мы выбрали противоположный путь — <b>полную открытость</b>.
       </p>
       <p>
-        На практике это значит: исходный код QKC лежит на GitHub с лицензией MIT; база из 42 135
+        На практике это значит: исходный код QKC лежит на GitHub с лицензией MIT; база из 42 823
         вопросов генерируется скриптами и хранится рядом с кодом; деплой и даже заявка на домен
         <span class="mono">qkc.js.org</span> оформлены публично. Любой может посмотреть, как всё
         устроено, найти ошибку, предложить правку или форкнуть проект себе.
@@ -164,7 +171,7 @@
           работает офлайн и ставится как приложение.
         </p>
         <div class="proj__facts">
-          <span>42 135 вопросов</span><span>20 предметов</span><span>0–11 класс</span>
+          <span>42 823 вопросов</span><span>20 предметов</span><span>0–11 класс</span>
           <span>четверти / триместры</span><span>RU + EN</span><span>PWA · офлайн</span><span>автотесты</span>
         </div>
         <div class="proj__links">
@@ -337,8 +344,10 @@
     <span>·</span>
     <span>Лицензия MIT</span>
   </div>
+  <div class="foot__mark" aria-hidden="true">OuRi</div>
 </footer>
 
+<script src="../js/fx.js"></script>
 <script>
 (function () {
   'use strict';

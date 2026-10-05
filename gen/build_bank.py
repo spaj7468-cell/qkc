@@ -1517,6 +1517,143 @@ def gen_chem(grade, seed=0):
 
 
 # ============================================================ ИНФОРМАТИКА
+def _js_items(A, band):
+    """Модуль «JavaScript» в информатике: band 1 — 7–9 классы, band 2 — 10–11."""
+    T = "JavaScript"
+    ALLT = ["number", "string", "boolean", "object", "undefined"]
+    TYPES = [("42", "number"), ("3.14", "number"), ("'привет'", "string"), ('"мир"', "string"),
+             ("true", "boolean"), ("false", "boolean"), ("[1, 2]", "object"), ("undefined", "undefined")]
+    if band == 1:
+        for _ in range(12):
+            v, t = random.choice(TYPES)
+            A(build_choice(f"Что выведет в JavaScript: typeof {v}?", t, [x for x in ALLT if x != t],
+                           f"typeof {v} → «{t}».", T, [1, 2]))
+        for _ in range(12):
+            a = [random.randint(1, 9) for _ in range(random.randint(2, 6))]
+            A(build_choice(f"Чему равно a.length, если const a = {a};?", len(a), [len(a) + 1, len(a) - 1, a[-1]],
+                           f"length — число элементов массива: {len(a)}.", T, [1, 2]))
+        for _ in range(10):
+            a = [random.randint(1, 9) for _ in range(random.randint(3, 6))]
+            A(build_choice(f"Что вернёт a[a.length - 1], если const a = {a};?", a[-1], [a[0], a[1], len(a)],
+                           f"a[a.length - 1] — последний элемент: {a[-1]}.", T, [3, 4]))
+        for _ in range(10):
+            w = random.choice(["код", "скрипт", "функция", "массив", "объект", "строка"])
+            A(build_choice(f"Чему равно '{w}'.length в JavaScript?", len(w), [len(w) - 1, len(w) + 1, len(w) * 2],
+                           f"length у строки — число символов: {len(w)}.", T, [1, 2]))
+        for _ in range(10):
+            n = random.randint(1, 9)
+            A(build_choice(f"Что выведет console.log({n} + '{n}')?", f"{n}{n}", [n + n, f"{n}{n}{n}", "NaN"],
+                           f"Число со строкой даёт склейку строк: «{n}{n}».", T, [3, 4]))
+        for _ in range(10):
+            n = random.randint(2, 9)
+            A(build_choice(f"Сколько раз выполнится тело цикла: for (let i = 0; i < {n}; i++) {{ … }}?", n,
+                           [n - 1, n + 1, n * 2], f"i принимает значения 0…{n-1} — всего {n} итераций.", T, [3, 4]))
+        for _ in range(12):
+            x, y = random.randint(2, 20), random.randint(2, 20)
+            A(build_choice(f"Что вернёт вызов sum({x}, {y}), если function sum(a, b) {{ return a + b; }}?", x + y,
+                           [x * y, x - y, str(x) + str(y)], f"Функция возвращает сумму: {x} + {y} = {x+y}.", T, [1, 2]))
+        for _ in range(8):
+            n = random.randint(2, 9)
+            A(build_choice(f"Что вернёт f({n}), если const f = (x) => x * 2;?", n * 2, [n + 2, n ** 2, n * 2 + 1],
+                           f"Стрелочная функция умножает на 2: {n} · 2 = {n*2}.", T, [3, 4]))
+        for _ in range(8):
+            a, b = random.randint(2, 30), random.randint(2, 30)
+            if b == a:
+                b += 1
+            A(build_choice(f"Что вернёт Math.max({a}, {b})?", max(a, b), [min(a, b), a + b, abs(a - b)],
+                           f"Math.max возвращает большее из чисел: {max(a,b)}.", T, [1, 2]))
+        for _ in range(8):
+            x = random.randint(1, 9) + 0.5
+            A(build_choice(f"Что вернёт Math.floor({x})?", int(x), [int(x) + 1, int(x) - 1, int(x) * 2],
+                           f"Math.floor округляет вниз: {int(x)}.", T, [3, 4]))
+        A(build_choice("Каким тегом подключают JavaScript к веб-странице?", "<script>", ["<js>", "<code>", "<style>"],
+                       "Скрипты помещают в тег <script> (атрибут src — путь к файлу).", T, [1, 2]))
+        A(build_choice("Что означает запись // комментарий в JavaScript?", "однострочный комментарий",
+                       ["деление нацело", "начало цикла", "ошибка синтаксиса"],
+                       "// начинает однострочный комментарий; /* … */ — многострочный.", T, [1, 2]))
+        A(build_choice("Что делает console.log(…)?", "выводит значение в консоль",
+                       ["показывает всплывающее окно", "записывает значение в файл", "останавливает программу"],
+                       "console.log — основной инструмент отладки в JS.", T, [1, 2]))
+        A(build_choice("Можно ли присвоить новое значение после const a = 5;?", "нет, будет ошибка",
+                       ["да, без ограничений", "да, но только число", "зависит от браузера"],
+                       "const объявляет константу: повторное присваивание запрещено.", T, [1, 2]))
+        A(build_choice("Что делает document.getElementById('card')?", "находит элемент страницы по id",
+                       ["создаёт новый элемент", "удаляет элемент", "меняет тему страницы"],
+                       "Метод возвращает элемент с указанным id — основа работы с DOM.", T, [3, 4]))
+        A(build_choice("Когда выполнится функция f в btn.addEventListener('click', f);?", "по клику на btn",
+                       ["сразу при загрузке страницы", "каждую секунду", "никогда"],
+                       "addEventListener подписывает обработчик на событие — здесь click.", T, [3, 4]))
+        A(build_tf("5 === '5' в JavaScript — это true.", "Неверно",
+                   "Строгое равенство === не приводит типы: число и строка не равны.", T, [3, 4]))
+        A(build_tf("JavaScript выполняется только в браузере.", "Неверно",
+                   "Есть и серверная среда выполнения — Node.js.", T, [3, 4]))
+        return
+    # ---- band 2: 10–11 классы ----
+    for _ in range(10):
+        A(build_choice("Что выведет typeof null в JavaScript?", "object", ["null", "undefined", "number"],
+                       "Историческая особенность JS: typeof null → «object».", T, [1, 2]))
+    for _ in range(10):
+        a = [random.randint(1, 5) for _ in range(4)]
+        r = [x * 2 for x in a]
+        A(build_choice(f"Что вернёт {a}.map(x => x * 2)?", str(r), [str(a), str([x + 2 for x in a]), str(len(a))],
+                       "map создаёт новый массив, применив функцию к каждому элементу.", T, [1, 2]))
+    for _ in range(10):
+        a = [random.randint(1, 9) for _ in range(6)]
+        k = random.randint(3, 6)
+        r = [x for x in a if x > k]
+        A(build_choice(f"Что вернёт {a}.filter(x => x > {k})?", str(r), [str([x for x in a if x < k]), str(a), str(sum(r))],
+                       "filter оставляет элементы, для которых условие истинно.", T, [3, 4]))
+    for _ in range(10):
+        a = [random.randint(1, 9) for _ in range(4)]
+        A(build_choice(f"Что вернёт {a}.reduce((s, x) => s + x, 0)?", sum(a), [max(a), len(a), sum(a) - 1],
+                       "reduce сворачивает массив к одному значению: здесь к сумме.", T, [3, 4]))
+    for _ in range(8):
+        n = random.randint(1, 3)
+        A(build_choice(f"Что вернёт ['a', 'b', 'c'].slice(0, {n})?", str(['a', 'b', 'c'][:n]),
+                       [str(['a', 'b', 'c'][n:]), str(n), "['c', 'b', 'a']"],
+                       f"slice копирует часть массива с 0 до {n} (не включая {n}).", T, [1, 2]))
+    A(build_choice("Что вернёт `привет, ${name}`, если const name = 'МИР';?", "привет, МИР",
+                   ["привет, ${name}", "привет, name", "привет, {name}"],
+                   "Шаблонная строка в обратных кавычках подставляет значение в ${…}.", T, [1, 2]))
+    for _ in range(8):
+        a = [random.randint(1, 9) for _ in range(3)]
+        A(build_choice(f"Что вернёт {a}.join('-')?", "-".join(map(str, a)), ["".join(map(str, a)), str(a), str(len(a))],
+                       "join склеивает элементы массива в строку с разделителем.", T, [3, 4]))
+    A(build_choice("Что вернёт 'а,б,в'.split(',')?", "массив из трёх строк",
+                   ["строку 'а,б,в'", "массив из трёх чисел", "ошибку"],
+                   "split разбивает строку по разделителю в массив.", T, [3, 4]))
+    for _ in range(8):
+        x = random.randint(1, 9)
+        A(build_choice(f"Что вернёт [1, 2, 3].includes({x})?", "true" if x in (1, 2, 3) else "false",
+                       ["false" if x in (1, 2, 3) else "true", str(x), "undefined"],
+                       "includes проверяет, есть ли элемент в массиве.", T, [1, 2]))
+    A(build_choice("Что такое Promise в JavaScript?", "объект для асинхронных операций",
+                   ["синтаксис цикла", "тип данных для строк", "метод массива"],
+                   "Promise представляет результат операции, которая завершится позже.", T, [1, 2]))
+    A(build_choice("Что делает оператор await внутри async-функции?", "ждёт выполнения Promise",
+                   ["останавливает браузер", "объявляет переменную", "создаёт новый поток"],
+                   "await приостанавливает функцию до разрешения Promise.", T, [3, 4]))
+    A(build_choice("Что такое Node.js?", "среда выполнения JavaScript вне браузера",
+                   ["браузер", "база данных", "язык программирования"],
+                   "Node.js запускает JS на сервере и в скриптах разработчика.", T, [1, 2]))
+    A(build_choice("Для чего используют npm?", "установка пакетов и управление зависимостями",
+                   ["рисование графиков", "проверка орфографии", "сжатие изображений"],
+                   "npm — пакетный менеджер экосистемы JavaScript.", T, [1, 2]))
+    A(build_choice("Чем let отличается от var?", "let имеет блочную область видимости",
+                   ["let нельзя изменить", "let работает только в циклах", "ничем"],
+                   "let видна только внутри блока {…}, var — всей функции.", T, [3, 4]))
+    A(build_choice("Что такое замыкание в JavaScript?", "функция, запоминающая внешние переменные",
+                   ["цикл внутри функции", "ошибка памяти", "способ закрыть вкладку"],
+                   "Замыкание сохраняет доступ к переменным внешней функции.", T, [3, 4]))
+    A(build_tf("NaN === NaN — это true.", "Неверно", "NaN не равен даже самому себе; используют Number.isNaN().", T, [3, 4]))
+    A(build_choice("Что вернёт [...a, ...b], если a = [1] и b = [2]?", "[1, 2]",
+                   ["[[1], [2]]", "[2, 1]", "3"],
+                   "Оператор распространения (spread) объединяет массивы.", T, [3, 4]))
+    A(build_choice("Что вернёт JSON.parse('{\"a\": 1}')?", "объект из JSON-строки",
+                   ["строку", "число 1", "ошибку"],
+                   "JSON.parse превращает JSON-текст в объект; JSON.stringify — наоборот.", T, [1, 2]))
+
+
 def gen_info(grade, seed=0):
     random.seed(seed)
     P = []
@@ -1667,6 +1804,7 @@ def gen_info(grade, seed=0):
             A(build_choice("Цикл с известным числом повторений в Python:", "for", ["for", "if", "def", "while… нет"], "for i in range(n) — цикл со счётчиком.", "Программирование", [3, 4]))
         for _ in range(10):
             A(build_choice("Что делает функция len('информатика')?", "возвращает 11", ["возвращает 11", "возвращает 10", "возвращает строку", "ошибку"], "len считает количество символов: в слове «информатика» 11 букв.", "Программирование", [3, 4]))
+        _js_items(A, 1)
         return P
     if grade in (10, 11):
         for _ in range(14):
@@ -1704,6 +1842,7 @@ def gen_info(grade, seed=0):
             A(build_choice("Что выведет print(2 ** 10)?", 1024, [1024, 20, 100, 512], "2¹⁰ = 1024.", "Программирование", [1, 2]))
         for _ in range(10):
             A(build_choice("Какой оператор в Python используется для проверки условия?", "if", ["if", "for", "while", "import"], "if … else — условный оператор.", "Программирование", [1, 2]))
+        _js_items(A, 2)
         return P
     return P
 

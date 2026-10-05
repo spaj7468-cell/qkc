@@ -258,3 +258,84 @@ section.blk{ padding:clamp(56px,9vh,110px) 0 0 }
   .nav,.bg-grid,.bg-grain,.bg-vig,.hero__cta,.icon-btn{ display:none }
   body{ background:#fff; color:#000 }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   ПРЕМИУМ-СЛОЙ 2.0: скроллбар, прогресс, spotlight, ripple,
+   маркиза, вордмарк, кроссфейд темы
+   ═══════════════════════════════════════════════════════════════ */
+html{ scrollbar-color:var(--muted2) transparent }
+::-webkit-scrollbar{ width:10px; height:10px }
+::-webkit-scrollbar-track{ background:transparent }
+::-webkit-scrollbar-thumb{ background:var(--muted2); border-radius:99px; border:3px solid var(--bg) }
+::-webkit-scrollbar-thumb:hover{ background:var(--muted) }
+
+.fx-progress{
+  position:fixed; top:0; left:0; right:0; height:2px; z-index:140; pointer-events:none;
+  background:linear-gradient(90deg,var(--muted),var(--text)); transform:scaleX(0); transform-origin:0 50%;
+}
+
+/* spotlight внутри карточек */
+.panel,.proj,.honest,.hero,.plink{ position:relative }
+.panel::before,.proj::before,.honest::before,.hero::before,.plink::before{
+  content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none; opacity:0; z-index:0;
+  transition:opacity .4s var(--ease);
+  background:radial-gradient(280px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.09),transparent 68%);
+}
+html[data-theme="light"] .panel::before,html[data-theme="light"] .proj::before,
+html[data-theme="light"] .honest::before,html[data-theme="light"] .hero::before,html[data-theme="light"] .plink::before{
+  background:radial-gradient(280px circle at var(--mx,50%) var(--my,50%),rgba(0,0,0,.05),transparent 68%);
+}
+.hero::before{ background:radial-gradient(700px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.06),transparent 72%) }
+html[data-theme="light"] .hero::before{ background:radial-gradient(700px circle at var(--mx,50%) var(--my,50%),rgba(0,0,0,.045),transparent 72%) }
+.panel:hover::before,.proj:hover::before,.honest:hover::before,.hero:hover::before,.plink:hover::before{ opacity:1 }
+.panel>*,.proj>*,.honest>*{ position:relative; z-index:1 }
+
+/* ripple */
+.btn,.icon-btn{ position:relative; overflow:hidden }
+.fx-ripple{
+  position:absolute; border-radius:50%; pointer-events:none; background:currentColor; opacity:.16; z-index:0;
+  transform:scale(0); animation:fxRip .65s var(--ease-out) forwards;
+}
+@keyframes fxRip{ to{ transform:scale(1); opacity:0 } }
+
+/* кроссфейд темы */
+.theme-anim,.theme-anim *,.theme-anim *::before,.theme-anim *::after{
+  transition:background-color .45s ease,color .45s ease,border-color .45s ease,fill .45s ease,stroke .45s ease,box-shadow .45s ease!important;
+}
+
+/* маркиза */
+.marquee{
+  margin:clamp(8px,2vh,20px) calc(50% - 50vw) 0; border-block:1px solid var(--line);
+  overflow:hidden; padding:12px 0; background:var(--bg2);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+}
+.marquee__track{ display:flex; width:max-content; animation:marq 26s linear infinite }
+.marquee:hover .marquee__track{ animation-play-state:paused }
+.marquee span{
+  font-family:var(--font-mono); font-size:.72rem; letter-spacing:.28em; text-transform:uppercase;
+  color:var(--muted); padding:0 26px; display:flex; align-items:center; gap:26px; white-space:nowrap;
+}
+.marquee span::after{ content:"◆"; font-size:.5rem; opacity:.45; letter-spacing:0 }
+@keyframes marq{ to{ transform:translateX(-50%) } }
+
+/* гигантский вордмарк */
+.foot__mark{
+  font-family:var(--font-d); font-weight:700; letter-spacing:-.06em; line-height:.82;
+  font-size:clamp(4rem,17vw,14rem); text-align:center; user-select:none;
+  color:transparent; -webkit-text-stroke:1px var(--line2);
+  margin:clamp(26px,5vw,60px) 0 -0.12em; transition:color .6s var(--ease);
+}
+.foot__mark:hover{ color:var(--text) }
+@supports not (-webkit-text-stroke:1px #000){ .foot__mark{ color:var(--muted2) } }
+
+/* уголки-риски на панелях принципов */
+.panel::after{
+  content:""; position:absolute; top:10px; right:10px; width:10px; height:10px; opacity:0; z-index:1;
+  border-top:1.5px solid var(--text); border-right:1.5px solid var(--text);
+  transition:opacity .25s var(--ease),transform .25s var(--ease); transform:translate(4px,-4px);
+}
+.panel:hover::after{ opacity:.7; transform:none }
+
+/* scramble-строка держит ширину */
+[data-scramble]{ display:inline-block; min-width:1ch }
