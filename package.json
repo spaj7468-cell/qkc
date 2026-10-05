@@ -1,0 +1,14 @@
+{
+  "name": "qkc",
+  "version": "1.0.0-beta",
+  "description": "QKC — Quick Knowledge Check: open-source black & white school knowledge trainer (grades K-11, 42k+ generated questions, offline-first PWA). By OuRi.",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "test": "node test/e2e.mjs",
+    "build:bank": "python3 gen/assemble.py",
+    "start": "python3 -m http.server 8099"
+  },
+  "keywords": ["quiz", "education", "vanilla-js", "pwa", "offline", "school", "trainer"],
+  "author": "Aleksandr Zhuravlev / OuRi <juravlev.aleksandr2020@gmail.com>"
+}

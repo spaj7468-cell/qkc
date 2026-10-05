@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>QKC — Quick Knowledge Check (BETA) · тренажёр школьных знаний, сад–11 класс</title>
+<meta name="description" content="QKC (Quick Knowledge Check) — чёрно-белый тренажёр школьных знаний от компании OuRi: класс, предмет, четверть и количество вопросов. Более 42 000 вопросов: детский сад и 1–11 класс.">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="color-scheme" content="dark light">
+<meta property="og:title" content="QKC — Quick Knowledge Check">
+<meta property="og:description" content="Класс · Предмет · Четверть · Количество вопросов. 42 000+ вопросов, мгновенная проверка, объяснения, статистика. Продукт компании OuRi.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/icon-512.png">
+<meta property="og:locale" content="ru_RU">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="QKC — Quick Knowledge Check">
+<meta name="twitter:description" content="Чёрно-белый тренажёр школьных знаний: 1–11 класс, 20 предметов, 4 четверти.">
+<meta name="twitter:image" content="assets/icon-512.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="48x48" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;700&display=swap" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ══════════ фоновые слои ══════════ -->
+<canvas id="bg" aria-hidden="true"></canvas>
+<div class="grid-overlay" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+
+<div class="scroll-progress" aria-hidden="true"><i id="scrollBar"></i></div>
+<a class="skip-link" href="#main" data-i18n="skip">Перейти к содержимому</a>
+
+<!-- ══════════ навигация ══════════ -->
+<header class="nav" id="nav">
+  <div class="nav__in">
+    <a class="brand" href="#home" data-route="home" title="Quick Knowledge Check" aria-label="QKC — Quick Knowledge Check, на главную">
+      <img class="brand__logo" src="assets/logo.png" alt="" width="34" height="34" decoding="async">
+      <span class="brand__name" aria-hidden="true"><span class="ltr"><b>Q</b><i>uick</i></span><span class="ltr"><b>K</b><i>nowledge</i></span><span class="ltr"><b>C</b><i>heck</i></span></span>
+      <span class="beta" title="Возможны ошибки — идёт бета-тестирование">BETA</span>
+      <span class="brand__dot" aria-hidden="true"></span>
+    </a>
+
+    <nav class="nav__links" id="navLinks" aria-label="Основная навигация">
+      <a href="#home" data-route="home" class="nav__link" data-i18n="nav.home">Главная</a>
+      <a href="#setup" data-route="setup" class="nav__link" data-i18n="nav.setup">Тренажёр</a>
+      <a href="#program" data-route="program" class="nav__link" data-i18n="nav.program">Программа</a>
+      <a href="#solvers" data-route="solvers" class="nav__link" data-i18n="nav.solvers">Решатели</a>
+      <a href="#dash" data-route="dash" class="nav__link" data-i18n="nav.dash">Прогресс</a>
+      <a href="#library" data-route="library" class="nav__link" data-i18n="nav.library">Библиотека</a>
+      <a href="#about" data-route="about" class="nav__link" data-i18n="nav.about">О OuRi</a>
+    </nav>
+
+    <div class="nav__right">
+      <div class="xp-pill" id="xpPill" title="Опыт и уровень">
+        <span class="xp-ring-wrap">
+          <svg class="xp-ring" viewBox="0 0 36 36" aria-hidden="true">
+            <circle class="xp-ring__bg" cx="18" cy="18" r="15.5"/>
+            <circle class="xp-ring__fg" id="xpRing" cx="18" cy="18" r="15.5"/>
+          </svg>
+          <b class="xp-pill__lv" id="xpLevel">1</b>
+        </span>
+        <span class="xp-pill__txt"><b id="xpNow">0</b><i data-i18n="xp.xp">XP</i></span>
+      </div>
+      <button class="icon-btn" id="btnStreak" title="Серия дней" aria-label="Серия дней">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3c2 3 5 4.5 5 8a5 5 0 0 1-10 0c0-1.6.7-2.8 1.6-3.8.3 1.2 1 2 1.9 2.3C10 7.4 11 5.3 12 3z"/></svg>
+        <b id="streakNum">0</b>
+      </button>
+      <button class="icon-btn" id="btnSound" title="Звук" aria-label="Звук" aria-pressed="true">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path class="wave1" d="M16.5 8.5a5 5 0 0 1 0 7"/><path class="wave2" d="M19 6a8.5 8.5 0 0 1 0 12"/><path class="mute-x" d="M17 9l5 6M22 9l-5 6"/></svg>
+      </button>
+      <button class="icon-btn" id="btnTheme" title="Тема" aria-label="Переключить тему">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor" stroke="none"/></svg>
+      </button>
+      <button class="icon-btn icon-btn--wide" id="btnCmd" title="Команды (Ctrl+K)" aria-label="Палитра команд">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+        <kbd>⌘K</kbd>
+      </button>
+      <button class="icon-btn nav__burger" id="btnBurger" aria-label="Меню" aria-expanded="false">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="1.8" fill="none"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ══════════ ГЛАВНАЯ ══════════ -->
+<section class="screen screen--home" id="screen-home" data-screen="home">
+
+  <div class="hero">
+    <div class="hero__badge reveal">
+      <span class="dot-live"></span>
+      <span data-i18n="hero.badge0">База обновлена</span>
+      <b class="num" id="heroTotal">42 135</b>
+      <span data-i18n="hero.badge1">вопросов</span>
+      <span class="beta">BETA</span>
+    </div>
+
+    <h1 class="hero__title">
+      <span class="line reveal" style="--d:.05s"><span class="line__in" data-i18n="hero.l1">Знания</span></span>
+      <span class="line reveal" style="--d:.12s"><span class="line__in line__in--out" data-i18n="hero.l2">без шума</span></span>
+      <span class="line reveal" style="--d:.19s"><span class="line__in" data-i18n="hero.l3">и лишнего цвета</span></span>
+    </h1>
+
+    <p class="hero__sub reveal" style="--d:.28s" data-i18n="hero.sub">
+      Выбери класс, предмет, четверть и количество вопросов — OuRi соберёт тест за секунду,
+      проверит ответы и покажет объяснение к каждому. Только чёрное, белое и твоя статистика.
+    </p>
+
+    <div class="hero__cta reveal" style="--d:.34s">
+      <button class="btn btn--lg btn--primary magnetic" id="heroStart">
+        <span data-i18n="hero.cta">Начать тест</span>
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+      <button class="btn btn--lg btn--ghost" id="heroSurprise">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg>
+        <span data-i18n="hero.surprise">Случайный тест</span>
+      </button>
+    </div>
+
+    <dl class="hero__stats reveal" style="--d:.4s">
+      <div><dt data-i18n="stat.questions">вопросов</dt><dd class="num" data-count="41376">0</dd></div>
+      <div><dt data-i18n="stat.grades">классов</dt><dd class="num" data-count="12">0</dd></div>
+      <div><dt data-i18n="stat.subjects">предметов</dt><dd class="num" data-count="20">0</dd></div>
+      <div><dt data-i18n="stat.sets">связок класс·предмет</dt><dd class="num" data-count="142">0</dd></div>
+    </dl>
+  </div>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__track" id="tickerTrack"></div>
+  </div>
+
+  <!-- быстрый старт прямо на главной -->
+  <div class="quickwrap" id="quickwrap">
+    <div class="quick">
+      <div class="quick__head">
+        <h2 class="h2" data-i18n="quick.title">Быстрый старт</h2>
+        <p class="muted" data-i18n="quick.sub">Четыре шага — и тест готов</p>
+      </div>
+      <ol class="quick__steps" id="quickSteps"></ol>
+      <button class="btn btn--primary" id="quickGo" data-i18n="quick.go">Собрать тест</button>
+    </div>
+    <aside class="quick__aside">
+      <div class="panel">
+        <h3 class="panel__t" data-i18n="daily.title">Тест дня</h3>
+        <p class="muted sm" data-i18n="daily.sub">Одинаковый для всех — одинаковая дата, одинаковые вопросы.</p>
+        <div class="daily" id="dailyBox"></div>
+      </div>
+      <div class="panel">
+        <h3 class="panel__t" data-i18n="recent.title">Последние результаты</h3>
+        <div class="recent" id="recentBox"></div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- как это работает -->
+  <div class="block">
+    <div class="block__head">
+      <span class="kicker" data-i18n="how.kicker">Процесс</span>
+      <h2 class="h2" data-i18n="how.title">Как это работает</h2>
+    </div>
+    <div class="steps" id="howSteps"></div>
+  </div>
+
+  <!-- предметы -->
+  <div class="block">
+    <div class="block__head">
+      <span class="kicker" data-i18n="subj.kicker">Каталог</span>
+      <h2 class="h2" data-i18n="subj.title">20 предметов, 11 классов</h2>
+      <p class="muted" data-i18n="subj.sub">Каждая база строго привязана к классу и четверти — никаких «взрослых» вопросов в начальной школе.</p>
+    </div>
+    <div class="subj-grid" id="subjectGrid"></div>
+  </div>
+
+  <!-- фичи -->
+  <div class="block">
+    <div class="block__head">
+      <span class="kicker" data-i18n="feat.kicker">Возможности</span>
+      <h2 class="h2" data-i18n="feat.title">Что умеет OuRi</h2>
+    </div>
+    <div class="feat-filter" id="featFilter"></div>
+    <div class="feat-grid" id="featGrid"></div>
+    <button class="btn btn--ghost btn--sm" id="featMore" data-i18n="feat.more">Показать ещё</button>
+  </div>
+
+  <!-- режимы -->
+  <div class="block">
+    <div class="block__head">
+      <span class="kicker" data-i18n="modes.kicker">Режимы</span>
+      <h2 class="h2" data-i18n="modes.title">Четыре способа тренироваться</h2>
+    </div>
+    <div class="modes" id="modesGrid"></div>
+  </div>
+
+  <!-- горячие клавиши -->
+  <div class="block block--split">
+    <div>
+      <span class="kicker" data-i18n="keys.kicker">Скорость</span>
+      <h2 class="h2" data-i18n="keys.title">Всё с клавиатуры</h2>
+      <p class="muted" data-i18n="keys.sub">Мышь не обязательна: ответы, навигация, флаги и пауза — на горячих клавишах.</p>
+    </div>
+    <div class="keys" id="keysList"></div>
+  </div>
+
+  <div class="cta-band reveal">
+    <h2 class="h2" data-i18n="cta.title">Готов проверить себя?</h2>
+    <p class="muted" data-i18n="cta.sub">Никакой регистрации. Всё хранится локально в твоём браузере.</p>
+    <button class="btn btn--primary btn--lg" id="ctaStart" data-i18n="cta.btn">Открыть тренажёр</button>
+  </div>
+</section>
+
+<!-- ══════════ МАСТЕР НАСТРОЙКИ ТЕСТА ══════════ -->
+<section class="screen" id="screen-setup" data-screen="setup" hidden>
+  <div class="setup">
+    <div class="setup__head">
+      <span class="kicker" data-i18n="setup.kicker">Конструктор теста</span>
+      <h2 class="h1-sm" data-i18n="setup.title">Собери свой тест</h2>
+      <p class="muted" data-i18n="setup.sub">Шаг за шагом: класс → предмет → четверть → объём → режим.</p>
+    </div>
+
+    <ol class="stepper" id="stepper" aria-label="Шаги"></ol>
+
+    <!-- 1 класс -->
+    <div class="step" data-step="1">
+      <h3 class="step__t"><span class="step__n">01</span> <span data-i18n="setup.s1">Класс</span></h3>
+      <div class="grades" id="gradeGrid" role="radiogroup" aria-label="Класс"></div>
+    </div>
+
+    <!-- 2 предмет -->
+    <div class="step" data-step="2">
+      <h3 class="step__t"><span class="step__n">02</span> <span data-i18n="setup.s2">Предмет</span></h3>
+      <div class="setup__search">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+        <input type="search" id="subjSearch" placeholder="Поиск предмета…" autocomplete="off" aria-label="Поиск предмета">
+      </div>
+      <div class="subjects" id="subjectGrid2" role="radiogroup" aria-label="Предмет"></div>
+    </div>
+
+    <!-- 3 четверть -->
+    <div class="step" data-step="3">
+      <h3 class="step__t"><span class="step__n">03</span> <span data-i18n="setup.s3">Четверть</span></h3>
+      <div class="quarters" id="quarterGrid" role="radiogroup" aria-label="Четверть"></div>
+      <label class="switch switch--inline"><input type="checkbox" id="trimesterMode"><span class="switch__t" data-i18n="setup.trimesters">Триместры (3 периода вместо 4)</span></label>
+      <div class="step__note" id="quarterNote"></div>
+    </div>
+
+    <!-- 4 темы -->
+    <div class="step" data-step="4">
+      <h3 class="step__t"><span class="step__n">04</span> <span data-i18n="setup.s4">Темы <em class="opt" data-i18n="setup.optional">необязательно</em></span></h3>
+      <p class="muted sm" data-i18n="setup.s4sub">Отметь только нужные разделы — или оставь все.</p>
+      <div class="topics" id="topicGrid"></div>
+    </div>
+
+    <!-- 5 количество -->
+    <div class="step" data-step="5">
+      <h3 class="step__t"><span class="step__n">05</span> <span data-i18n="setup.s5">Сколько вопросов</span></h3>
+      <div class="counts" id="countGrid" role="radiogroup" aria-label="Количество вопросов"></div>
+      <div class="custom-count">
+        <label for="customCount" data-i18n="setup.custom">Своё число</label>
+        <input type="range" id="customCount" min="5" max="50" step="5" value="20">
+        <output id="customOut">20</output>
+      </div>
+    </div>
+
+    <!-- 6 режим -->
+    <div class="step" data-step="6">
+      <h3 class="step__t"><span class="step__n">06</span> <span data-i18n="setup.s6">Режим</span></h3>
+      <div class="modes modes--sm" id="modeGrid" role="radiogroup" aria-label="Режим"></div>
+      <div class="opts" id="optGrid"></div>
+    </div>
+
+    <div class="setup__foot">
+      <div class="summary" id="summary"></div>
+      <div class="setup__acts">
+        <button class="btn btn--ghost" id="setupReset" data-i18n="setup.reset">Сбросить</button>
+        <button class="btn btn--ghost" id="setupRandom" data-i18n="setup.random">Случайный набор</button>
+        <button class="btn btn--primary btn--lg" id="setupStart" disabled>
+          <span data-i18n="setup.start">Начать тест</span>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ ТЕСТ ══════════ -->
+<section class="screen screen--quiz" id="screen-quiz" data-screen="quiz" hidden>
+  <div class="quiz" id="quiz">
+    <header class="quiz__top">
+      <div class="quiz__meta">
+        <button class="icon-btn" id="quizExit" title="Выйти" aria-label="Выйти из теста">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 5l-7 7 7 7"/></svg>
+        </button>
+        <div class="quiz__badge" id="quizBadge"></div>
+        <div class="quiz__counter" id="quizCounter"></div>
+      </div>
+      <div class="quiz__tools">
+        <div class="timer" id="timer" role="timer" aria-live="off">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg>
+          <span id="timerTxt">00:00</span>
+        </div>
+        <div class="streak" id="streakBox" title="Серия правильных ответов"><b id="streakFire">0</b><span data-i18n="quiz.streak">подряд</span></div>
+        <button class="icon-btn" id="quizSound" aria-label="Звук" title="Звук"></button>
+        <button class="icon-btn" id="quizFull" aria-label="Полный экран" title="Полный экран">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
+        </button>
+        <button class="icon-btn" id="quizHelp" aria-label="Горячие клавиши" title="Горячие клавиши">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .9-1 1.7M12 17.2h.01"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="quiz__progress"><i id="quizBar"></i></div>
+
+    <div class="quiz__body" id="quizBody">
+      <div class="qcard" id="qcard">
+        <div class="qcard__top">
+          <span class="tag" id="qTopic"></span>
+          <span class="tag tag--ghost" id="qType"></span>
+          <button class="flag" id="btnFlag" aria-pressed="false" title="Отметить вопрос (S)">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 3v18M6 4h11l-2 4 2 4H6"/></svg>
+          </button>
+        </div>
+        <h2 class="qtext" id="qText"></h2>
+        <div class="answers" id="answers"></div>
+        <div class="input-wrap" id="inputWrap" hidden>
+          <input type="text" id="answerInput" inputmode="text" autocomplete="off" spellcheck="false" placeholder="Введите ответ…" aria-label="Ваш ответ">
+          <span class="unit" id="answerUnit"></span>
+        </div>
+        <div class="feedback" id="feedback" hidden>
+          <div class="feedback__head"><span class="feedback__ico"></span><b id="fbTitle"></b></div>
+          <p class="feedback__exp" id="fbExp"></p>
+          <div class="feedback__acts">
+            <button class="btn btn--ghost btn--sm" id="btnUndo" data-i18n="quiz.undo">Отменить ответ</button>
+            <button class="btn btn--primary btn--sm" id="btnNextFb" data-i18n="quiz.next">Дальше</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="quiz__foot">
+      <div class="palette-toggle">
+        <button class="btn btn--ghost btn--sm" id="btnPalette" aria-expanded="false">
+          <span data-i18n="quiz.palette">Вопросы</span><b id="palCount">0/0</b>
+        </button>
+        <div class="palette" id="palette" hidden role="listbox" aria-label="Навигация по вопросам"></div>
+      </div>
+      <div class="quiz__nav">
+        <button class="btn btn--ghost" id="btnPrev" data-i18n="quiz.prev">Назад</button>
+        <button class="btn btn--ghost" id="btnSkip" data-i18n="quiz.skip">Пропустить</button>
+        <button class="btn btn--primary" id="btnNext" data-i18n="quiz.next">Дальше</button>
+        <button class="btn btn--primary" id="btnFinish" data-i18n="quiz.finish">Завершить</button>
+      </div>
+    </footer>
+  </div>
+
+  <div class="pause-veil" id="pauseVeil" hidden>
+    <div class="pause-veil__in">
+      <h3 data-i18n="quiz.paused">Пауза</h3>
+      <p class="muted" data-i18n="quiz.pausedSub">Таймер остановлен. Продолжи, когда будешь готов.</p>
+      <button class="btn btn--primary" id="btnResume" data-i18n="quiz.resume">Продолжить</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ ПРОГРАММА ПО КЛАССАМ ══════════ -->
+<section class="screen" id="screen-program" data-screen="program" hidden>
+  <div class="prog">
+    <div class="prog__head">
+      <span class="kicker" data-i18n="prog.kicker">Программа</span>
+      <h2 class="h1-sm" data-i18n="prog.title">Что проходят в каждом классе</h2>
+      <p class="muted" data-i18n="prog.sub">Выбери класс и предмет — покажем темы каждой четверти и объясним простыми словами, что это за темы и чему учат.</p>
+    </div>
+    <div class="lib__sel" id="progGrade" role="radiogroup" aria-label="Класс"></div>
+    <div class="lib__sel" id="progSubject" role="radiogroup" aria-label="Предмет"></div>
+    <div class="prog__quarters" id="progQuarters"></div>
+  </div>
+</section>
+
+<!-- ══════════ РЕШАТЕЛИ (BETA) ══════════ -->
+<section class="screen" id="screen-solvers" data-screen="solvers" hidden>
+  <div class="solv">
+    <div class="solv__head">
+      <span class="kicker">QKC labs · <span class="beta">BETA</span></span>
+      <h2 class="h1-sm" data-i18n="solv.title">Решатели</h2>
+      <p class="muted" data-i18n="solv.sub">Экспериментальные помощники в статусе BETA: могут ошибаться на редких случаях. Важное проверяй сам, а ошибки отправляй через форму отзыва.</p>
+      <div class="seg" id="solvTabs" role="tablist">
+        <button class="seg__b is-on" data-t="math" role="tab" data-i18n="solv.math">Примеры</button>
+        <button class="seg__b" data-t="rus" role="tab" data-i18n="solv.rus">Русский язык</button>
+      </div>
+    </div>
+
+    <div class="solv__pane" data-pane="math">
+      <div class="solv__box">
+        <label class="solv__label" for="mathIn" data-i18n="solv.mathLabel">Введи пример или уравнение</label>
+        <div class="solv__row">
+          <input id="mathIn" type="text" autocomplete="off" spellcheck="false" placeholder="2+3*4  ·  (10-4)/2  ·  2x+6=10">
+          <button class="btn btn--primary" id="mathGo" data-i18n="solv.solve">Решить</button>
+        </div>
+        <p class="solv__hint muted sm" data-i18n="solv.mathHint">Понимаем: + − * / ^ ( ), десятичные с запятой или точкой, линейные уравнения с x. Показываем решение по шагам.</p>
+        <div class="solv__out" id="mathOut" aria-live="polite"></div>
+      </div>
+      <div class="solv__examples" id="mathExamples"></div>
+    </div>
+
+    <div class="solv__pane" data-pane="rus" hidden>
+      <div class="solv__box">
+        <label class="solv__label" for="rusIn" data-i18n="solv.rusLabel">Введи слово на русском</label>
+        <div class="solv__row">
+          <input id="rusIn" type="text" autocomplete="off" spellcheck="false" placeholder="машина">
+          <button class="btn btn--primary" id="rusGo" data-i18n="solv.analyze">Разобрать</button>
+        </div>
+        <p class="solv__hint muted sm" data-i18n="solv.rusHint">Разбор BETA: слоги, гласные и согласные, звуковая схема (твёрдый/мягкий, звонкий/глухой), ударение — если слово есть в словаре.</p>
+        <div class="solv__out" id="rusOut" aria-live="polite"></div>
+      </div>
+      <div class="solv__examples" id="rusExamples"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ РЕЗУЛЬТАТ ══════════ -->
+<section class="screen" id="screen-result" data-screen="result" hidden>
+  <div class="result">
+    <div class="result__hero">
+      <div class="ring" id="scoreRing">
+        <svg viewBox="0 0 200 200" aria-hidden="true">
+          <circle class="ring__bg" cx="100" cy="100" r="88"/>
+          <circle class="ring__fg" id="ringFg" cx="100" cy="100" r="88"/>
+        </svg>
+        <div class="ring__c">
+          <b id="scorePct">0%</b>
+          <span id="scoreGrade" data-i18n="res.grade">—</span>
+        </div>
+      </div>
+      <div class="result__txt">
+        <span class="kicker" id="resKicker">Результат</span>
+        <h2 class="h1-sm" id="resTitle">Тест завершён</h2>
+        <p class="muted" id="resSub"></p>
+        <div class="res-stats" id="resStats"></div>
+        <div class="res-acts" id="resActs"></div>
+      </div>
+    </div>
+
+    <div class="res-xp" id="resXp" hidden></div>
+
+    <div class="block block--tight">
+      <div class="block__head"><span class="kicker" data-i18n="res.topics">По темам</span><h3 class="h3" data-i18n="res.topicsT">Точность по разделам</h3></div>
+      <div class="topic-bars" id="topicBars"></div>
+    </div>
+
+    <div class="block block--tight">
+      <div class="block__head">
+        <span class="kicker" data-i18n="res.review">Разбор</span>
+        <h3 class="h3" data-i18n="res.reviewT">Каждый вопрос</h3>
+        <div class="seg" id="reviewFilter">
+          <button class="seg__b is-on" data-f="all" data-i18n="res.fAll">Все</button>
+          <button class="seg__b" data-f="wrong" data-i18n="res.fWrong">Ошибки</button>
+          <button class="seg__b" data-f="right" data-i18n="res.fRight">Верные</button>
+          <button class="seg__b" data-f="skip" data-i18n="res.fSkip">Пропущенные</button>
+        </div>
+      </div>
+      <div class="review" id="reviewList"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ ПРОГРЕСС ══════════ -->
+<section class="screen" id="screen-dash" data-screen="dash" hidden>
+  <div class="dash">
+    <div class="dash__head">
+      <div>
+        <span class="kicker" data-i18n="dash.kicker">Твой прогресс</span>
+        <h2 class="h1-sm" data-i18n="dash.title">Статистика и достижения</h2>
+      </div>
+      <div class="profile-switch" id="profileSwitch"></div>
+    </div>
+
+    <div class="stat-grid" id="statGrid"></div>
+
+    <div class="dash__cols">
+      <div class="panel">
+        <h3 class="panel__t" data-i18n="dash.streak">Активность</h3>
+        <div class="heat" id="heat"></div>
+        <div class="heat-legend"><span data-i18n="dash.less">меньше</span><i></i><i></i><i></i><i></i><i></i><span data-i18n="dash.more">больше</span></div>
+      </div>
+      <div class="panel">
+        <h3 class="panel__t" data-i18n="dash.acc">Точность по предметам</h3>
+        <div class="topic-bars topic-bars--sm" id="dashSubjects"></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel__head">
+        <h3 class="panel__t" data-i18n="dash.ach">Достижения</h3>
+        <span class="muted sm" id="achCount"></span>
+      </div>
+      <div class="ach" id="achGrid"></div>
+    </div>
+
+    <div class="dash__cols">
+      <div class="panel">
+        <div class="panel__head">
+          <h3 class="panel__t" data-i18n="dash.history">История тестов</h3>
+          <button class="btn btn--ghost btn--xs" id="clearHistory" data-i18n="dash.clear">Очистить</button>
+        </div>
+        <div class="hist" id="histList"></div>
+      </div>
+      <div class="panel">
+        <h3 class="panel__t" data-i18n="dash.board">Рейтинг профилей</h3>
+        <div class="board" id="boardList"></div>
+        <div class="panel__foot">
+          <button class="btn btn--ghost btn--xs" id="addProfile" data-i18n="dash.addProfile">+ Профиль</button>
+          <button class="btn btn--ghost btn--xs" id="exportData" data-i18n="dash.export">Экспорт данных</button>
+          <button class="btn btn--ghost btn--xs" id="importData" data-i18n="dash.import">Импорт</button>
+          <button class="btn btn--ghost btn--xs btn--danger" id="resetAll" data-i18n="dash.reset">Сбросить всё</button>
+        </div>
+        <input type="file" id="importFile" accept="application/json" hidden>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel__head">
+        <h3 class="panel__t" data-i18n="dash.fav">Избранные вопросы</h3>
+        <button class="btn btn--ghost btn--xs" id="clearFav" data-i18n="dash.clearFav">Очистить</button>
+      </div>
+      <div class="fav" id="favList"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ БИБЛИОТЕКА ВОПРОСОВ ══════════ -->
+<section class="screen" id="screen-library" data-screen="library" hidden>
+  <div class="lib">
+    <div class="lib__head">
+      <span class="kicker" data-i18n="lib.kicker">База вопросов</span>
+      <h2 class="h1-sm" data-i18n="lib.title">Библиотека OuRi</h2>
+      <p class="muted" data-i18n="lib.sub">Просматривай вопросы по классам и предметам, добавляй в избранное, запускай тренировку по любой теме.</p>
+    </div>
+    <div class="lib__bar">
+      <div class="lib__sel" id="libGrade"></div>
+      <div class="lib__sel" id="libSubject"></div>
+      <div class="lib__sel" id="libQuarter"></div>
+      <div class="lib__search">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+        <input type="search" id="libSearch" placeholder="Поиск по тексту вопроса…" autocomplete="off">
+      </div>
+      <button class="btn btn--primary btn--sm" id="libTrain" data-i18n="lib.train">Тренировать этот набор</button>
+    </div>
+    <div class="lib__meta" id="libMeta"></div>
+    <div class="lib__list" id="libList"></div>
+    <div class="lib__pager" id="libPager"></div>
+  </div>
+</section>
+
+<!-- ══════════ О КОМПАНИИ ══════════ -->
+<section class="screen" id="screen-about" data-screen="about" hidden>
+  <div class="about">
+    <span class="kicker" data-i18n="about.kicker">Компания</span>
+    <h2 class="h1" data-i18n="about.title">OuRi</h2>
+    <p class="lead" data-i18n="about.lead">
+      Мы делаем учебные инструменты, в которых нет ничего лишнего: ни цветных наклеек, ни геймификации ради
+      геймификации. Только вопрос, ответ и честная статистика.
+    </p>
+    <div class="about__grid">
+      <article class="panel"><h3 class="panel__t" data-i18n="about.m1t">Манифест</h3><p class="muted" data-i18n="about.m1">Один цвет — ноль отвлечения. Чёрно-белая палитра убирает визуальный шум и оставляет суть: знание.</p></article>
+      <article class="panel"><h3 class="panel__t" data-i18n="about.m2t">Строгость данных</h3><p class="muted" data-i18n="about.m2">Каждый вопрос привязан к классу и четверти. В 5 классе не встретится задача за 10-й — база разделена жёстко.</p></article>
+      <article class="panel"><h3 class="panel__t" data-i18n="about.m3t">Приватность</h3><p class="muted" data-i18n="about.m3">Никаких аккаунтов и серверов. Прогресс живёт в localStorage твоего браузера и принадлежит только тебе.</p></article>
+      <article class="panel"><h3 class="panel__t" data-i18n="about.m4t">Доступность</h3><p class="muted" data-i18n="about.m4">Клавиатура, скринридеры, контраст, крупный текст, уважение к prefers-reduced-motion. Сайт работает офлайн.</p></article>
+    </div>
+    <div class="about__num" id="aboutNums"></div>
+    <p class="lead beta-note"><span class="beta">BETA</span> <span data-i18n="about.beta">QKC сейчас в бета-тесте: в вопросах, объяснениях и интерфейсе возможны ошибки. Мы быстро их чиним — просто напиши нам через форму ниже.</span></p>
+    <div class="panel panel--wide">
+      <h3 class="panel__t" data-i18n="about.howT">Как это устроено</h3>
+      <ul class="tick" id="aboutHow"></ul>
+    </div>
+    <div class="panel panel--wide">
+      <h3 class="panel__t" data-i18n="fb.title">Сообщить об ошибке или оставить отзыв</h3>
+      <p class="muted sm" data-i18n="fb.sub">Заполни поля и нажми «Отправить» — откроется готовое письмо в Gmail, останется только нажать кнопку отправки в письме.</p>
+      <form class="fb" id="fbForm" novalidate>
+        <div class="fb__grid">
+          <label class="fb__f"><span data-i18n="fb.email">Твой e-mail</span>
+            <input type="email" id="fbEmail" required placeholder="you@example.com" autocomplete="email"></label>
+          <label class="fb__f"><span data-i18n="fb.type">Тип обращения</span>
+            <select id="fbType">
+              <option value="bug" data-i18n="fb.bug">Ошибка на сайте</option>
+              <option value="content" data-i18n="fb.content">Ошибка в вопросе или ответе</option>
+              <option value="idea" data-i18n="fb.idea">Идея или предложение</option>
+              <option value="review" data-i18n="fb.review">Отзыв</option>
+            </select></label>
+        </div>
+        <label class="fb__f"><span data-i18n="fb.msg">Сообщение</span>
+          <textarea id="fbMsg" rows="4" required placeholder="Опиши, что случилось, или что стоит добавить…"></textarea></label>
+        <div class="fb__acts">
+          <button type="submit" class="btn btn--primary" data-i18n="fb.send">Отправить через Gmail</button>
+          <span class="muted sm" data-i18n="fb.note">Письмо придёт на juravlev.aleksandr2020@gmail.com</span>
+        </div>
+      </form>
+    </div>
+    <div class="panel panel--wide">
+      <h3 class="panel__t" data-i18n="about.contacts">Связь</h3>
+      <p class="muted" data-i18n="about.contactTxt">Вопросы, идеи и замеченные ошибки в формулировках — пишите, база живая и постоянно правится.</p>
+      <div class="contact" id="contactBox"></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ══════════ подвал ══════════ -->
+<footer class="foot" id="foot">
+  <div class="foot__in">
+    <div class="foot__brand">
+      <span class="foot__logo"><img src="assets/logo.png" alt="" width="30" height="30" decoding="async"> QKC</span>
+      <p class="muted sm" data-i18n="foot.tag">Quick Knowledge Check · тренажёр школьных знаний · детский сад–11 класс</p>
+      <p class="muted sm" data-i18n="foot.by">продукт компании OuRi</p>
+    </div>
+    <div class="foot__contacts" aria-label="Контакты">
+      <a class="foot__c" href="mailto:juravlev.aleksandr2020@gmail.com">juravlev.aleksandr2020@gmail.com</a>
+      <a class="foot__c" href="https://vk.ru/im/channels/-242032915" target="_blank" rel="noopener noreferrer" data-i18n="contacts.vk">Канал во ВКонтакте</a>
+      <span class="foot__c foot__c--soon" data-i18n="contacts.tg">Telegram — скоро</span>
+      <span class="foot__c foot__c--soon" data-i18n="contacts.wa">WhatsApp — скоро</span>
+    </div>
+    <nav class="foot__nav" id="footNav" aria-label="Навигация в подвале"></nav>
+    <div class="foot__meta">
+      <span class="beta">BETA</span>
+      <span id="footVersion">v1.0.0</span>
+      <span class="sep">·</span>
+      <span id="footStatus" data-i18n="foot.online">онлайн</span>
+      <span class="sep">·</span>
+      <span>© <span id="footYear">2026</span> OuRi</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════ оверлеи ══════════ -->
+<div class="toasts" id="toasts" role="status" aria-live="polite"></div>
+<div class="modal-root" id="modalRoot" hidden></div>
+<div class="cmdk" id="cmdk" hidden role="dialog" aria-modal="true" aria-label="Палитра команд">
+  <div class="cmdk__box">
+    <input class="cmdk__in" id="cmdInput" type="text" placeholder="Команда, предмет, раздел…" autocomplete="off" aria-label="Поиск команд">
+    <div class="cmdk__list" id="cmdList" role="listbox"></div>
+    <div class="cmdk__foot"><kbd>↑</kbd><kbd>↓</kbd><span data-i18n="cmd.nav">выбор</span><kbd>↵</kbd><span data-i18n="cmd.run">запуск</span><kbd>esc</kbd><span data-i18n="cmd.close">закрыть</span></div>
+  </div>
+</div>
+<canvas id="fx" aria-hidden="true"></canvas>
+<div class="sr-only" id="live" aria-live="polite"></div>
+
+<script src="assets/bank-index.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
