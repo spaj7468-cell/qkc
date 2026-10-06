@@ -1721,7 +1721,7 @@ function renderOpen() {
     ['site', 'open.l1n', 'open.l1d', 'spaj7468-cell.github.io/qkc', 'https://spaj7468-cell.github.io/qkc/', 1],
     ['git', 'open.l2n', 'open.l2d', 'github.com/spaj7468-cell/qkc', 'https://github.com/spaj7468-cell/qkc', 1],
     ['folder', 'open.l4n', 'open.l4d', 'spaj7468-cell.github.io/ouri-corp', 'https://spaj7468-cell.github.io/ouri-corp/', 1],
-    ['doc', 'open.l3n', 'open.l3d', 'PR #12650 · js.org/js.org', 'https://github.com/js-org/js.org/pull/12650', 1],
+    ['doc', 'open.l3n', 'open.l3d', 'qkc.runs-on.dev · PR #310', 'https://github.com/zordhalo/runs-on.dev/pull/310', 1],
     ['user', 'open.l5n', 'open.l5d', 'github.com/spaj7468-cell', 'https://github.com/spaj7468-cell', 1],
     ['chat', 'open.l6n', 'open.l6d', 'vk.com/id715180861', 'https://vk.com/id715180861', 1],
     ['chat', 'open.l7n', 'open.l7d', 'vk.ru/im/channels/-242032915', 'https://vk.ru/im/channels/-242032915', 1],

@@ -67,7 +67,7 @@ python3 assemble.py      # ~2 c, пишет assets/bank-*.js, bank-index.js, ban
 
 - **Программа** (`#program`): класс → предмет → темы каждой четверти с объяснением простыми словами и кнопкой «Потренировать четверть».
 - **Решатели** (`#solvers`, BETA): решение примеров по шагам (`2+3*4`, `(10-4)/2`, линейные уравнения `2x+6=10`) и разбор русского слова (слоги, гласные/согласные, ударение, звуковая схема).
-- **Открытый проект** (`#open`): все ссылки open-source-жизни проекта (сайт, репозиторий, заявка qkc.js.org, OuRi Corp, профили GitHub и VK) + карта репозитория «где что находится» + инструкция запуска у себя.
+- **Открытый проект** (`#open`): все ссылки open-source-жизни проекта (сайт, репозиторий, заявка qkc.runs-on.dev, OuRi Corp, профили GitHub и VK) + карта репозитория «где что находится» + инструкция запуска у себя.
 - **Форма отзыва** (страница «О проекте»): e-mail + тип обращения (ошибка на сайте / ошибка в вопросе / идея / отзыв) + сообщение → открывает готовое письмо в Gmail на `juravlev.aleksandr2020@gmail.com`.
 
 ## Возможности (выборочно)
@@ -98,11 +98,11 @@ NODE_PATH=/tmp/node_modules node test/e2e.mjs   # 89 проверок, jsdom
 Папка самодостаточна: залей её содержимое в корень домена (или открой локально). Service worker включается на https/localhost и кэширует сайт и банк вопросов.
 
 Проект уже в сети: **https://spaj7468-cell.github.io/qkc/** · репозиторий **https://github.com/spaj7468-cell/qkc**
-Бесплатный поддомен **qkc.js.org**: pull request в js-org открыт (**js-org/js.org#12650**) — после merge сайт переедет на https://qkc.js.org. Подробно — в **[JSORG.md](JSORG.md)**.
+Бесплатный короткий домен **https://qkc.runs-on.dev** — заявка в открытый реестр [runs-on.dev](https://runs-on.dev) подана: **[zordhalo/runs-on.dev#310](https://github.com/zordhalo/runs-on.dev/pull/310)** (CNAME на GitHub Pages; там же субдомены `corp.qkc.runs-on.dev` для сайта компании и `engine.qkc.runs-on.dev` для документации движка). После merge реестр сам синхронизирует DNS — пошагово в **[RUNSON.md](RUNSON.md)**.
 Подробная инструкция по остальным бесплатным поддоменам и доменам — в **[DEPLOY.md](DEPLOY.md)**:
 проверенные свободные имена (`ouri.netlify.app`, `ouri.vercel.app`, `qkc.pages.dev`, `ouri.neocities.org`),
 шесть способов деплоя (Netlify Drop, Cloudflare Pages, Vercel, Surge, GitHub Pages, Neocities)
- и пути к бесплатному домену 2-го уровня (`eu.org`, `js.org`, `us.kg`).
+ и пути к бесплатному домену 2-го уровня (`runs-on.dev`, `eu.org`, `us.kg`).
 
 ## For JavaScript developers
 
