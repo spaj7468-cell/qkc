@@ -262,8 +262,8 @@ async function main() {
   ok('карта проекта — 10 пунктов', $$('#openMap li').length === 10, 'n=' + $$('#openMap li').length);
   ok('инструкция запуска — 5 шагов', $$('#openRun li').length === 5, 'n=' + $$('#openRun li').length);
   ok('ссылка VK разработчика (id715180861)', !!$('#openLinks a[href="https://vk.com/id715180861"]'));
-  ok('ссылка на сайт OuRi Corp', !!$('#openLinks a[href="corp/index.html"]'));
-  ok('кнопка «Открыть сайт OuRi Corp»', !!$('.open-corp-btn[href="corp/index.html"]'));
+  ok('ссылка на сайт OuRi Corp', !!$('#openLinks a[href^="https://spaj7468-cell.github.io/ouri-corp"]'));
+  ok('кнопка «Открыть сайт OuRi Corp»', !!$('.open-corp-btn[href^="https://spaj7468-cell.github.io/ouri-corp"]'));
   ok('i18n: словари RU и EN совпадают по ключам', (() => {
     const d = window.OURI_I18N;
     const rk = Object.keys(d.ru).sort().join('|'), ek = Object.keys(d.en).sort().join('|');

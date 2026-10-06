@@ -10,7 +10,7 @@
 
 **Связь:** juravlev.aleksandr2020@gmail.com · [разработчик во ВКонтакте](https://vk.com/id715180861) (id 715180861) · [канал OuRi во ВКонтакте](https://vk.ru/im/channels/-242032915) · [GitHub](https://github.com/spaj7468-cell) · Telegram и WhatsApp — скоро.
 
-**Второй сайт:** [OuRi Corp](corp/index.html) — корпоративная страница компании (живёт в `/corp`, связана с QKC переходами в обе стороны): кто делает проект, почему всё открыто, «вход» для связи через GitHub и VK.
+**Второй сайт:** [OuRi Corp](https://spaj7468-cell.github.io/ouri-corp/) — корпоративная страница компании (отдельный репозиторий [`ouri-corp`](https://github.com/spaj7468-cell/ouri-corp), связана с QKC переходами в обе стороны): кто делает проект, почему всё открыто, «вход» для связи через GitHub и VK.
 
 ---
 
@@ -40,7 +40,7 @@ python3 -m http.server 8099
 | `sw.js`, `manifest.webmanifest` | офлайн-кэш и установка как PWA |
 | `gen/` | генераторы базы (Python): по классам, предметам и четвертям |
 | `test/e2e.mjs` | сквозной тест интерфейса на jsdom (89 проверок) |
-| `corp/` | сайт компании **OuRi Corp** — второй связанный сайт (HTML/CSS/JS, без сборки) |
+| — | сайт компании **OuRi Corp** вынесен в отдельный репозиторий [`ouri-corp`](https://github.com/spaj7468-cell/ouri-corp) (live: https://spaj7468-cell.github.io/ouri-corp/) |
 
 ## Банк вопросов
 

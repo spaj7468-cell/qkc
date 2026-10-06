@@ -84,5 +84,5 @@ PR в `js-org/js.org` (правка `cnames_active.js`) → через ≤24 ч 
 
 - Service worker включится сам (нужен https или localhost — на всех платформах выше https есть).
 - Проверь: главная, тренажёр, решатели, форма отзыва (Gmail-ссылки абсолютные — работают откуда угодно).
-- Сайт компании **OuRi Corp** деплоится вместе с папкой и будет доступен по адресу `https://твой-домен/corp/` — ссылки между QKC и Corp относительные, работают на любом хостинге и даже с `file://`.
+- Сайт компании **OuRi Corp** живёт в отдельном репозитории [`ouri-corp`](https://github.com/spaj7468-cell/ouri-corp) и доступен по адресу `https://spaj7468-cell.github.io/ouri-corp/` — ссылки из QKC на Corp абсолютные, работают с любого хостинга и даже с `file://`.
 - Если захочешь своё имя сайта на Netlify позже: Site configuration → Change site name (свободные: `ouri`, `quickknowledgecheck`).
