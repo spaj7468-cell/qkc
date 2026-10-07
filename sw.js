@@ -1,5 +1,5 @@
 /* OuRi service worker — офлайн-доступ к сайту и банку вопросов */
-const CACHE = 'ouri-v1.3.0';
+const CACHE = 'ouri-v1.3.1';
 const CORE = [
   './', './index.html', './css/style.css', './js/app.js', './js/i18n.js',
   './manifest.webmanifest', './assets/bank-index.js',

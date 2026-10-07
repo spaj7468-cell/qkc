@@ -1714,13 +1714,15 @@ const OPEN_ICONS = {
   doc: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></svg>',
   user: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>',
   chat: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-8 8H4l2-3a8 8 0 1 1 15-5z"/></svg>',
-  mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>'
+  mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>',
+  code: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9l3 3-3 3M13 15h4"/></svg>'
 };
 function renderOpen() {
   const L = [
     ['site', 'open.l1n', 'open.l1d', 'spaj7468-cell.github.io/qkc', 'https://spaj7468-cell.github.io/qkc/', 1],
     ['git', 'open.l2n', 'open.l2d', 'github.com/spaj7468-cell/qkc', 'https://github.com/spaj7468-cell/qkc', 1],
     ['folder', 'open.l4n', 'open.l4d', 'spaj7468-cell.github.io/ouri-corp', 'https://spaj7468-cell.github.io/ouri-corp/', 1],
+    ['code', 'open.l9n', 'open.l9d', 'spaj7468-cell.github.io/qkccode', 'https://spaj7468-cell.github.io/qkccode/', 1],
     ['doc', 'open.l3n', 'open.l3d', 'qkc.runs-on.dev · PR #310', 'https://github.com/zordhalo/runs-on.dev/pull/310', 1],
     ['user', 'open.l5n', 'open.l5d', 'github.com/spaj7468-cell', 'https://github.com/spaj7468-cell', 1],
     ['chat', 'open.l6n', 'open.l6d', 'vk.com/id715180861', 'https://vk.com/id715180861', 1],
