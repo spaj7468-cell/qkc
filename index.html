@@ -727,5 +727,32 @@ python3 -m http.server 8080   # или просто открой index.html в �
 <script src="js/i18n.js"></script>
 <script src="js/app.js"></script>
 <script src="js/fx.js"></script>
+
+<!-- OuRi ecosystem links: shared navigation across projects -->
+<footer class="ouri-network" aria-label="Экосистема OuRi">
+  <style>
+    .ouri-network{margin:28px auto 0;padding:20px 22px;max-width:1180px;border:1px solid rgba(150,150,150,.22);border-radius:18px;background:rgba(128,128,128,.055);color:inherit;font:inherit}
+    .ouri-network__top{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:12px}
+    .ouri-network__title{font-weight:750;letter-spacing:.01em}.ouri-network__sub{opacity:.68;font-size:.88em}
+    .ouri-network__links{display:flex;gap:8px;flex-wrap:wrap}
+    .ouri-network__links a{display:inline-flex;align-items:center;padding:8px 11px;border:1px solid rgba(150,150,150,.24);border-radius:10px;text-decoration:none;color:inherit;font-size:.9em;transition:transform .18s ease,border-color .18s ease,background .18s ease}
+    .ouri-network__links a:hover{transform:translateY(-2px);border-color:rgba(150,150,150,.58);background:rgba(128,128,128,.1)}
+    .ouri-network__links a[aria-current="page"]{background:rgba(128,128,128,.14);font-weight:700}
+    @media(prefers-reduced-motion:reduce){.ouri-network__links a{transition:none}.ouri-network__links a:hover{transform:none}}
+  </style>
+  <div class="ouri-network__top"><span class="ouri-network__title">OuRi · единая экосистема</span><span class="ouri-network__sub">Продукты, инструменты и открытый исходный код</span></div>
+  <nav class="ouri-network__links" aria-label="Другие проекты OuRi">
+    <a href="https://spaj7468-cell.github.io/ouri-corp/" data-ouri="corp">OuRi Corp</a>
+    <a href="https://spaj7468-cell.github.io/qkc/" data-ouri="qkc">QKC · тренажёр</a>
+    <a href="https://spaj7468-cell.github.io/qkccode/" data-ouri="code">QKCcode · обучение</a>
+    <a href="https://spaj7468-cell.github.io/qkc-engine/" data-ouri="engine">QKC Engine</a>
+    <a href="https://spaj7468-cell.github.io/Arakul/" data-ouri="arakul">Arakul Studio</a>
+    <a href="https://github.com/spaj7468-cell" target="_blank" rel="noopener noreferrer">Все репозитории ↗</a>
+  </nav>
+  <script>
+    (function(){var p=location.pathname.toLowerCase();var key=p.includes('/ouri-corp')?'corp':p.includes('/qkccode')?'code':p.includes('/qkc-engine')?'engine':p.includes('/arakul')?'arakul':p.includes('/qkc')?'qkc':'';var a=document.querySelector('.ouri-network [data-ouri="'+key+'"]');if(a){a.setAttribute('aria-current','page');a.setAttribute('aria-label',a.textContent+' — текущий проект');}})();
+  </script>
+</footer>
+
 </body>
 </html>
