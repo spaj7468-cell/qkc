@@ -993,3 +993,50 @@ html{ scrollbar-color:var(--muted2) transparent }
   background:var(--text); transition:transform .5s var(--ease-out);
 }
 .panel:hover::after{ transform:scaleX(1) }
+
+
+/* OuRi unified polish — calmer contrast, consistent controls */
+:root{
+  --r:15px; --r-sm:11px; --r-lg:22px;
+}
+.btn{
+  border-radius:13px;
+  padding:11px 18px;
+  font-weight:600;
+  box-shadow:none;
+}
+.btn:hover{border-color:var(--line2);transform:translateY(-1px)}
+.btn:active{transform:translateY(0) scale(.99)}
+.btn--primary{
+  background:var(--surface2);
+  color:var(--text);
+  border-color:var(--line2);
+}
+.btn--primary::after{opacity:.18}
+.btn--primary:hover{
+  background:var(--text);
+  color:var(--bg);
+  border-color:var(--text);
+  box-shadow:0 8px 22px -16px var(--text);
+}
+.icon-btn{border-radius:12px;background:var(--surface)}
+.nav__link{border-radius:11px;transition:background .2s ease,color .2s ease}
+.nav__link:hover{background:var(--surface2)}
+.nav__link.is-on{background:var(--surface2)}
+.panel,.quick,.feat,.subj-card,.step-card,.link-card,.mode,.qcard{
+  border-radius:16px;
+  box-shadow:0 6px 22px -18px rgba(0,0,0,.6);
+}
+.panel:hover,.quick:hover,.feat:hover,.subj-card:hover,.step-card:hover,.link-card:hover,.mode:hover{
+  border-color:var(--line2);
+}
+input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=color]),select,textarea{
+  border-radius:11px;
+}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
+  outline:2px solid var(--muted);
+  outline-offset:3px;
+}
+@media(prefers-reduced-motion:reduce){
+  .btn,.icon-btn,.nav__link,.panel,.quick,.feat,.subj-card,.step-card,.link-card,.mode{transition:none!important}
+}
