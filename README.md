@@ -116,3 +116,15 @@ NODE_PATH=/tmp/node_modules node test/e2e.mjs   # 89 проверок, jsdom
 База генерируется скриптами из `gen/` и является частью проекта. Формулировки сверялись со школьной программой; найденные неточности правятся в генераторах и пересобираются одной командой.
 
 © OuRi
+
+
+## OuRi ecosystem
+
+QKC is part of the connected OuRi project family:
+- [OuRi Corp — project directory](https://spaj7468-cell.github.io/ouri-corp/)
+- [QKC live trainer](https://spaj7468-cell.github.io/qkc/)
+- [QKCcode — programming courses](https://spaj7468-cell.github.io/qkccode/)
+- [QKC Engine — reusable quiz engine and docs](https://spaj7468-cell.github.io/qkc-engine/)
+- [Arakul Studio — browser workspace](https://spaj7468-cell.github.io/Arakul/)
+
+Projects have different goals and maturity levels; their quality and feature sets can differ because they were built at different times. A newer project is not automatically better at everything.
