@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /gen/
 Disallow: /test/
+Sitemap: https://spaj7468-cell.github.io/qkc/sitemap.xml
