@@ -59,6 +59,7 @@
       <a href="#solvers" data-route="solvers" class="nav__link" data-i18n="nav.solvers">Решатели</a>
       <a href="#dash" data-route="dash" class="nav__link" data-i18n="nav.dash">Прогресс</a>
       <a href="#library" data-route="library" class="nav__link" data-i18n="nav.library">Библиотека</a>
+      <a href="#lit" data-route="lit" class="nav__link" data-i18n="nav.lit">Литература</a>
       <a href="#open" data-route="open" class="nav__link" data-i18n="nav.open">Открытый проект</a>
       <a href="#about" data-route="about" class="nav__link" data-i18n="nav.about">О OuRi</a>
     </nav>
@@ -575,6 +576,44 @@
   </div>
 </section>
 
+<!-- ══════════ ЛИТЕРАТУРА (ХРЕСТОМАТИЯ) ══════════ -->
+<section class="screen" id="screen-lit" data-screen="lit" hidden>
+  <div class="lit">
+    <div class="lit__head">
+      <span class="kicker" data-i18n="lit.kicker">Хрестоматия</span>
+      <h2 class="h1-sm" data-i18n="lit.title">Литература</h2>
+      <p class="muted" data-i18n="lit.sub">Классика, перешедшая в общественное достояние: рассказы, стихи и сказки. Только тексты, свободные от авторских прав, — и только с указанием источника.</p>
+      <p class="lit__stats" id="litStats"></p>
+    </div>
+
+    <div class="lit__bar">
+      <div class="lit__tabs" id="litCountries" role="tablist" aria-label="Страны"></div>
+      <div class="lit__search">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+        <input type="search" id="litSearch" autocomplete="off" data-i18n-ph="lit.searchPh" placeholder="Поиск по автору или названию…">
+      </div>
+    </div>
+
+    <div class="lit__body">
+      <div class="lit__aside">
+        <div class="lit__rule" id="litRule"></div>
+        <div class="lit__list" id="litAuthors" role="list"></div>
+      </div>
+
+      <div class="lit__main">
+        <div class="lit__works" id="litWorks"></div>
+        <div class="lit__reader" id="litReader"></div>
+      </div>
+    </div>
+
+    <div class="lit__excluded">
+      <h3 data-i18n="lit.excludedTitle">Почему здесь нет Булгакова</h3>
+      <p class="muted" data-i18n="lit.excludedLead">Мы публикуем только тексты, перешедшие в общественное достояние. Вот авторы, которых часто ищут и которых здесь сознательно нет.</p>
+      <div class="lit__exlist" id="litExcluded"></div>
+    </div>
+  </div>
+</section>
+
 <!-- ══════════ ОТКРЫТЫЙ ПРОЕКТ ══════════ -->
 <section class="screen" id="screen-open" data-screen="open" hidden>
   <div class="about">
@@ -703,7 +742,19 @@ python3 -m http.server 8080   # или просто открой index.html в �
     <ul class="seo-hub__grades"><li><a href="/0/"><b>детский сад</b><span>759 вопросов</span></a></li><li><a href="/1/"><b>1 класс</b><span>2 596 вопросов</span></a></li><li><a href="/2/"><b>2 класс</b><span>2 973 вопроса</span></a></li><li><a href="/3/"><b>3 класс</b><span>3 181 вопрос</span></a></li><li><a href="/4/"><b>4 класс</b><span>3 360 вопросов</span></a></li><li><a href="/5/"><b>5 класс</b><span>4 062 вопроса</span></a></li><li><a href="/6/"><b>6 класс</b><span>4 116 вопросов</span></a></li><li><a href="/7/"><b>7 класс</b><span>4 593 вопроса</span></a></li><li><a href="/8/"><b>8 класс</b><span>4 645 вопросов</span></a></li><li><a href="/9/"><b>9 класс</b><span>4 635 вопросов</span></a></li><li><a href="/10/"><b>10 класс</b><span>3 814 вопросов</span></a></li><li><a href="/11/"><b>11 класс</b><span>4 089 вопросов</span></a></li></ul>
     <h3 class="seo-hub__t2">Популярные предметы</h3>
     <div class="seo-hub__subs"><a href="/7/algebra/">Алгебра · 7 класс</a><a href="/7/geom/">Геометрия · 7 класс</a><a href="/7/physics/">Физика · 7 класс</a><a href="/8/chemistry/">Химия · 8 класс</a><a href="/5/biology/">Биология · 5 класс</a><a href="/5/russian/">Русский язык · 5 класс</a><a href="/5/english/">Английский язык · 5 класс</a><a href="/5/history/">История · 5 класс</a><a href="/6/social/">Обществознание · 6 класс</a><a href="/5/informatics/">Информатика · 5 класс</a><a href="/5/geography/">География · 5 класс</a><a href="/5/lit/">Литература · 5 класс</a><a href="/5/math/">Математика · 5 класс</a></div>
-    <p class="seo-hub__more"><a href="/seo/">Все тесты по классам и предметам →</a></p>
+    <h3 class="seo-hub__t2">Хрестоматия: классика в общественном достоянии</h3>
+    <p class="seo-hub__p">84 автора и 394 произведения из четырёх литератур — русской, американской,
+      китайской и японской. Только тексты, свободные от авторских прав.</p>
+    <div class="seo-hub__subs">
+      <a href="/lit/russia/chekhov/">Антон Чехов</a><a href="/lit/russia/pushkin/">Александр Пушкин</a>
+      <a href="/lit/russia/tolstoy-l/">Лев Толстой</a><a href="/lit/russia/gogol/">Николай Гоголь</a>
+      <a href="/lit/russia/dostoevsky/">Фёдор Достоевский</a><a href="/lit/russia/turgenev/">Иван Тургенев</a>
+      <a href="/lit/usa/poe/">Эдгар Аллан По</a><a href="/lit/usa/twain/">Марк Твен</a>
+      <a href="/lit/usa/london/">Джек Лондон</a><a href="/lit/china/lu-xun/">Лу Синь</a>
+      <a href="/lit/japan/akutagawa-ryunosuke/">Акутагава Рюноскэ</a><a href="/lit/japan/natsume-soseki/">Нацумэ Сосэки</a>
+    </div>
+    <p class="seo-hub__more"><a href="/lit/">Вся хрестоматия: авторы и годы первой публикации →</a> ·
+      <a href="/#lit">Открыть читалку</a> · <a href="/seo/">Все тесты по классам и предметам →</a></p>
   </div>
 </section>
 
@@ -753,6 +804,7 @@ python3 -m http.server 8080   # или просто открой index.html в �
 <script src="assets/bank-index.js"></script>
 <script src="js/i18n.js"></script>
 <script src="js/app.js"></script>
+<script src="js/reader.js"></script>
 <script src="js/fx.js"></script>
 
 <!-- OuRi ecosystem links: shared navigation across projects -->

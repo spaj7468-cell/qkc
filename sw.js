@@ -1,15 +1,26 @@
 /* OuRi service worker — офлайн-доступ к сайту и банку вопросов */
-const CACHE = 'ouri-v1.4.0';
+const CACHE = 'ouri-v1.5.0';
 const CORE = [
   './', './index.html', './css/style.css', './js/app.js', './js/i18n.js',
-  './manifest.webmanifest', './assets/bank-index.js',
+  './manifest.webmanifest', './assets/bank-index.js', './js/reader.js',
   './assets/logo.png', './assets/favicon.png', './assets/favicon.ico',
   './assets/icon-192.png', './assets/icon-512.png', './assets/apple-touch-icon.png'
 ];
 const BANKS = [1,2,3,4,5,6,7,8,9,10,11].map(n => './assets/bank-' + n + '.js');
+/* Хрестоматия: каталог кэшируем сразу (он один на весь раздел), тексты авторов —
+   лениво, при первом открытии автора (см. обработчик fetch ниже). */
+const LIT = ['./assets/lit/catalog.js'];
 
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));
+  /* LIT кладём вторым заходом и с catch: если каталога хрестоматии в сборке нет,
+     установка service worker не должна из-за этого падать. */
+  e.waitUntil(
+    caches.open(CACHE)
+      .then(c => c.addAll(CORE))
+      .then(() => caches.open(CACHE))
+      .then(c => c.addAll(LIT).catch(() => {}))
+      .then(() => self.skipWaiting())
+  );
 });
 
 self.addEventListener('activate', e => {
@@ -26,7 +37,8 @@ self.addEventListener('fetch', e => {
   if (url.origin !== location.origin) return;
 
   // банк классов кэшируем в фоне (тяжёлые файлы)
-  const isBank = /\/assets\/bank-\d+\.js$/.test(url.pathname);
+  const isBank = /\/assets\/bank-\d+\.js$/.test(url.pathname) ||
+               /\/assets\/lit\/.+\.json$/.test(url.pathname);
   if (isBank) {
     e.respondWith(
       caches.open(CACHE).then(cache =>

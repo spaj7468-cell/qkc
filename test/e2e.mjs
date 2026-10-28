@@ -292,6 +292,71 @@ async function main() {
   click($('.nav__link[data-route="home"]'));
   await wait(40);
 
+  // ── 9c. «Литература» (хрестоматия) ─────────────────────────
+  step('литература');
+  ok('литература: пункт в навигации', !!$('.nav__link[data-route="lit"]'));
+  click($('.nav__link[data-route="lit"]'));
+  await wait(900);
+  ok('литература: экран виден', $('#screen-lit') && !$('#screen-lit').hidden);
+  ok('литература: экран зарегистрирован в роутере', !!(window.ouri && window.ouri.SCREENS && window.ouri.SCREENS.lit));
+  ok('литература: каталог загрузился', !!(window.ouri && window.ouri.Lit && window.ouri.Lit.loaded),
+     window.ouri && window.ouri.Lit ? 'loaded=' + window.ouri.Lit.loaded + ' failed=' + window.ouri.Lit.failed : 'нет Lit');
+  ok('литература: четыре страны', $$('#litCountries .chip').length === 4, 'n=' + $$('#litCountries .chip').length);
+  ok('литература: авторов не больше 50 на страну', (() => {
+    const c = window.OURI_LIT && window.OURI_LIT.countries;
+    if (!c) return 'каталог не в window';
+    const bad = c.filter(x => x.authors.length > 50).map(x => x.slug + '=' + x.authors.length);
+    return bad.length === 0 || bad.join(',');
+  })());
+  ok('литература: список авторов отрисован', $$('#litAuthors .lit__a').length > 10, 'n=' + $$('#litAuthors .lit__a').length);
+  ok('литература: показана статистика каталога', /\d/.test(($('#litStats') || {}).textContent || ''));
+  ok('литература: до выбора автора — подсказка', /Выбери автора/.test($('#litWorks').textContent));
+
+  safe('литература: клик по автору', () => { click($('#litAuthors .lit__a')); });
+  await wait(500);
+  ok('литература: произведения автора отрисованы', $$('#litWorks .lit__w').length > 0, 'n=' + $$('#litWorks .lit__w').length);
+  ok('литература: есть шапка с биографией', !!$('#litWorks .lit__ahead'));
+  ok('литература: hash содержит страну и автора', /#lit\?c=\w+&a=\w+/.test(window.location.hash), window.location.hash);
+
+  safe('литература: клик по произведению', () => { click($('#litWorks .lit__w')); });
+  await wait(500);
+  ok('литература: панель читалки появилась', !!$('#litReader .lit__art'));
+  ok('литература: текст ещё не загружен — честная заглушка',
+     /Текст ещё не загружен/.test($('#litReader').textContent) || $('#litReader .lit__art p').length > 2);
+
+  ok('литература: список исключённых авторов показан', $$('#litExcluded .lit__ex').length > 10,
+     'n=' + $$('#litExcluded .lit__ex').length);
+  ok('литература: причина исключения объяснена', /Срок охраны не истёк/.test($('#litExcluded').textContent));
+
+  safe('литература: поиск по имени', () => {
+    const i = $('#litSearch'); i.value = 'Чехов';
+    i.dispatchEvent(new window.Event('input', { bubbles: true }));
+  });
+  await wait(120);
+  ok('литература: поиск фильтрует авторов', (() => {
+    const n = $$('#litAuthors .lit__a').length;
+    return n === 1 && /Чехов/.test($('#litAuthors .lit__a').textContent);
+  })(), 'n=' + $$('#litAuthors .lit__a').length);
+
+  safe('литература: переключение страны', () => { click($$('#litCountries .chip')[1]); });
+  await wait(400);
+  ok('литература: страна переключилась, поиск сброшен', (() => {
+    const on = $('#litCountries .chip.is-on');
+    return !!on && $$('#litAuthors .lit__a').length > 5;
+  })());
+  ok('литература: у переводных произведений статус проверки перевода', (() => {
+    const c = (window.OURI_LIT || {}).countries || [];
+    const usa = c.filter(x => x.slug === 'usa')[0];
+    if (!usa) return 'нет США в каталоге';
+    const w = usa.authors.map(a => a.works).reduce((x, y) => x.concat(y), []);
+    return w.length > 0 && w.every(x => x.status === 'needs-translation-check') ||
+      'найдены готовые без переводчика: ' + w.filter(x => x.status === 'ok').length;
+  })());
+
+  click($('.nav__link[data-route="home"]'));
+  await wait(60);
+  ok('литература: выход на главную работает', $('#screen-home') && !$('#screen-home').hidden);
+
   // ── 10. ошибок в консоли нет ───────────────────────────────
   const realErrors = errors.filter(e => !/getContext/.test(e));
   ok('нет ошибок выполнения', realErrors.length === 0, realErrors.slice(0, 3).join(' | ').slice(0, 400));

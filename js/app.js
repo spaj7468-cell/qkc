@@ -353,6 +353,18 @@ const Router = {
 };
 const SCREENS = {};
 
+/* Хелперы и роутер наружу — сразу, на уровне модуля.
+   Экраны-модули (js/reader.js и будущие) живут вне этой IIFE и исполняются
+   в момент разбора HTML, то есть ДО boot(). Экспортировать их в конце boot()
+   было поздно: reader.js не находил SCREENS и экран не регистрировался. */
+try {
+  window.ouri = window.ouri || {};
+  Object.assign(window.ouri, {
+    t: t, esc: esc, el: el, $: $, $$: $$, Router: Router, SCREENS: SCREENS,
+    toast: toast, modal: modal, lang: function () { return LANG; }
+  });
+} catch (e) {}
+
 /* ─────────── 9. контент главной ─────────── */
 const FEATURES = [
   ['Тесты', '11 классов', 'Строгая база: 1-й класс не увидит вопросы 9-го'],
@@ -1951,6 +1963,11 @@ function renderAllStatic() {
   if (Router.cur === 'dash') renderDash();
   if (Router.cur === 'about') SCREENS.about.enter();
   if (Router.cur === 'open') renderOpen();
+  /* Экраны-модули перерисовываются сами: их текст берётся из t(), а не из data-i18n. */
+  try {
+    const lit = $('#screen-lit');
+    if (lit && !lit.hidden && window.ouri && window.ouri.Lit) window.ouri.Lit.render();
+  } catch (e) {}
   syncNavXP(); syncQuick();
 }
 
@@ -2114,7 +2131,11 @@ function bindEvents() {
     console.log('%cQKC', 'font:700 46px/1 system-ui;letter-spacing:-3px');
     console.log('%cQuick Knowledge Check — продукт компании OuRi', 'color:#888');
     console.log('%cЧёрное. Белое. Знания. — ' + fmtNum(TOTAL_Q) + ' вопросов в базе', 'color:#888');
-    window.ouri = { State: State, Bank: Bank, Quiz: Quiz, startTest: startTest, ACH: ACH, FEATURES: FEATURES };
+    /* ВАЖНО: merge, а не присваивание. Раньше здесь было `window.ouri = {…}`,
+       и это затирало экспорт хелперов/роутера (см. начало файла) вместе с
+       SCREENS.lit, который регистрирует js/reader.js. */
+    window.ouri = window.ouri || {};
+    Object.assign(window.ouri, { State: State, Bank: Bank, Quiz: Quiz, startTest: startTest, ACH: ACH, FEATURES: FEATURES });
   } catch (e) {}
 }
 

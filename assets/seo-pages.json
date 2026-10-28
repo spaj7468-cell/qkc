@@ -3,7 +3,8 @@
  "generatedBy": "gen/build_seo.py",
  "bankBuiltAt": "2026-10-05",
  "total": 42823,
- "count": 160,
+ "count": 245,
+ "lit": 85,
  "pages": [
   {
    "path": "/seo/",
@@ -1098,6 +1099,599 @@
    "kind": "subject",
    "grade": 11,
    "subject": "pe"
+  },
+  {
+   "path": "/lit/",
+   "title": "Хрестоматия: 84 автора и 394 произведения в общественном достоянии | QKC",
+   "kind": "lit-hub"
+  },
+  {
+   "path": "/lit/russia/lomonosov/",
+   "title": "Михаил Ломоносов (1711–1765) — 4 произведения в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "russia",
+   "author": "lomonosov"
+  },
+  {
+   "path": "/lit/russia/sumarokov/",
+   "title": "Александр Сумароков (1717–1777) — 2 произведения в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "russia",
+   "author": "sumarokov"
+  },
+  {
+   "path": "/lit/russia/derzhavin/",
+   "title": "Гавриил Державин (1743–1816) — 5 произведений в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "russia",
+   "author": "derzhavin"
+  },
+  {
+   "path": "/lit/russia/fonvizin/",
+   "title": "Денис Фонвизин (1745–1792) — 2 произведения в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "russia",
+   "author": "fonvizin"
+  },
+  {
+   "path": "/lit/russia/radishchev/",
+   "title": "Александр Радищев (1749–1802) — 2 произведения в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "russia",
+   "author": "radishchev"
+  },
+  {
+   "path": "/lit/russia/karamzin/",
+   "title": "Николай Карамзин (1766–1826) — 3 произведения в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "russia",
+   "author": "karamzin"
+  },
+  {
+   "path": "/lit/russia/krylov/",
+   "title": "Иван Крылов (1769–1844) — 7 произведений в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "russia",
+   "author": "krylov"
+  },
+  {
+   "path": "/lit/russia/zhukovsky/",
+   "title": "Василий Жуковский (1783–1852) — 3 произведения в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "russia",
+   "author": "zhukovsky"
+  },
+  {
+   "path": "/lit/russia/pogorelsky/",
+   "title": "Антоний Погорельский (1787–1836) — 1 произведение в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "russia",
+   "author": "pogorelsky"
+  },
+  {
+   "path": "/lit/russia/griboedov/",
+   "title": "Александр Грибоедов (1795–1829) — 1 произведение в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "russia",
+   "author": "griboedov"
+  },
+  {
+   "path": "/lit/russia/pushkin/",
+   "title": "Александр Пушкин (1799–1837) — 24 произведения в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "russia",
+   "author": "pushkin"
+  },
+  {
+   "path": "/lit/russia/odoyevsky/",
+   "title": "Владимир Одоевский (1804–1869) — 1 произведение в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "russia",
+   "author": "odoyevsky"
+  },
+  {
+   "path": "/lit/russia/gogol/",
+   "title": "Николай Гоголь (1809–1852) — 16 произведений в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "russia",
+   "author": "gogol"
+  },
+  {
+   "path": "/lit/russia/goncharov/",
+   "title": "Иван Гончаров (1812–1891) — 4 произведения в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "russia",
+   "author": "goncharov"
+  },
+  {
+   "path": "/lit/russia/lermontov/",
+   "title": "Михаил Лермонтов (1814–1841) — 13 произведений в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "russia",
+   "author": "lermontov"
+  },
+  {
+   "path": "/lit/russia/turgenev/",
+   "title": "Иван Тургенев (1818–1883) — 11 произведений в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "russia",
+   "author": "turgenev"
+  },
+  {
+   "path": "/lit/russia/dostoevsky/",
+   "title": "Фёдор Достоевский (1821–1881) — 16 произведений в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "russia",
+   "author": "dostoevsky"
+  },
+  {
+   "path": "/lit/russia/grigorovich/",
+   "title": "Дмитрий Григорович (1822–1899) — 2 произведения в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "russia",
+   "author": "grigorovich"
+  },
+  {
+   "path": "/lit/russia/ostrovsky/",
+   "title": "Александр Островский (1823–1886) — 7 произведений в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "russia",
+   "author": "ostrovsky"
+  },
+  {
+   "path": "/lit/russia/ushinsky/",
+   "title": "Константин Ушинский (1824–1870) — 3 произведения в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "russia",
+   "author": "ushinsky"
+  },
+  {
+   "path": "/lit/russia/saltykov-shchedrin/",
+   "title": "Михаил Салтыков-Щедрин (1826–1889) — 4 произведения в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "russia",
+   "author": "saltykov-shchedrin"
+  },
+  {
+   "path": "/lit/russia/tolstoy-l/",
+   "title": "Лев Толстой (1828–1910) — 24 произведения в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "russia",
+   "author": "tolstoy-l"
+  },
+  {
+   "path": "/lit/russia/leskov/",
+   "title": "Николай Лесков (1831–1895) — 4 произведения в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "russia",
+   "author": "leskov"
+  },
+  {
+   "path": "/lit/russia/mamin-sibiryak/",
+   "title": "Дмитрий Мамин-Сибиряк (1852–1912) — 4 произведения в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "russia",
+   "author": "mamin-sibiryak"
+  },
+  {
+   "path": "/lit/russia/korolenko/",
+   "title": "Владимир Короленко (1853–1921) — 5 произведений в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "russia",
+   "author": "korolenko"
+  },
+  {
+   "path": "/lit/russia/garshin/",
+   "title": "Всеволод Гаршин (1855–1888) — 5 произведений в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "russia",
+   "author": "garshin"
+  },
+  {
+   "path": "/lit/russia/chekhov/",
+   "title": "Антон Чехов (1860–1904) — 20 произведений в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "russia",
+   "author": "chekhov"
+  },
+  {
+   "path": "/lit/russia/gorky/",
+   "title": "Максим Горький (1868–1936) — 10 произведений в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "russia",
+   "author": "gorky"
+  },
+  {
+   "path": "/lit/russia/kuprin/",
+   "title": "Александр Куприн (1870–1938) — 10 произведений в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "russia",
+   "author": "kuprin"
+  },
+  {
+   "path": "/lit/russia/bunin/",
+   "title": "Иван Бунин (1870–1953) — 5 произведений в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "russia",
+   "author": "bunin"
+  },
+  {
+   "path": "/lit/russia/andreev/",
+   "title": "Леонид Андреев (1871–1919) — 7 произведений в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "russia",
+   "author": "andreev"
+  },
+  {
+   "path": "/lit/russia/blok/",
+   "title": "Александр Блок (1880–1921) — 7 произведений в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "russia",
+   "author": "blok"
+  },
+  {
+   "path": "/lit/russia/zamyatin/",
+   "title": "Евгений Замятин (1884–1937) — 3 произведения в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "russia",
+   "author": "zamyatin"
+  },
+  {
+   "path": "/lit/russia/esenin/",
+   "title": "Сергей Есенин (1895–1925) — 8 произведений в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "russia",
+   "author": "esenin"
+  },
+  {
+   "path": "/lit/usa/irving/",
+   "title": "Вашингтон Ирвинг (1783–1859) — 2 произведения в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "usa",
+   "author": "irving"
+  },
+  {
+   "path": "/lit/usa/cooper/",
+   "title": "Джеймс Фенимор Купер (1789–1851) — 5 произведений в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "usa",
+   "author": "cooper"
+  },
+  {
+   "path": "/lit/usa/hawthorne/",
+   "title": "Натаниэль Готорн (1804–1864) — 4 произведения в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "usa",
+   "author": "hawthorne"
+  },
+  {
+   "path": "/lit/usa/poe/",
+   "title": "Эдгар Аллан По (1809–1849) — 15 произведений в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "usa",
+   "author": "poe"
+  },
+  {
+   "path": "/lit/usa/thoreau/",
+   "title": "Генри Дэвид Торо (1817–1862) — 3 произведения в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "usa",
+   "author": "thoreau"
+  },
+  {
+   "path": "/lit/usa/melville/",
+   "title": "Герман Мелвилл (1819–1891) — 5 произведений в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "usa",
+   "author": "melville"
+  },
+  {
+   "path": "/lit/usa/whitman/",
+   "title": "Уолт Уитмен (1819–1892) — 4 произведения в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "usa",
+   "author": "whitman"
+  },
+  {
+   "path": "/lit/usa/dickinson/",
+   "title": "Эмили Дикинсон (1830–1886) — 3 произведения в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "usa",
+   "author": "dickinson"
+  },
+  {
+   "path": "/lit/usa/twain/",
+   "title": "Марк Твен (1835–1910) — 6 произведений в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "usa",
+   "author": "twain"
+  },
+  {
+   "path": "/lit/usa/james-h/",
+   "title": "Генри Джеймс (1843–1916) — 5 произведений в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "usa",
+   "author": "james-h"
+  },
+  {
+   "path": "/lit/usa/o-henry/",
+   "title": "О. Генри (1862–1910) — 4 произведения в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "usa",
+   "author": "o-henry"
+  },
+  {
+   "path": "/lit/usa/wharton/",
+   "title": "Эдит Уортон (1862–1937) — 3 произведения в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "usa",
+   "author": "wharton"
+  },
+  {
+   "path": "/lit/usa/dreiser/",
+   "title": "Теодор Драйзер (1871–1945) — 6 произведений в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "usa",
+   "author": "dreiser"
+  },
+  {
+   "path": "/lit/usa/london/",
+   "title": "Джек Лондон (1876–1916) — 9 произведений в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "usa",
+   "author": "london"
+  },
+  {
+   "path": "/lit/china/konfutsiy/",
+   "title": "Конфуций и его ученики (551 до н. э.–479 до н. э.) — 1 произведение в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "china",
+   "author": "konfutsiy"
+  },
+  {
+   "path": "/lit/china/zhuang-zi/",
+   "title": "Чжуан-цзы (369 до н. э.–286 до н. э.) — 1 произведение в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "china",
+   "author": "zhuang-zi"
+  },
+  {
+   "path": "/lit/china/qu-yuan/",
+   "title": "Цюй Юань (340 до н. э.–278 до н. э.) — 1 произведение в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "china",
+   "author": "qu-yuan"
+  },
+  {
+   "path": "/lit/china/li-bo/",
+   "title": "Ли Бо (701–762) — 3 произведения в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "china",
+   "author": "li-bo"
+  },
+  {
+   "path": "/lit/china/du-fu/",
+   "title": "Ду Фу (712–770) — 2 произведения в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "china",
+   "author": "du-fu"
+  },
+  {
+   "path": "/lit/china/bo-tszuyi/",
+   "title": "Бо Цзюй-и (772–846) — 2 произведения в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "china",
+   "author": "bo-tszuyi"
+  },
+  {
+   "path": "/lit/china/van-anshi/",
+   "title": "Ван Аньши (1021–1086) — 1 произведение в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "china",
+   "author": "van-anshi"
+  },
+  {
+   "path": "/lit/china/su-shi/",
+   "title": "Су Ши (Су Дунпо) (1037–1101) — 2 произведения в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "china",
+   "author": "su-shi"
+  },
+  {
+   "path": "/lit/china/guan-hanqing/",
+   "title": "Гуань Ханьцин (1241–1320) — 1 произведение в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "china",
+   "author": "guan-hanqing"
+  },
+  {
+   "path": "/lit/china/shi-naian/",
+   "title": "Ши Най-ань (1296–1370) — 1 произведение в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "china",
+   "author": "shi-naian"
+  },
+  {
+   "path": "/lit/china/luo-guanzhong/",
+   "title": "Ло Гуаньчжун (1330–1400) — 1 произведение в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "china",
+   "author": "luo-guanzhong"
+  },
+  {
+   "path": "/lit/china/wu-chengen/",
+   "title": "У Чэн-энь (1500–1582) — 1 произведение в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "china",
+   "author": "wu-chengen"
+  },
+  {
+   "path": "/lit/china/pu-songling/",
+   "title": "Пу Сунлин (1640–1715) — 3 произведения в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "china",
+   "author": "pu-songling"
+  },
+  {
+   "path": "/lit/china/wu-jingzi/",
+   "title": "У Цзинцзы (1701–1754) — 1 произведение в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "china",
+   "author": "wu-jingzi"
+  },
+  {
+   "path": "/lit/china/cao-xueqin/",
+   "title": "Цао Сюэцинь (1724–1763) — 1 произведение в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "china",
+   "author": "cao-xueqin"
+  },
+  {
+   "path": "/lit/china/lu-xun/",
+   "title": "Лу Синь (1881–1936) — 6 произведений в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "china",
+   "author": "lu-xun"
+  },
+  {
+   "path": "/lit/china/yu-dafu/",
+   "title": "Юй Дафу (1896–1945) — 1 произведение в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "china",
+   "author": "yu-dafu"
+  },
+  {
+   "path": "/lit/china/xu-zhimo/",
+   "title": "Сюй Чжимо (1897–1931) — 1 произведение в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "china",
+   "author": "xu-zhimo"
+  },
+  {
+   "path": "/lit/china/zhu-tsitsin/",
+   "title": "Чжу Цзыцин (1898–1948) — 2 произведения в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "china",
+   "author": "zhu-tsitsin"
+  },
+  {
+   "path": "/lit/china/laozi/",
+   "title": "Лао-цзы (даты жизни неизвестны) — 1 произведение в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "china",
+   "author": "laozi"
+  },
+  {
+   "path": "/lit/japan/sei-shonagon/",
+   "title": "Сэй Сёнагон (966–1025) — 1 произведение в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "japan",
+   "author": "sei-shonagon"
+  },
+  {
+   "path": "/lit/japan/murasaki-shikibu/",
+   "title": "Мурасаки Сикибу (978–1014) — 1 произведение в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "japan",
+   "author": "murasaki-shikibu"
+  },
+  {
+   "path": "/lit/japan/kamo-no-chomei/",
+   "title": "Камо-но Тёмэй (1155–1216) — 1 произведение в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "japan",
+   "author": "kamo-no-chomei"
+  },
+  {
+   "path": "/lit/japan/yoshida-kenko/",
+   "title": "Ёсида Кэнко (1283–1350) — 1 произведение в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "japan",
+   "author": "yoshida-kenko"
+  },
+  {
+   "path": "/lit/japan/ihara-saikaku/",
+   "title": "Ихара Сайкаку (1642–1693) — 3 произведения в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "japan",
+   "author": "ihara-saikaku"
+  },
+  {
+   "path": "/lit/japan/matsuo-basho/",
+   "title": "Мацуо Басё (1644–1694) — 3 произведения в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "japan",
+   "author": "matsuo-basho"
+  },
+  {
+   "path": "/lit/japan/chikamatsu/",
+   "title": "Тикамацу Мондзаэмон (1653–1725) — 3 произведения в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "japan",
+   "author": "chikamatsu"
+  },
+  {
+   "path": "/lit/japan/ueda-akinari/",
+   "title": "Уэда Акинари (1734–1809) — 1 произведение в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "japan",
+   "author": "ueda-akinari"
+  },
+  {
+   "path": "/lit/japan/kobayashi-issa/",
+   "title": "Кобаяси Исса (1763–1828) — 2 произведения в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "japan",
+   "author": "kobayashi-issa"
+  },
+  {
+   "path": "/lit/japan/mori-ogai/",
+   "title": "Мори Огай (1862–1922) — 3 произведения в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "japan",
+   "author": "mori-ogai"
+  },
+  {
+   "path": "/lit/japan/natsume-soseki/",
+   "title": "Нацумэ Сосэки (1867–1916) — 7 произведений в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "japan",
+   "author": "natsume-soseki"
+  },
+  {
+   "path": "/lit/japan/kunikida-doppo/",
+   "title": "Куникида Доппо (1871–1908) — 1 произведение в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "japan",
+   "author": "kunikida-doppo"
+  },
+  {
+   "path": "/lit/japan/shimazaki-toson/",
+   "title": "Симадзаки Тосон (1872–1943) — 4 произведения в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "japan",
+   "author": "shimazaki-toson"
+  },
+  {
+   "path": "/lit/japan/kikuchi-kan/",
+   "title": "Кикути Кан (1888–1948) — 3 произведения в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "japan",
+   "author": "kikuchi-kan"
+  },
+  {
+   "path": "/lit/japan/akutagawa-ryunosuke/",
+   "title": "Акутагава Рюноскэ (1892–1927) — 8 произведений в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "japan",
+   "author": "akutagawa-ryunosuke"
+  },
+  {
+   "path": "/lit/japan/miyazawa-kenji/",
+   "title": "Миядзава Кэндзи (1896–1933) — 2 произведения в общественном достоянии | Хрестоматия QKC",
+   "kind": "lit-author",
+   "country": "japan",
+   "author": "miyazawa-kenji"
   }
  ]
 }
