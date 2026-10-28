@@ -119,32 +119,3 @@
 @media (prefers-reduced-motion:reduce){
   .seo-nav,.seo-topcta,.seo-chip,.seo-subj a{ transition:none }
 }
-
-/* ── блок SEO-навигации на главной (index.html #seoHub) ── */
-.seo-hub{ margin-top:clamp(46px,7vw,92px); border-top:1px solid var(--line);
-  padding:clamp(26px,4vw,44px) clamp(14px,3vw,26px) }
-.seo-hub__in{ width:min(100%,var(--maxw)); margin-inline:auto }
-.seo-hub__t{ font-family:var(--font-d); font-weight:800; letter-spacing:-.02em;
-  font-size:clamp(1.3rem,3vw,1.9rem); margin:0 0 10px }
-.seo-hub__t2{ font-family:var(--font-d); font-weight:700; font-size:1rem;
-  margin:26px 0 10px; color:var(--text2) }
-.seo-hub__p{ color:var(--muted); margin:0 0 20px; max-width:70ch }
-.seo-hub__grades{ list-style:none; margin:0; padding:0; display:grid; gap:10px;
-  grid-template-columns:repeat(auto-fit,minmax(150px,1fr)) }
-.seo-hub__grades a{ display:flex; flex-direction:column; gap:4px; padding:14px 16px;
-  border:1px solid var(--line); border-radius:var(--r-sm); background:var(--surface);
-  transition:.2s }
-.seo-hub__grades a:hover{ border-color:var(--line2); transform:translateY(-2px) }
-.seo-hub__grades b{ font-family:var(--font-d); font-size:1rem; color:var(--text) }
-.seo-hub__grades span{ font-size:.78rem; color:var(--muted2) }
-.seo-hub__subs{ display:flex; flex-wrap:wrap; gap:8px }
-.seo-hub__subs a{ border:1px solid var(--line); border-radius:999px; padding:6px 13px;
-  font-size:.82rem; color:var(--muted); transition:.2s }
-.seo-hub__subs a:hover{ color:var(--text); border-color:var(--line2) }
-.seo-hub__more{ margin:22px 0 0 }
-.seo-hub__more a{ border-bottom:1px solid var(--line2); color:var(--text2) }
-.seo-hub__more a:hover{ color:var(--text) }
-@media (prefers-reduced-motion:reduce){
-  .seo-hub__grades a,.seo-hub__subs a{ transition:none }
-  .seo-hub__grades a:hover{ transform:none }
-}
