@@ -42,9 +42,9 @@
     "name": "OuRi Corp — QKC",
     "bio": "QKC: an open-source, offline-first JavaScript math trainer (arithmetic by grade & format). Built with plain JavaScript by OuRi Corp.",
     "links": [
-      { "label": "QKC trainer",     "url": "https://spaj7468-cell.github.io/qkc/" },
-      { "label": "QKCcode",         "url": "https://spaj7468-cell.github.io/qkccode/" },
-      { "label": "QKC Engine docs", "url": "https://spaj7468-cell.github.io/qkc-engine/" },
+      { "label": "QKC trainer",     "url": "https://qkc.runs-on.dev/" },
+      { "label": "QKCcode",         "url": "https://code.qkc.runs-on.dev/" },
+      { "label": "QKC Engine docs", "url": "https://engine.qkc.runs-on.dev/" },
       { "label": "OuRi Corp",       "url": "https://spaj7468-cell.github.io/ouri-corp/" },
       { "label": "GitHub",          "url": "https://github.com/spaj7468-cell" }
     ]

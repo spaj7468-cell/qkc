@@ -2,4 +2,8 @@ User-agent: *
 Allow: /
 Disallow: /gen/
 Disallow: /test/
-Sitemap: https://spaj7468-cell.github.io/qkc/sitemap.xml
+Disallow: /assets/bank-
+Disallow: /assets/bank.json
+
+Sitemap: https://qkc.runs-on.dev/sitemap.xml
+Host: qkc.runs-on.dev

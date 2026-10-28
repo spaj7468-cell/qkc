@@ -1,0 +1,1103 @@
+{
+ "base": "https://qkc.runs-on.dev",
+ "generatedBy": "gen/build_seo.py",
+ "bankBuiltAt": "2026-10-05",
+ "total": 42823,
+ "count": 160,
+ "pages": [
+  {
+   "path": "/seo/",
+   "title": "QKC — онлайн-тесты по классам и предметам: 42 823 вопроса бесплатно",
+   "kind": "index"
+  },
+  {
+   "path": "/0/",
+   "title": "Тесты за детский сад — все предметы: 759 вопросов онлайн | QKC",
+   "kind": "grade"
+  },
+  {
+   "path": "/0/math/",
+   "title": "Тест «Математика» детский сад — 146 вопросов | QKC",
+   "kind": "subject",
+   "grade": 0,
+   "subject": "math"
+  },
+  {
+   "path": "/0/russian/",
+   "title": "Тест «Русский язык» детский сад — 144 вопроса | QKC",
+   "kind": "subject",
+   "grade": 0,
+   "subject": "russian"
+  },
+  {
+   "path": "/0/om/",
+   "title": "Тест «Окружающий мир» детский сад — 181 вопрос | QKC",
+   "kind": "subject",
+   "grade": 0,
+   "subject": "om"
+  },
+  {
+   "path": "/0/english/",
+   "title": "Тест «Английский язык» детский сад — 144 вопроса | QKC",
+   "kind": "subject",
+   "grade": 0,
+   "subject": "english"
+  },
+  {
+   "path": "/0/art/",
+   "title": "Тест «ИЗО» детский сад — 144 вопроса | QKC",
+   "kind": "subject",
+   "grade": 0,
+   "subject": "art"
+  },
+  {
+   "path": "/1/",
+   "title": "Тесты за 1 класс — все предметы: 2 596 вопросов онлайн | QKC",
+   "kind": "grade"
+  },
+  {
+   "path": "/1/math/",
+   "title": "Тест «Математика» 1 класс — 370 вопросов | QKC",
+   "kind": "subject",
+   "grade": 1,
+   "subject": "math"
+  },
+  {
+   "path": "/1/russian/",
+   "title": "Тест «Русский язык» 1 класс — 199 вопросов | QKC",
+   "kind": "subject",
+   "grade": 1,
+   "subject": "russian"
+  },
+  {
+   "path": "/1/reading/",
+   "title": "Тест «Литературное чтение» 1 класс — 160 вопросов | QKC",
+   "kind": "subject",
+   "grade": 1,
+   "subject": "reading"
+  },
+  {
+   "path": "/1/om/",
+   "title": "Тест «Окружающий мир» 1 класс — 216 вопросов | QKC",
+   "kind": "subject",
+   "grade": 1,
+   "subject": "om"
+  },
+  {
+   "path": "/1/english/",
+   "title": "Тест «Английский язык» 1 класс — 616 вопросов | QKC",
+   "kind": "subject",
+   "grade": 1,
+   "subject": "english"
+  },
+  {
+   "path": "/1/art/",
+   "title": "Тест по предмету «ИЗО» — 1 класс: 201 вопрос онлайн бесплатно | QKC",
+   "kind": "subject",
+   "grade": 1,
+   "subject": "art"
+  },
+  {
+   "path": "/1/music/",
+   "title": "Тест «Музыка» 1 класс — 213 вопросов | QKC",
+   "kind": "subject",
+   "grade": 1,
+   "subject": "music"
+  },
+  {
+   "path": "/1/tech/",
+   "title": "Тест «Технология» 1 класс — 214 вопросов | QKC",
+   "kind": "subject",
+   "grade": 1,
+   "subject": "tech"
+  },
+  {
+   "path": "/1/pe/",
+   "title": "Тест «Физкультура» 1 класс — 206 вопросов | QKC",
+   "kind": "subject",
+   "grade": 1,
+   "subject": "pe"
+  },
+  {
+   "path": "/1/obzh/",
+   "title": "Тест по предмету «ОБЖ» — 1 класс: 201 вопрос онлайн бесплатно | QKC",
+   "kind": "subject",
+   "grade": 1,
+   "subject": "obzh"
+  },
+  {
+   "path": "/2/",
+   "title": "Тесты за 2 класс — все предметы: 2 973 вопроса онлайн | QKC",
+   "kind": "grade"
+  },
+  {
+   "path": "/2/math/",
+   "title": "Тест «Математика» 2 класс — 629 вопросов | QKC",
+   "kind": "subject",
+   "grade": 2,
+   "subject": "math"
+  },
+  {
+   "path": "/2/russian/",
+   "title": "Тест «Русский язык» 2 класс — 318 вопросов | QKC",
+   "kind": "subject",
+   "grade": 2,
+   "subject": "russian"
+  },
+  {
+   "path": "/2/reading/",
+   "title": "Тест «Литературное чтение» 2 класс — 199 вопросов | QKC",
+   "kind": "subject",
+   "grade": 2,
+   "subject": "reading"
+  },
+  {
+   "path": "/2/om/",
+   "title": "Тест «Окружающий мир» 2 класс — 203 вопроса | QKC",
+   "kind": "subject",
+   "grade": 2,
+   "subject": "om"
+  },
+  {
+   "path": "/2/english/",
+   "title": "Тест «Английский язык» 2 класс — 608 вопросов | QKC",
+   "kind": "subject",
+   "grade": 2,
+   "subject": "english"
+  },
+  {
+   "path": "/2/art/",
+   "title": "Тест по предмету «ИЗО» — 2 класс: 208 вопросов онлайн бесплатно | QKC",
+   "kind": "subject",
+   "grade": 2,
+   "subject": "art"
+  },
+  {
+   "path": "/2/music/",
+   "title": "Тест «Музыка» 2 класс — 202 вопроса | QKC",
+   "kind": "subject",
+   "grade": 2,
+   "subject": "music"
+  },
+  {
+   "path": "/2/tech/",
+   "title": "Тест «Технология» 2 класс — 200 вопросов | QKC",
+   "kind": "subject",
+   "grade": 2,
+   "subject": "tech"
+  },
+  {
+   "path": "/2/pe/",
+   "title": "Тест «Физкультура» 2 класс — 210 вопросов | QKC",
+   "kind": "subject",
+   "grade": 2,
+   "subject": "pe"
+  },
+  {
+   "path": "/2/obzh/",
+   "title": "Тест по предмету «ОБЖ» — 2 класс: 196 вопросов онлайн бесплатно | QKC",
+   "kind": "subject",
+   "grade": 2,
+   "subject": "obzh"
+  },
+  {
+   "path": "/3/",
+   "title": "Тесты за 3 класс — все предметы: 3 181 вопрос онлайн | QKC",
+   "kind": "grade"
+  },
+  {
+   "path": "/3/math/",
+   "title": "Тест «Математика» 3 класс — 840 вопросов | QKC",
+   "kind": "subject",
+   "grade": 3,
+   "subject": "math"
+  },
+  {
+   "path": "/3/russian/",
+   "title": "Тест «Русский язык» 3 класс — 239 вопросов | QKC",
+   "kind": "subject",
+   "grade": 3,
+   "subject": "russian"
+  },
+  {
+   "path": "/3/reading/",
+   "title": "Тест «Литературное чтение» 3 класс — 201 вопрос | QKC",
+   "kind": "subject",
+   "grade": 3,
+   "subject": "reading"
+  },
+  {
+   "path": "/3/om/",
+   "title": "Тест «Окружающий мир» 3 класс — 206 вопросов | QKC",
+   "kind": "subject",
+   "grade": 3,
+   "subject": "om"
+  },
+  {
+   "path": "/3/english/",
+   "title": "Тест «Английский язык» 3 класс — 604 вопроса | QKC",
+   "kind": "subject",
+   "grade": 3,
+   "subject": "english"
+  },
+  {
+   "path": "/3/art/",
+   "title": "Тест по предмету «ИЗО» — 3 класс: 231 вопрос онлайн бесплатно | QKC",
+   "kind": "subject",
+   "grade": 3,
+   "subject": "art"
+  },
+  {
+   "path": "/3/music/",
+   "title": "Тест «Музыка» 3 класс — 262 вопроса | QKC",
+   "kind": "subject",
+   "grade": 3,
+   "subject": "music"
+  },
+  {
+   "path": "/3/tech/",
+   "title": "Тест «Технология» 3 класс — 196 вопросов | QKC",
+   "kind": "subject",
+   "grade": 3,
+   "subject": "tech"
+  },
+  {
+   "path": "/3/pe/",
+   "title": "Тест «Физкультура» 3 класс — 200 вопросов | QKC",
+   "kind": "subject",
+   "grade": 3,
+   "subject": "pe"
+  },
+  {
+   "path": "/3/obzh/",
+   "title": "Тест по предмету «ОБЖ» — 3 класс: 202 вопроса онлайн бесплатно | QKC",
+   "kind": "subject",
+   "grade": 3,
+   "subject": "obzh"
+  },
+  {
+   "path": "/4/",
+   "title": "Тесты за 4 класс — все предметы: 3 360 вопросов онлайн | QKC",
+   "kind": "grade"
+  },
+  {
+   "path": "/4/math/",
+   "title": "Тест «Математика» 4 класс — 883 вопроса | QKC",
+   "kind": "subject",
+   "grade": 4,
+   "subject": "math"
+  },
+  {
+   "path": "/4/russian/",
+   "title": "Тест «Русский язык» 4 класс — 269 вопросов | QKC",
+   "kind": "subject",
+   "grade": 4,
+   "subject": "russian"
+  },
+  {
+   "path": "/4/reading/",
+   "title": "Тест «Литературное чтение» 4 класс — 204 вопроса | QKC",
+   "kind": "subject",
+   "grade": 4,
+   "subject": "reading"
+  },
+  {
+   "path": "/4/om/",
+   "title": "Тест «Окружающий мир» 4 класс — 259 вопросов | QKC",
+   "kind": "subject",
+   "grade": 4,
+   "subject": "om"
+  },
+  {
+   "path": "/4/english/",
+   "title": "Тест «Английский язык» 4 класс — 614 вопросов | QKC",
+   "kind": "subject",
+   "grade": 4,
+   "subject": "english"
+  },
+  {
+   "path": "/4/art/",
+   "title": "Тест по предмету «ИЗО» — 4 класс: 241 вопрос онлайн бесплатно | QKC",
+   "kind": "subject",
+   "grade": 4,
+   "subject": "art"
+  },
+  {
+   "path": "/4/music/",
+   "title": "Тест «Музыка» 4 класс — 282 вопроса | QKC",
+   "kind": "subject",
+   "grade": 4,
+   "subject": "music"
+  },
+  {
+   "path": "/4/tech/",
+   "title": "Тест «Технология» 4 класс — 196 вопросов | QKC",
+   "kind": "subject",
+   "grade": 4,
+   "subject": "tech"
+  },
+  {
+   "path": "/4/pe/",
+   "title": "Тест «Физкультура» 4 класс — 210 вопросов | QKC",
+   "kind": "subject",
+   "grade": 4,
+   "subject": "pe"
+  },
+  {
+   "path": "/4/obzh/",
+   "title": "Тест по предмету «ОБЖ» — 4 класс: 202 вопроса онлайн бесплатно | QKC",
+   "kind": "subject",
+   "grade": 4,
+   "subject": "obzh"
+  },
+  {
+   "path": "/5/",
+   "title": "Тесты за 5 класс — все предметы: 4 062 вопроса онлайн | QKC",
+   "kind": "grade"
+  },
+  {
+   "path": "/5/math/",
+   "title": "Тест «Математика» 5 класс — 862 вопроса | QKC",
+   "kind": "subject",
+   "grade": 5,
+   "subject": "math"
+  },
+  {
+   "path": "/5/russian/",
+   "title": "Тест «Русский язык» 5 класс — 331 вопрос | QKC",
+   "kind": "subject",
+   "grade": 5,
+   "subject": "russian"
+  },
+  {
+   "path": "/5/lit/",
+   "title": "Тест «Литература» 5 класс — 202 вопроса | QKC",
+   "kind": "subject",
+   "grade": 5,
+   "subject": "lit"
+  },
+  {
+   "path": "/5/english/",
+   "title": "Тест «Английский язык» 5 класс — 674 вопроса | QKC",
+   "kind": "subject",
+   "grade": 5,
+   "subject": "english"
+  },
+  {
+   "path": "/5/biology/",
+   "title": "Тест «Биология» 5 класс — 160 вопросов | QKC",
+   "kind": "subject",
+   "grade": 5,
+   "subject": "biology"
+  },
+  {
+   "path": "/5/geography/",
+   "title": "Тест «География» 5 класс — 208 вопросов | QKC",
+   "kind": "subject",
+   "grade": 5,
+   "subject": "geography"
+  },
+  {
+   "path": "/5/history/",
+   "title": "Тест «История» 5 класс — 227 вопросов | QKC",
+   "kind": "subject",
+   "grade": 5,
+   "subject": "history"
+  },
+  {
+   "path": "/5/informatics/",
+   "title": "Тест «Информатика» 5 класс — 196 вопросов | QKC",
+   "kind": "subject",
+   "grade": 5,
+   "subject": "informatics"
+  },
+  {
+   "path": "/5/art/",
+   "title": "Тест по предмету «ИЗО» — 5 класс: 297 вопросов онлайн бесплатно | QKC",
+   "kind": "subject",
+   "grade": 5,
+   "subject": "art"
+  },
+  {
+   "path": "/5/music/",
+   "title": "Тест «Музыка» 5 класс — 302 вопроса | QKC",
+   "kind": "subject",
+   "grade": 5,
+   "subject": "music"
+  },
+  {
+   "path": "/5/tech/",
+   "title": "Тест «Технология» 5 класс — 198 вопросов | QKC",
+   "kind": "subject",
+   "grade": 5,
+   "subject": "tech"
+  },
+  {
+   "path": "/5/pe/",
+   "title": "Тест «Физкультура» 5 класс — 209 вопросов | QKC",
+   "kind": "subject",
+   "grade": 5,
+   "subject": "pe"
+  },
+  {
+   "path": "/5/obzh/",
+   "title": "Тест по предмету «ОБЖ» — 5 класс: 196 вопросов онлайн бесплатно | QKC",
+   "kind": "subject",
+   "grade": 5,
+   "subject": "obzh"
+  },
+  {
+   "path": "/6/",
+   "title": "Тесты за 6 класс — все предметы: 4 116 вопросов онлайн | QKC",
+   "kind": "grade"
+  },
+  {
+   "path": "/6/math/",
+   "title": "Тест «Математика» 6 класс — 721 вопрос | QKC",
+   "kind": "subject",
+   "grade": 6,
+   "subject": "math"
+  },
+  {
+   "path": "/6/russian/",
+   "title": "Тест «Русский язык» 6 класс — 225 вопросов | QKC",
+   "kind": "subject",
+   "grade": 6,
+   "subject": "russian"
+  },
+  {
+   "path": "/6/lit/",
+   "title": "Тест «Литература» 6 класс — 209 вопросов | QKC",
+   "kind": "subject",
+   "grade": 6,
+   "subject": "lit"
+  },
+  {
+   "path": "/6/english/",
+   "title": "Тест «Английский язык» 6 класс — 668 вопросов | QKC",
+   "kind": "subject",
+   "grade": 6,
+   "subject": "english"
+  },
+  {
+   "path": "/6/biology/",
+   "title": "Тест «Биология» 6 класс — 207 вопросов | QKC",
+   "kind": "subject",
+   "grade": 6,
+   "subject": "biology"
+  },
+  {
+   "path": "/6/geography/",
+   "title": "Тест «География» 6 класс — 236 вопросов | QKC",
+   "kind": "subject",
+   "grade": 6,
+   "subject": "geography"
+  },
+  {
+   "path": "/6/history/",
+   "title": "Тест «История» 6 класс — 253 вопроса | QKC",
+   "kind": "subject",
+   "grade": 6,
+   "subject": "history"
+  },
+  {
+   "path": "/6/social/",
+   "title": "Тест «Обществознание» 6 класс — 177 вопросов | QKC",
+   "kind": "subject",
+   "grade": 6,
+   "subject": "social"
+  },
+  {
+   "path": "/6/informatics/",
+   "title": "Тест «Информатика» 6 класс — 199 вопросов | QKC",
+   "kind": "subject",
+   "grade": 6,
+   "subject": "informatics"
+  },
+  {
+   "path": "/6/art/",
+   "title": "Тест по предмету «ИЗО» — 6 класс: 305 вопросов онлайн бесплатно | QKC",
+   "kind": "subject",
+   "grade": 6,
+   "subject": "art"
+  },
+  {
+   "path": "/6/music/",
+   "title": "Тест «Музыка» 6 класс — 309 вопросов | QKC",
+   "kind": "subject",
+   "grade": 6,
+   "subject": "music"
+  },
+  {
+   "path": "/6/tech/",
+   "title": "Тест «Технология» 6 класс — 204 вопроса | QKC",
+   "kind": "subject",
+   "grade": 6,
+   "subject": "tech"
+  },
+  {
+   "path": "/6/pe/",
+   "title": "Тест «Физкультура» 6 класс — 204 вопроса | QKC",
+   "kind": "subject",
+   "grade": 6,
+   "subject": "pe"
+  },
+  {
+   "path": "/6/obzh/",
+   "title": "Тест по предмету «ОБЖ» — 6 класс: 199 вопросов онлайн бесплатно | QKC",
+   "kind": "subject",
+   "grade": 6,
+   "subject": "obzh"
+  },
+  {
+   "path": "/7/",
+   "title": "Тесты за 7 класс — все предметы: 4 593 вопроса онлайн | QKC",
+   "kind": "grade"
+  },
+  {
+   "path": "/7/algebra/",
+   "title": "Тест «Алгебра» 7 класс — 459 вопросов | QKC",
+   "kind": "subject",
+   "grade": 7,
+   "subject": "algebra"
+  },
+  {
+   "path": "/7/geom/",
+   "title": "Тест «Геометрия» 7 класс — 244 вопроса | QKC",
+   "kind": "subject",
+   "grade": 7,
+   "subject": "geom"
+  },
+  {
+   "path": "/7/russian/",
+   "title": "Тест «Русский язык» 7 класс — 204 вопроса | QKC",
+   "kind": "subject",
+   "grade": 7,
+   "subject": "russian"
+  },
+  {
+   "path": "/7/lit/",
+   "title": "Тест «Литература» 7 класс — 204 вопроса | QKC",
+   "kind": "subject",
+   "grade": 7,
+   "subject": "lit"
+  },
+  {
+   "path": "/7/english/",
+   "title": "Тест «Английский язык» 7 класс — 636 вопросов | QKC",
+   "kind": "subject",
+   "grade": 7,
+   "subject": "english"
+  },
+  {
+   "path": "/7/physics/",
+   "title": "Тест «Физика» 7 класс — 349 вопросов | QKC",
+   "kind": "subject",
+   "grade": 7,
+   "subject": "physics"
+  },
+  {
+   "path": "/7/biology/",
+   "title": "Тест «Биология» 7 класс — 202 вопроса | QKC",
+   "kind": "subject",
+   "grade": 7,
+   "subject": "biology"
+  },
+  {
+   "path": "/7/geography/",
+   "title": "Тест «География» 7 класс — 262 вопроса | QKC",
+   "kind": "subject",
+   "grade": 7,
+   "subject": "geography"
+  },
+  {
+   "path": "/7/history/",
+   "title": "Тест «История» 7 класс — 270 вопросов | QKC",
+   "kind": "subject",
+   "grade": 7,
+   "subject": "history"
+  },
+  {
+   "path": "/7/social/",
+   "title": "Тест «Обществознание» 7 класс — 177 вопросов | QKC",
+   "kind": "subject",
+   "grade": 7,
+   "subject": "social"
+  },
+  {
+   "path": "/7/informatics/",
+   "title": "Тест «Информатика» 7 класс — 368 вопросов | QKC",
+   "kind": "subject",
+   "grade": 7,
+   "subject": "informatics"
+  },
+  {
+   "path": "/7/art/",
+   "title": "Тест по предмету «ИЗО» — 7 класс: 300 вопросов онлайн бесплатно | QKC",
+   "kind": "subject",
+   "grade": 7,
+   "subject": "art"
+  },
+  {
+   "path": "/7/music/",
+   "title": "Тест «Музыка» 7 класс — 305 вопросов | QKC",
+   "kind": "subject",
+   "grade": 7,
+   "subject": "music"
+  },
+  {
+   "path": "/7/tech/",
+   "title": "Тест «Технология» 7 класс — 205 вопросов | QKC",
+   "kind": "subject",
+   "grade": 7,
+   "subject": "tech"
+  },
+  {
+   "path": "/7/pe/",
+   "title": "Тест «Физкультура» 7 класс — 209 вопросов | QKC",
+   "kind": "subject",
+   "grade": 7,
+   "subject": "pe"
+  },
+  {
+   "path": "/7/obzh/",
+   "title": "Тест по предмету «ОБЖ» — 7 класс: 199 вопросов онлайн бесплатно | QKC",
+   "kind": "subject",
+   "grade": 7,
+   "subject": "obzh"
+  },
+  {
+   "path": "/8/",
+   "title": "Тесты за 8 класс — все предметы: 4 645 вопросов онлайн | QKC",
+   "kind": "grade"
+  },
+  {
+   "path": "/8/algebra/",
+   "title": "Тест «Алгебра» 8 класс — 365 вопросов | QKC",
+   "kind": "subject",
+   "grade": 8,
+   "subject": "algebra"
+  },
+  {
+   "path": "/8/geom/",
+   "title": "Тест «Геометрия» 8 класс — 208 вопросов | QKC",
+   "kind": "subject",
+   "grade": 8,
+   "subject": "geom"
+  },
+  {
+   "path": "/8/russian/",
+   "title": "Тест «Русский язык» 8 класс — 198 вопросов | QKC",
+   "kind": "subject",
+   "grade": 8,
+   "subject": "russian"
+  },
+  {
+   "path": "/8/lit/",
+   "title": "Тест «Литература» 8 класс — 207 вопросов | QKC",
+   "kind": "subject",
+   "grade": 8,
+   "subject": "lit"
+  },
+  {
+   "path": "/8/english/",
+   "title": "Тест «Английский язык» 8 класс — 632 вопроса | QKC",
+   "kind": "subject",
+   "grade": 8,
+   "subject": "english"
+  },
+  {
+   "path": "/8/physics/",
+   "title": "Тест «Физика» 8 класс — 240 вопросов | QKC",
+   "kind": "subject",
+   "grade": 8,
+   "subject": "physics"
+  },
+  {
+   "path": "/8/chemistry/",
+   "title": "Тест «Химия» 8 класс — 260 вопросов | QKC",
+   "kind": "subject",
+   "grade": 8,
+   "subject": "chemistry"
+  },
+  {
+   "path": "/8/biology/",
+   "title": "Тест «Биология» 8 класс — 221 вопрос | QKC",
+   "kind": "subject",
+   "grade": 8,
+   "subject": "biology"
+  },
+  {
+   "path": "/8/geography/",
+   "title": "Тест «География» 8 класс — 279 вопросов | QKC",
+   "kind": "subject",
+   "grade": 8,
+   "subject": "geography"
+  },
+  {
+   "path": "/8/history/",
+   "title": "Тест «История» 8 класс — 246 вопросов | QKC",
+   "kind": "subject",
+   "grade": 8,
+   "subject": "history"
+  },
+  {
+   "path": "/8/social/",
+   "title": "Тест «Обществознание» 8 класс — 196 вопросов | QKC",
+   "kind": "subject",
+   "grade": 8,
+   "subject": "social"
+  },
+  {
+   "path": "/8/informatics/",
+   "title": "Тест «Информатика» 8 класс — 368 вопросов | QKC",
+   "kind": "subject",
+   "grade": 8,
+   "subject": "informatics"
+  },
+  {
+   "path": "/8/art/",
+   "title": "Тест по предмету «ИЗО» — 8 класс: 300 вопросов онлайн бесплатно | QKC",
+   "kind": "subject",
+   "grade": 8,
+   "subject": "art"
+  },
+  {
+   "path": "/8/music/",
+   "title": "Тест «Музыка» 8 класс — 322 вопроса | QKC",
+   "kind": "subject",
+   "grade": 8,
+   "subject": "music"
+  },
+  {
+   "path": "/8/tech/",
+   "title": "Тест «Технология» 8 класс — 196 вопросов | QKC",
+   "kind": "subject",
+   "grade": 8,
+   "subject": "tech"
+  },
+  {
+   "path": "/8/pe/",
+   "title": "Тест «Физкультура» 8 класс — 210 вопросов | QKC",
+   "kind": "subject",
+   "grade": 8,
+   "subject": "pe"
+  },
+  {
+   "path": "/8/obzh/",
+   "title": "Тест по предмету «ОБЖ» — 8 класс: 197 вопросов онлайн бесплатно | QKC",
+   "kind": "subject",
+   "grade": 8,
+   "subject": "obzh"
+  },
+  {
+   "path": "/9/",
+   "title": "Тесты за 9 класс — все предметы: 4 635 вопросов онлайн | QKC",
+   "kind": "grade"
+  },
+  {
+   "path": "/9/algebra/",
+   "title": "Тест «Алгебра» 9 класс — 320 вопросов | QKC",
+   "kind": "subject",
+   "grade": 9,
+   "subject": "algebra"
+  },
+  {
+   "path": "/9/geom/",
+   "title": "Тест «Геометрия» 9 класс — 149 вопросов | QKC",
+   "kind": "subject",
+   "grade": 9,
+   "subject": "geom"
+  },
+  {
+   "path": "/9/russian/",
+   "title": "Тест «Русский язык» 9 класс — 243 вопроса | QKC",
+   "kind": "subject",
+   "grade": 9,
+   "subject": "russian"
+  },
+  {
+   "path": "/9/lit/",
+   "title": "Тест «Литература» 9 класс — 340 вопросов | QKC",
+   "kind": "subject",
+   "grade": 9,
+   "subject": "lit"
+  },
+  {
+   "path": "/9/english/",
+   "title": "Тест «Английский язык» 9 класс — 605 вопросов | QKC",
+   "kind": "subject",
+   "grade": 9,
+   "subject": "english"
+  },
+  {
+   "path": "/9/physics/",
+   "title": "Тест «Физика» 9 класс — 252 вопроса | QKC",
+   "kind": "subject",
+   "grade": 9,
+   "subject": "physics"
+  },
+  {
+   "path": "/9/chemistry/",
+   "title": "Тест «Химия» 9 класс — 212 вопросов | QKC",
+   "kind": "subject",
+   "grade": 9,
+   "subject": "chemistry"
+  },
+  {
+   "path": "/9/biology/",
+   "title": "Тест «Биология» 9 класс — 402 вопроса | QKC",
+   "kind": "subject",
+   "grade": 9,
+   "subject": "biology"
+  },
+  {
+   "path": "/9/geography/",
+   "title": "Тест «География» 9 класс — 208 вопросов | QKC",
+   "kind": "subject",
+   "grade": 9,
+   "subject": "geography"
+  },
+  {
+   "path": "/9/history/",
+   "title": "Тест «История» 9 класс — 238 вопросов | QKC",
+   "kind": "subject",
+   "grade": 9,
+   "subject": "history"
+  },
+  {
+   "path": "/9/social/",
+   "title": "Тест «Обществознание» 9 класс — 278 вопросов | QKC",
+   "kind": "subject",
+   "grade": 9,
+   "subject": "social"
+  },
+  {
+   "path": "/9/informatics/",
+   "title": "Тест «Информатика» 9 класс — 370 вопросов | QKC",
+   "kind": "subject",
+   "grade": 9,
+   "subject": "informatics"
+  },
+  {
+   "path": "/9/art/",
+   "title": "Тест по предмету «ИЗО» — 9 класс: 307 вопросов онлайн бесплатно | QKC",
+   "kind": "subject",
+   "grade": 9,
+   "subject": "art"
+  },
+  {
+   "path": "/9/music/",
+   "title": "Тест «Музыка» 9 класс — 304 вопроса | QKC",
+   "kind": "subject",
+   "grade": 9,
+   "subject": "music"
+  },
+  {
+   "path": "/9/pe/",
+   "title": "Тест «Физкультура» 9 класс — 211 вопросов | QKC",
+   "kind": "subject",
+   "grade": 9,
+   "subject": "pe"
+  },
+  {
+   "path": "/9/obzh/",
+   "title": "Тест по предмету «ОБЖ» — 9 класс: 196 вопросов онлайн бесплатно | QKC",
+   "kind": "subject",
+   "grade": 9,
+   "subject": "obzh"
+  },
+  {
+   "path": "/10/",
+   "title": "Тесты за 10 класс — все предметы: 3 814 вопросов онлайн | QKC",
+   "kind": "grade"
+  },
+  {
+   "path": "/10/algebra/",
+   "title": "Тест «Алгебра» 10 класс — 199 вопросов | QKC",
+   "kind": "subject",
+   "grade": 10,
+   "subject": "algebra"
+  },
+  {
+   "path": "/10/geom/",
+   "title": "Тест «Геометрия» 10 класс — 144 вопроса | QKC",
+   "kind": "subject",
+   "grade": 10,
+   "subject": "geom"
+  },
+  {
+   "path": "/10/russian/",
+   "title": "Тест «Русский язык» 10 класс — 277 вопросов | QKC",
+   "kind": "subject",
+   "grade": 10,
+   "subject": "russian"
+  },
+  {
+   "path": "/10/lit/",
+   "title": "Тест «Литература» 10 класс — 360 вопросов | QKC",
+   "kind": "subject",
+   "grade": 10,
+   "subject": "lit"
+  },
+  {
+   "path": "/10/english/",
+   "title": "Тест «Английский язык» 10 класс — 603 вопроса | QKC",
+   "kind": "subject",
+   "grade": 10,
+   "subject": "english"
+  },
+  {
+   "path": "/10/physics/",
+   "title": "Тест «Физика» 10 класс — 318 вопросов | QKC",
+   "kind": "subject",
+   "grade": 10,
+   "subject": "physics"
+  },
+  {
+   "path": "/10/chemistry/",
+   "title": "Тест «Химия» 10 класс — 157 вопросов | QKC",
+   "kind": "subject",
+   "grade": 10,
+   "subject": "chemistry"
+  },
+  {
+   "path": "/10/biology/",
+   "title": "Тест «Биология» 10 класс — 346 вопросов | QKC",
+   "kind": "subject",
+   "grade": 10,
+   "subject": "biology"
+  },
+  {
+   "path": "/10/geography/",
+   "title": "Тест «География» 10 класс — 308 вопросов | QKC",
+   "kind": "subject",
+   "grade": 10,
+   "subject": "geography"
+  },
+  {
+   "path": "/10/history/",
+   "title": "Тест «История» 10 класс — 244 вопроса | QKC",
+   "kind": "subject",
+   "grade": 10,
+   "subject": "history"
+  },
+  {
+   "path": "/10/social/",
+   "title": "Тест «Обществознание» 10 класс — 295 вопросов | QKC",
+   "kind": "subject",
+   "grade": 10,
+   "subject": "social"
+  },
+  {
+   "path": "/10/informatics/",
+   "title": "Тест «Информатика» 10 класс — 358 вопросов | QKC",
+   "kind": "subject",
+   "grade": 10,
+   "subject": "informatics"
+  },
+  {
+   "path": "/10/pe/",
+   "title": "Тест «Физкультура» 10 класс — 205 вопросов | QKC",
+   "kind": "subject",
+   "grade": 10,
+   "subject": "pe"
+  },
+  {
+   "path": "/11/",
+   "title": "Тесты за 11 класс — все предметы: 4 089 вопросов онлайн | QKC",
+   "kind": "grade"
+  },
+  {
+   "path": "/11/algebra/",
+   "title": "Тест «Алгебра» 11 класс — 259 вопросов | QKC",
+   "kind": "subject",
+   "grade": 11,
+   "subject": "algebra"
+  },
+  {
+   "path": "/11/geom/",
+   "title": "Тест «Геометрия» 11 класс — 201 вопрос | QKC",
+   "kind": "subject",
+   "grade": 11,
+   "subject": "geom"
+  },
+  {
+   "path": "/11/russian/",
+   "title": "Тест «Русский язык» 11 класс — 325 вопросов | QKC",
+   "kind": "subject",
+   "grade": 11,
+   "subject": "russian"
+  },
+  {
+   "path": "/11/lit/",
+   "title": "Тест «Литература» 11 класс — 345 вопросов | QKC",
+   "kind": "subject",
+   "grade": 11,
+   "subject": "lit"
+  },
+  {
+   "path": "/11/english/",
+   "title": "Тест «Английский язык» 11 класс — 606 вопросов | QKC",
+   "kind": "subject",
+   "grade": 11,
+   "subject": "english"
+  },
+  {
+   "path": "/11/physics/",
+   "title": "Тест «Физика» 11 класс — 310 вопросов | QKC",
+   "kind": "subject",
+   "grade": 11,
+   "subject": "physics"
+  },
+  {
+   "path": "/11/chemistry/",
+   "title": "Тест «Химия» 11 класс — 248 вопросов | QKC",
+   "kind": "subject",
+   "grade": 11,
+   "subject": "chemistry"
+  },
+  {
+   "path": "/11/biology/",
+   "title": "Тест «Биология» 11 класс — 422 вопроса | QKC",
+   "kind": "subject",
+   "grade": 11,
+   "subject": "biology"
+  },
+  {
+   "path": "/11/geography/",
+   "title": "Тест «География» 11 класс — 215 вопросов | QKC",
+   "kind": "subject",
+   "grade": 11,
+   "subject": "geography"
+  },
+  {
+   "path": "/11/history/",
+   "title": "Тест «История» 11 класс — 236 вопросов | QKC",
+   "kind": "subject",
+   "grade": 11,
+   "subject": "history"
+  },
+  {
+   "path": "/11/social/",
+   "title": "Тест «Обществознание» 11 класс — 351 вопрос | QKC",
+   "kind": "subject",
+   "grade": 11,
+   "subject": "social"
+  },
+  {
+   "path": "/11/informatics/",
+   "title": "Тест «Информатика» 11 класс — 357 вопросов | QKC",
+   "kind": "subject",
+   "grade": 11,
+   "subject": "informatics"
+  },
+  {
+   "path": "/11/pe/",
+   "title": "Тест «Физкультура» 11 класс — 214 вопросов | QKC",
+   "kind": "subject",
+   "grade": 11,
+   "subject": "pe"
+  }
+ ]
+}

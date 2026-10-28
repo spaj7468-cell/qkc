@@ -7,8 +7,20 @@
   "scripts": {
     "test": "node test/e2e.mjs",
     "build:bank": "python3 gen/assemble.py",
+    "build:seo": "python3 gen/build_seo.py",
     "start": "python3 -m http.server 8099"
   },
-  "keywords": ["quiz", "education", "vanilla-js", "pwa", "offline", "school", "trainer"],
-  "author": "Aleksandr Zhuravlev / OuRi <juravlev.aleksandr2020@gmail.com>"
+  "keywords": [
+    "quiz",
+    "education",
+    "vanilla-js",
+    "pwa",
+    "offline",
+    "school",
+    "trainer"
+  ],
+  "author": "Aleksandr Zhuravlev / OuRi <juravlev.aleksandr2020@gmail.com>",
+  "dependencies": {
+    "jsdom": "^29.1.1"
+  }
 }

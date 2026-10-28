@@ -261,9 +261,25 @@ async function main() {
   ok('ссылки отрисованы', $$('#openLinks .olink').length >= 7, 'n=' + $$('#openLinks .olink').length);
   ok('карта проекта — 10 пунктов', $$('#openMap li').length === 10, 'n=' + $$('#openMap li').length);
   ok('инструкция запуска — 5 шагов', $$('#openRun li').length === 5, 'n=' + $$('#openRun li').length);
+  // ── deep-link с параметрами: так устроены ссылки «Поделиться» и все CTA с SEO-страниц
+  safe('deep-link: #setup?g=7&s=algebra открывает тренажёр', async () => {
+    window.location.hash = '#setup?g=7&s=algebra&p=3&n=20&m=exam';
+    window.dispatchEvent(new window.HashChangeEvent('hashchange'));
+  });
+  await wait(350);
+  ok('deep-link: экран тренажёра виден', $('#screen-setup') && !$('#screen-setup').hidden);
+  ok('deep-link: главная скрыта', $('#screen-home') && $('#screen-home').hidden);
+  ok('deep-link: класс 7 выбран', /7/.test($$('#screen-setup .is-on').map(n => n.textContent).join(' ')));
+  ok('deep-link: неизвестный экран не ломает роутер', (() => {
+    window.location.hash = '#nonexistent-screen';
+    window.dispatchEvent(new window.HashChangeEvent('hashchange'));
+    return $('#screen-home') && !$('#screen-home').hidden;
+  })());
+
   ok('ссылка VK разработчика (id715180861)', !!$('#openLinks a[href="https://vk.com/id715180861"]'));
-  ok('ссылка на сайт OuRi Corp', !!$('#openLinks a[href^="https://spaj7468-cell.github.io/ouri-corp"]'));
-  ok('кнопка «Открыть сайт OuRi Corp»', !!$('.open-corp-btn[href^="https://spaj7468-cell.github.io/ouri-corp"]'));
+  // основной домен — corp.qkc.runs-on.dev; spaj7468-cell.github.io/ouri-corp/ теперь 301 на него
+  ok('ссылка на сайт OuRi Corp', !!$('#openLinks a[href^="https://corp.qkc.runs-on.dev"]'));
+  ok('кнопка «Открыть сайт OuRi Corp»', !!$('.open-corp-btn[href^="https://corp.qkc.runs-on.dev"]'));
   ok('i18n: словари RU и EN совпадают по ключам', (() => {
     const d = window.OURI_I18N;
     const rk = Object.keys(d.ru).sort().join('|'), ek = Object.keys(d.en).sort().join('|');

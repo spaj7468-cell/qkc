@@ -1,3 +1,7 @@
 __pycache__/
 *.pyc
 .DS_Store
+
+# npm (нужен только для node test/e2e.mjs — в Pages не публикуем)
+node_modules/
+package-lock.json

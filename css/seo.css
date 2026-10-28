@@ -1,0 +1,150 @@
+/* ═══════════════════════════════════════════════════════════════
+   OuRi / QKC — стили статических SEO-страниц (классы и предметы).
+   Только токены из css/style.css, ничего своего по цветам: страницы
+   обязаны выглядеть как остальной сайт (строго монохром).
+   ═══════════════════════════════════════════════════════════════ */
+
+.seo-wrap{ width:min(100% - 32px, 900px); margin-inline:auto }
+.seo-nav{ position:sticky; top:0; z-index:20; display:flex; align-items:center;
+  justify-content:space-between; gap:16px; padding:12px clamp(14px,3vw,26px);
+  background:color-mix(in srgb, var(--bg) 88%, transparent);
+  border-bottom:1px solid var(--line); backdrop-filter:blur(10px) }
+.seo-brand{ display:flex; align-items:center; gap:9px; font-family:var(--font-d);
+  font-size:.95rem; letter-spacing:.01em; color:var(--text) }
+.seo-brand img{ border-radius:7px }
+.seo-brand b{ font-weight:800 }
+.seo-beta{ border:1px solid var(--line2); border-radius:999px; padding:1px 8px;
+  font-size:.62rem; letter-spacing:.14em; color:var(--muted) }
+.seo-topcta{ flex:none; border:1px solid var(--line2); border-radius:999px;
+  padding:7px 15px; font-size:.82rem; color:var(--text2); transition:.2s }
+.seo-topcta:hover{ border-color:var(--text); color:var(--text) }
+
+.seo-crumbs{ padding:14px clamp(14px,3vw,26px) 0 }
+.seo-crumbs ol{ display:flex; flex-wrap:wrap; gap:6px; list-style:none; margin:0;
+  padding:0; font-size:.78rem; color:var(--muted2) }
+.seo-crumbs li + li::before{ content:"/"; margin-right:6px; color:var(--muted2) }
+.seo-crumbs a{ color:var(--muted); border-bottom:1px solid transparent }
+.seo-crumbs a:hover{ color:var(--text); border-bottom-color:var(--line2) }
+.seo-crumbs [aria-current]{ color:var(--text2) }
+
+.seo-h1{ font-family:var(--font-d); font-weight:800; letter-spacing:-.02em;
+  font-size:clamp(1.75rem,4.4vw,2.9rem); line-height:1.1; margin:18px 0 14px }
+.seo-lede{ color:var(--text2); font-size:clamp(1rem,1.5vw,1.09rem); max-width:74ch;
+  margin:0 0 24px }
+.seo-h2{ font-family:var(--font-d); font-weight:700; letter-spacing:-.01em;
+  font-size:clamp(1.15rem,2.3vw,1.5rem); margin:0 0 12px }
+.seo-p{ color:var(--text2); max-width:76ch; margin:0 0 14px }
+
+.seo-cta{ display:flex; flex-wrap:wrap; gap:10px; margin:6px 0 8px }
+.seo-sec{ margin-top:clamp(34px,5vw,56px); padding-top:clamp(20px,3vw,28px);
+  border-top:1px solid var(--line) }
+
+.seo-stats{ display:grid; gap:12px; margin:0 0 16px;
+  grid-template-columns:repeat(auto-fit,minmax(170px,1fr)) }
+.seo-stats>div{ border:1px solid var(--line); border-radius:var(--r-sm);
+  padding:14px 16px; background:var(--surface) }
+.seo-stats dt{ font-size:.74rem; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--muted2); margin-bottom:6px }
+.seo-stats dd{ margin:0; font-family:var(--font-d); font-weight:700;
+  font-size:1.02rem; color:var(--text) }
+
+.seo-table{ width:100%; border-collapse:collapse; font-size:.92rem }
+.seo-table th,.seo-table td{ text-align:left; padding:11px 12px;
+  border-bottom:1px solid var(--line); vertical-align:top }
+.seo-table thead th{ font-size:.72rem; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--muted2); font-weight:600; border-bottom:1px solid var(--line2) }
+.seo-table tbody th{ font-weight:600; color:var(--text) }
+.seo-table td{ color:var(--text2) }
+.seo-table a{ border-bottom:1px solid var(--line2) }
+.seo-table a:hover{ color:var(--text); border-bottom-color:var(--text) }
+.seo-rowall th,.seo-rowall td{ border-bottom:none; font-weight:700; color:var(--text) }
+@media (max-width:640px){
+  .seo-table thead{ display:none }
+  .seo-table tr{ display:grid; gap:4px; padding:12px 0; border-bottom:1px solid var(--line) }
+  .seo-table th,.seo-table td{ border:none; padding:2px 0 }
+}
+
+.seo-chips{ display:flex; flex-wrap:wrap; gap:8px }
+.seo-chip{ border:1px solid var(--line); border-radius:999px; padding:6px 14px;
+  font-size:.82rem; color:var(--muted); transition:.2s }
+.seo-chip:hover{ color:var(--text); border-color:var(--line2) }
+
+.seo-qlist{ list-style:none; counter-reset:q; margin:0 0 18px; padding:0;
+  display:grid; gap:14px }
+.seo-q{ border:1px solid var(--line); border-radius:var(--r-sm); padding:16px 18px;
+  background:var(--surface) }
+.seo-q__t{ margin:0 0 12px; color:var(--text); font-weight:500 }
+.seo-q__n{ display:inline-block; min-width:1.6em; color:var(--muted2);
+  font-family:var(--font-mono); font-size:.9em }
+.seo-q__opts{ list-style:none; margin:0 0 12px; padding:0; display:grid; gap:7px }
+.seo-q__opt{ border:1px solid var(--line); border-radius:9px; padding:9px 12px;
+  color:var(--text2); font-size:.92rem }
+.seo-q__hint{ margin:0 0 12px; color:var(--muted); font-size:.86rem }
+.seo-q__ans{ border-top:1px dashed var(--line2); padding-top:10px }
+.seo-q__ans summary{ cursor:pointer; color:var(--muted); font-size:.86rem;
+  list-style:none }
+.seo-q__ans summary::-webkit-details-marker{ display:none }
+.seo-q__ans summary::before{ content:"+ "; font-family:var(--font-mono) }
+.seo-q__ans[open] summary::before{ content:"− " }
+.seo-q__ans summary:hover{ color:var(--text) }
+.seo-q__ans p{ margin:10px 0 0; color:var(--text2); font-size:.92rem;
+  border-left:2px solid var(--line2); padding-left:12px }
+.seo-q__meta{ margin:10px 0 0; font-size:.76rem; color:var(--muted2) }
+
+.seo-faq{ display:grid; gap:10px }
+.seo-faq details{ border:1px solid var(--line); border-radius:var(--r-sm);
+  padding:13px 16px; background:var(--surface) }
+.seo-faq summary{ cursor:pointer; font-weight:600; color:var(--text); list-style:none }
+.seo-faq summary::-webkit-details-marker{ display:none }
+.seo-faq summary::before{ content:"+ "; font-family:var(--font-mono); color:var(--muted2) }
+.seo-faq details[open] summary::before{ content:"− " }
+.seo-faq p{ margin:10px 0 0; color:var(--text2); font-size:.93rem; max-width:76ch }
+
+.seo-seolink{ color:var(--text2); max-width:80ch }
+.seo-seolink a{ display:inline-block; margin:2px 6px 2px 0; padding:3px 10px;
+  border:1px solid var(--line); border-radius:999px; font-size:.84rem; color:var(--muted) }
+.seo-seolink a:hover{ color:var(--text); border-color:var(--line2) }
+.seo-subjlist{ display:grid; gap:7px }
+.seo-subj{ font-size:.88rem; color:var(--muted) }
+.seo-subj a{ color:var(--text2); border-bottom:1px solid var(--line) }
+.seo-subj a:hover{ color:var(--text) }
+
+.seo-foot{ margin-top:clamp(46px,7vw,86px); border-top:1px solid var(--line);
+  padding:28px 0 40px; color:var(--muted); font-size:.86rem }
+.seo-foot p{ max-width:82ch }
+.seo-footnav a{ border-bottom:1px solid var(--line) }
+.seo-footnav a:hover{ color:var(--text) }
+.seo-note{ color:var(--muted2); font-size:.8rem }
+
+@media (prefers-reduced-motion:reduce){
+  .seo-nav,.seo-topcta,.seo-chip,.seo-subj a{ transition:none }
+}
+
+/* ── блок SEO-навигации на главной (index.html #seoHub) ── */
+.seo-hub{ margin-top:clamp(46px,7vw,92px); border-top:1px solid var(--line);
+  padding:clamp(26px,4vw,44px) clamp(14px,3vw,26px) }
+.seo-hub__in{ width:min(100%,var(--maxw)); margin-inline:auto }
+.seo-hub__t{ font-family:var(--font-d); font-weight:800; letter-spacing:-.02em;
+  font-size:clamp(1.3rem,3vw,1.9rem); margin:0 0 10px }
+.seo-hub__t2{ font-family:var(--font-d); font-weight:700; font-size:1rem;
+  margin:26px 0 10px; color:var(--text2) }
+.seo-hub__p{ color:var(--muted); margin:0 0 20px; max-width:70ch }
+.seo-hub__grades{ list-style:none; margin:0; padding:0; display:grid; gap:10px;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr)) }
+.seo-hub__grades a{ display:flex; flex-direction:column; gap:4px; padding:14px 16px;
+  border:1px solid var(--line); border-radius:var(--r-sm); background:var(--surface);
+  transition:.2s }
+.seo-hub__grades a:hover{ border-color:var(--line2); transform:translateY(-2px) }
+.seo-hub__grades b{ font-family:var(--font-d); font-size:1rem; color:var(--text) }
+.seo-hub__grades span{ font-size:.78rem; color:var(--muted2) }
+.seo-hub__subs{ display:flex; flex-wrap:wrap; gap:8px }
+.seo-hub__subs a{ border:1px solid var(--line); border-radius:999px; padding:6px 13px;
+  font-size:.82rem; color:var(--muted); transition:.2s }
+.seo-hub__subs a:hover{ color:var(--text); border-color:var(--line2) }
+.seo-hub__more{ margin:22px 0 0 }
+.seo-hub__more a{ border-bottom:1px solid var(--line2); color:var(--text2) }
+.seo-hub__more a:hover{ color:var(--text) }
+@media (prefers-reduced-motion:reduce){
+  .seo-hub__grades a,.seo-hub__subs a{ transition:none }
+  .seo-hub__grades a:hover{ transform:none }
+}

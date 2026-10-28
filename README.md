@@ -97,7 +97,7 @@ NODE_PATH=/tmp/node_modules node test/e2e.mjs   # 89 проверок, jsdom
 
 Папка самодостаточна: залей её содержимое в корень домена (или открой локально). Service worker включается на https/localhost и кэширует сайт и банк вопросов.
 
-Проект уже в сети: **https://spaj7468-cell.github.io/qkc/** · репозиторий **https://github.com/spaj7468-cell/qkc**
+Проект уже в сети: **https://qkc.runs-on.dev/** (основной домен) · зеркало https://spaj7468-cell.github.io/qkc/ (301 на основной) · репозиторий **https://github.com/spaj7468-cell/qkc**
 Бесплатный короткий домен **https://qkc.runs-on.dev** — заявка в открытый реестр [runs-on.dev](https://runs-on.dev) подана: **[zordhalo/runs-on.dev#310](https://github.com/zordhalo/runs-on.dev/pull/310)** (CNAME на GitHub Pages; там же субдомены `corp.qkc.runs-on.dev` для сайта компании и `engine.qkc.runs-on.dev` для документации движка). После merge реестр сам синхронизирует DNS — пошагово в **[RUNSON.md](RUNSON.md)**.
 Подробная инструкция по остальным бесплатным поддоменам и доменам — в **[DEPLOY.md](DEPLOY.md)**:
 проверенные свободные имена (`ouri.netlify.app`, `ouri.vercel.app`, `qkc.pages.dev`, `ouri.neocities.org`),
@@ -122,9 +122,9 @@ NODE_PATH=/tmp/node_modules node test/e2e.mjs   # 89 проверок, jsdom
 
 QKC is part of the connected OuRi project family:
 - [OuRi Corp — project directory](https://spaj7468-cell.github.io/ouri-corp/)
-- [QKC live trainer](https://spaj7468-cell.github.io/qkc/)
-- [QKCcode — programming courses](https://spaj7468-cell.github.io/qkccode/)
-- [QKC Engine — reusable quiz engine and docs](https://spaj7468-cell.github.io/qkc-engine/)
+- [QKC live trainer](https://qkc.runs-on.dev/)
+- [QKCcode — programming courses](https://code.qkc.runs-on.dev/)
+- [QKC Engine — reusable quiz engine and docs](https://engine.qkc.runs-on.dev/)
 - [Arakul Studio — browser workspace](https://spaj7468-cell.github.io/Arakul/)
 
 Projects have different goals and maturity levels; their quality and feature sets can differ because they were built at different times. A newer project is not automatically better at everything.

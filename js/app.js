@@ -345,7 +345,11 @@ const Router = {
     if (window.scrollTo) window.scrollTo({ top: 0, behavior: 'auto' });
     document.body.classList.toggle('is-locked', false);
   },
-  fromHash() { const h = (location.hash || '').replace('#', ''); return SCREENS[h] ? h : 'home'; }
+  /* Хэш может прийти с параметрами: '#setup?g=7&s=algebra&p=3&n=20&m=exam'
+     (такой формат строит buildShareUrl и такие ссылки ведут с SEO-страниц /7/algebra/).
+     Раньше SCREENS['setup?g=7&…'] не находилось и роутер молча падал на 'home',
+     из-за чего любая расшаренная ссылка открывалась на главной. Отрезаем query. */
+  fromHash() { const h = (location.hash || '').replace('#', '').split('?')[0]; return SCREENS[h] ? h : 'home'; }
 };
 const SCREENS = {};
 
@@ -1719,11 +1723,11 @@ const OPEN_ICONS = {
 };
 function renderOpen() {
   const L = [
-    ['site', 'open.l1n', 'open.l1d', 'spaj7468-cell.github.io/qkc', 'https://spaj7468-cell.github.io/qkc/', 1],
+    ['site', 'open.l1n', 'open.l1d', 'qkc.runs-on.dev', 'https://qkc.runs-on.dev/', 1],
     ['git', 'open.l2n', 'open.l2d', 'github.com/spaj7468-cell/qkc', 'https://github.com/spaj7468-cell/qkc', 1],
-    ['folder', 'open.l4n', 'open.l4d', 'spaj7468-cell.github.io/ouri-corp', 'https://spaj7468-cell.github.io/ouri-corp/', 1],
-    ['code', 'open.l9n', 'open.l9d', 'spaj7468-cell.github.io/qkccode', 'https://spaj7468-cell.github.io/qkccode/', 1],
-    ['doc', 'open.l3n', 'open.l3d', 'qkc.runs-on.dev · PR #310', 'https://github.com/zordhalo/runs-on.dev/pull/310', 1],
+    ['folder', 'open.l4n', 'open.l4d', 'corp.qkc.runs-on.dev', 'https://corp.qkc.runs-on.dev/', 1],
+    ['code', 'open.l9n', 'open.l9d', 'code.qkc.runs-on.dev', 'https://code.qkc.runs-on.dev/', 1],
+    ['doc', 'open.l3n', 'open.l3d', 'домен qkc.runs-on.dev · PR #310', 'https://github.com/zordhalo/runs-on.dev/pull/310', 1],
     ['user', 'open.l5n', 'open.l5d', 'github.com/spaj7468-cell', 'https://github.com/spaj7468-cell', 1],
     ['chat', 'open.l6n', 'open.l6d', 'vk.com/id715180861', 'https://vk.com/id715180861', 1],
     ['chat', 'open.l7n', 'open.l7d', 'vk.ru/im/channels/-242032915', 'https://vk.ru/im/channels/-242032915', 1],

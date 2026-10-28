@@ -1,5 +1,5 @@
 /* OuRi service worker — офлайн-доступ к сайту и банку вопросов */
-const CACHE = 'ouri-v1.3.3';
+const CACHE = 'ouri-v1.4.0';
 const CORE = [
   './', './index.html', './css/style.css', './js/app.js', './js/i18n.js',
   './manifest.webmanifest', './assets/bank-index.js',
@@ -44,7 +44,15 @@ self.addEventListener('fetch', e => {
       const copy = res.clone();
       caches.open(CACHE).then(c => { if (res.status === 200) c.put(req, copy); }).catch(() => {});
       return res;
-    }).catch(() => caches.match(req).then(hit => hit || (url.pathname.endsWith('/') ? caches.match('./index.html') : null)))
+    }).catch(() => caches.match(req).then(hit => {
+      if (hit) return hit;
+      // навигация на статическую посадочную (/7/algebra/) офлайн — отдаём кэш страницы,
+      // иначе приложение, чтобы сайт не «умирал» без сети
+      if (req.mode === 'navigate') {
+        return caches.match(url.pathname).then(p2 => p2 || caches.match('./index.html'));
+      }
+      return url.pathname.endsWith('/') ? caches.match('./index.html') : null;
+    }))
   );
 });
 
