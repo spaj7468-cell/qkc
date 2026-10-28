@@ -8,6 +8,8 @@
     "test": "node test/e2e.mjs",
     "build:bank": "python3 gen/assemble.py",
     "build:seo": "python3 gen/build_seo.py",
+    "build:lit": "python3 gen/lit/build_lit.py",
+    "build:lit:check": "python3 gen/lit/build_lit.py --check",
     "start": "python3 -m http.server 8099"
   },
   "keywords": [
@@ -17,7 +19,10 @@
     "pwa",
     "offline",
     "school",
-    "trainer"
+    "trainer",
+    "literature",
+    "public-domain",
+    "reader"
   ],
   "author": "Aleksandr Zhuravlev / OuRi <juravlev.aleksandr2020@gmail.com>",
   "dependencies": {

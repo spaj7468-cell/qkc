@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://qkc.runs-on.dev/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://qkc.runs-on.dev/seo/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://qkc.runs-on.dev/seo/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://qkc.runs-on.dev/0/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://qkc.runs-on.dev/0/math/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://qkc.runs-on.dev/0/russian/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
@@ -161,4 +161,89 @@
   <url><loc>https://qkc.runs-on.dev/11/social/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://qkc.runs-on.dev/11/informatics/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://qkc.runs-on.dev/11/pe/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/russia/lomonosov/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/russia/sumarokov/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/russia/derzhavin/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/russia/fonvizin/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/russia/radishchev/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/russia/karamzin/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/russia/krylov/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/russia/zhukovsky/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/russia/pogorelsky/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/russia/griboedov/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/russia/pushkin/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/russia/odoyevsky/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/russia/gogol/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/russia/goncharov/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/russia/lermontov/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/russia/turgenev/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/russia/dostoevsky/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/russia/grigorovich/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/russia/ostrovsky/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/russia/ushinsky/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/russia/saltykov-shchedrin/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/russia/tolstoy-l/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/russia/leskov/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/russia/mamin-sibiryak/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/russia/korolenko/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/russia/garshin/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/russia/chekhov/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/russia/gorky/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/russia/kuprin/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/russia/bunin/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/russia/andreev/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/russia/blok/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/russia/zamyatin/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/russia/esenin/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/usa/irving/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/usa/cooper/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/usa/hawthorne/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/usa/poe/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/usa/thoreau/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/usa/melville/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/usa/whitman/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/usa/dickinson/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/usa/twain/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/usa/james-h/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/usa/o-henry/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/usa/wharton/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/usa/dreiser/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/usa/london/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/china/konfutsiy/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/china/zhuang-zi/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/china/qu-yuan/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/china/li-bo/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/china/du-fu/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/china/bo-tszuyi/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/china/van-anshi/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/china/su-shi/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/china/guan-hanqing/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/china/shi-naian/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/china/luo-guanzhong/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/china/wu-chengen/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/china/pu-songling/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/china/wu-jingzi/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/china/cao-xueqin/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/china/lu-xun/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/china/yu-dafu/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/china/xu-zhimo/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/china/zhu-tsitsin/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/china/laozi/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/japan/sei-shonagon/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/japan/murasaki-shikibu/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/japan/kamo-no-chomei/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/japan/yoshida-kenko/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/japan/ihara-saikaku/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/japan/matsuo-basho/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/japan/chikamatsu/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/japan/ueda-akinari/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/japan/kobayashi-issa/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/japan/mori-ogai/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/japan/natsume-soseki/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/japan/kunikida-doppo/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/japan/shimazaki-toson/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/japan/kikuchi-kan/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/japan/akutagawa-ryunosuke/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qkc.runs-on.dev/lit/japan/miyazawa-kenji/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
 </urlset>

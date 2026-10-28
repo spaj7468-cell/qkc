@@ -95,6 +95,16 @@ def nq(n):
     return "%s %s" % (n_words(n), plural(n, ("вопрос", "вопроса", "вопросов")))
 
 
+def n_works(n):
+    """«20 произведений» / «2 произведения» / «1 произведение» — число + верная форма."""
+    return "%s %s" % (n_words(n), plural(n, ("произведение", "произведения", "произведений")))
+
+
+def n_authors(n):
+    """«84 автора» / «1 автор» / «12 авторов»."""
+    return "%s %s" % (n_words(n), plural(n, ("автор", "автора", "авторов")))
+
+
 def grade_label(g):
     """«7 класс» / «детский сад» — как его ищут люди."""
     g = int(g)
@@ -131,8 +141,14 @@ def write(path, text):
     return len(text)
 
 
+SLUG_RE = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)*")
+
+
 def slug_ok(s):
-    return re.fullmatch(r"[a-z0-9]+", str(s)) is not None
+    """Слаг из латиницы/цифр, дефис только между ними.
+    Проверка обязательна: слаги попадают в пути на диске и в URL,
+    поэтому '..' и '/' в них недопустимы."""
+    return SLUG_RE.fullmatch(str(s)) is not None
 
 
 # ────────────────────────────────────────────────────────────── данные
@@ -267,6 +283,7 @@ FOOT_TMPL = """</main>
       <a href="/">Главная</a> ·
       <a href="/#setup">Тренажёр</a> ·
       <a href="/#program">Программа</a> ·
+      <a href="/lit/">Литература</a> ·
       <a href="/#open">Открытый проект</a> ·
       <a href="https://github.com/spaj7468-cell/qkc">GitHub</a> ·
       <a href="https://engine.qkc.runs-on.dev/">QKC Engine</a> ·
@@ -706,6 +723,321 @@ def build_index_page(D, index_rows):
     return "/", title, page
 
 
+# ────────────────────────────────────────────────────────────── хрестоматия
+"""
+Посадочные страницы раздела «Литература» (хрестоматия).
+
+Данные берём из gen/lit/*.py — того же единственного источника, из которого
+gen/lit/build_lit.py собирает каталог приложения. Никаких отдельных списков
+авторов здесь нет: расхождение между сайтом и приложением невозможно.
+
+  /lit/                     — хаб: страны, авторы, правило отбора
+  /lit/<страна>/<автор>/    — страница автора: биография, годы жизни,
+                              список произведений с годами первой публикации
+
+Страницы описывают ФАКТЫ (кто, что, когда написал, что в общественном
+достоянии) — они полезны сами по себе и не зависят от того, подтянут ли уже
+текст. Тексты подтягивает отдельный проход (gen/lit/fetch_lit.py).
+"""
+import sys as _sys
+
+LIT_DIR = os.path.join(HERE, "lit")
+if LIT_DIR not in _sys.path:
+    _sys.path.insert(0, LIT_DIR)
+
+
+def load_lit():
+    """Каталог хрестоматии + список исключённых авторов. None, если данных нет."""
+    try:
+        import common as litcommon
+        import russia, usa, china, japan, excluded as litexcluded
+    except ImportError:
+        return None
+    countries = []
+    for mod in (russia, usa, china, japan):
+        c = dict(mod.COUNTRY)
+        c["authors"] = mod.AUTHORS
+        countries.append(c)
+    return dict(common=litcommon, countries=countries, excluded=litexcluded)
+
+
+def lit_year(common, y):
+    return common.year_str(y)
+
+
+def lit_work_status(common, w):
+    return common.work_status(w)
+
+
+def lit_author_page(L, country, a):
+    """Страница одного автора. Возвращает (path, title, html) или None."""
+    common = L["common"]
+    if not slug_ok(country["slug"]) or not slug_ok(a["slug"]):
+        return None
+    path = "/lit/%s/%s/" % (country["slug"], a["slug"])
+    canon = BASE + path
+    works = [w for w in a["works"]
+             if lit_work_status(common, w) != common.STATUS_REJECTED]
+    if not works:
+        return None
+    works = sorted(works, key=lambda w: w["pub"])
+    n = len(works)
+    life = "%s–%s" % (lit_year(common, a["born"]), lit_year(common, a["died"]))
+    if a["died"] is None:
+        life = "даты жизни неизвестны"
+    first = works[0]["title"]
+    last = works[-1]["title"]
+
+    title = ("%s (%s) — %s в общественном достоянии | Хрестоматия QKC"
+             % (a["name"], life, n_works(n)))
+    desc = ("%s, %s. %s с годами первой публикации: %s (%s) … %s (%s). "
+            "%s Хрестоматия QKC публикует только тексты, перешедшие в общественное достояние."
+            % (a["name"], life, n_works(n), first, lit_year(common, works[0]["pub"]),
+               last, lit_year(common, works[-1]["pub"]), a["bio"]))
+    desc = desc[:300]
+    h1 = a["name"]
+
+    genres = OrderedDict()
+    for w in works:
+        genres[w["genre"]] = genres.get(w["genre"], 0) + 1
+    gstr = ", ".join("%s — %d" % (g, c) for g, c in sorted(genres.items(), key=lambda x: -x[1]))
+
+    rows = []
+    for w in works:
+        st = lit_work_status(common, w)
+        if st == common.STATUS_NEEDS_TRANSLATION:
+            note = ("перевод проверяется" if w["lang"] != "ru" else "—")
+        else:
+            note = "общественное достояние"
+        orig = (" <span class=\"seo-orig\">%s</span>" % esc(w["orig"])) if w.get("orig") else ""
+        conf = (' <span class="seo-conf" title="Год первой публикации помечен как '
+                'требующий сверки с Викиданными">год сверяется</span>') if w.get("conf") == "chk" else ""
+        rows.append('<tr><th scope="row"><a href="/#lit?c=%s&amp;a=%s&amp;w=%s">%s</a>%s</th>'
+                    '<td>%s</td><td>%s%s</td><td>%s</td></tr>'
+                    % (esc(country["slug"]), esc(a["slug"]), esc(w["slug"]),
+                       esc(w["title"]), orig, esc(w["genre"]),
+                       esc(lit_year(common, w["pub"])), conf, esc(note)))
+
+    body = ('<p class="seo-lede">%s (%s) — %s. В хрестоматии QKC %d '
+            'произведений этого автора: годы первой публикации проверены, '
+            'в каталог попадают только тексты, перешедшие в общественное достояние.</p>'
+            '<div class="seo-cta"><a class="btn btn--primary btn--lg" '
+            'href="/#lit?c=%s&amp;a=%s">Открыть в хрестоматии</a>'
+            '<a class="btn btn--ghost" href="/lit/">Все авторы</a></div>'
+            '<section class="seo-sec"><h2 class="seo-h2">Об авторе</h2>'
+            '<table class="seo-table seo-facts"><tbody>'
+            '<tr><th scope="row">Годы жизни</th><td>%s</td></tr>'
+            '<tr><th scope="row">Период</th><td>%s</td></tr>'
+            '<tr><th scope="row">Жанры в каталоге</th><td>%s</td></tr>'
+            '<tr><th scope="row">Произведений</th><td>%d</td></tr>'
+            '%s</tbody></table><p>%s</p></section>'
+            % (esc(a["name"]), esc(life), esc(a["era"]), n,
+               esc(country["slug"]), esc(a["slug"]),
+               esc(life), esc(a["era"]), esc(gstr), n,
+               ('<tr><th scope="row">Имя в оригинале</th><td>%s</td></tr>' % esc(a["orig"])) if a.get("orig") else "",
+               esc(a["bio"])))
+
+    body += ('<section class="seo-sec"><h2 class="seo-h2">Произведения: годы первой публикации</h2>'
+             '<table class="seo-table"><thead><tr><th>Название</th><th>Жанр</th>'
+             '<th>Первая публикация</th><th>Правовой статус</th></tr></thead>'
+             '<tbody>%s</tbody></table>'
+             '<p class="seo-note">Год указан по первой публикации, а не по дате '
+             'написания: для авторского права важна именно она. Посмертные '
+             'публикации в каталог не включаются, даже если текст написан раньше.</p>'
+             '</section>' % "".join(rows))
+
+    body += ('<section class="seo-sec"><h2 class="seo-h2">Почему здесь не всё</h2>'
+             '<p>Произведение попадает в хрестоматию только если выполнены оба условия: '
+             'автор умер раньше %d года <b>и</b> текст впервые опубликован раньше %d года. '
+             'Первый заслон закрывает Россию (жизнь + 70 лет, с запасом на продление срока '
+             'реабилитированным и погибшим в 1941–1945), второй — США (там с 1 января 2026 года '
+             'свободно всё изданное до 1930-го). Отдельно проверяется перевод: он охраняется '
+             'как произведение переводчика, поэтому у переводных текстов статус '
+             '«перевод проверяется», пока не подтверждено, что срок истёк.</p>'
+             '<p class="seo-note">Тексты подтягиваются в хрестоматию отдельным проходом '
+             'и только из источников, где общественное достояние подтверждено. '
+             'Сокращённые пересказы чужих текстов мы не публикуем: пересказ охраняемого '
+             'произведения остаётся нарушением, сколько бы слов в нём ни было.</p>'
+             '</section>' % (common.PD_DEATH_CUTOFF, common.PD_PUB_CUTOFF))
+
+    others = [x for x in country["authors"] if x["slug"] != a["slug"] and x["works"]]
+    if others:
+        body += ('<section class="seo-sec"><h2 class="seo-h2">Другие авторы: %s</h2>'
+                 '<div class="seo-subjlist">%s</div></section>'
+                 % (esc(country["name"]),
+                    "".join('<span class="seo-subj"><a href="/lit/%s/%s/">%s</a></span>'
+                            % (esc(country["slug"]), esc(x["slug"]), esc(x["name"]))
+                            for x in others[:40])))
+
+    ld = [
+        OrderedDict([
+            ("@context", "https://schema.org"), ("@type", "Person"),
+            ("name", a["name"]), ("url", canon),
+            ("birthDate", str(a["born"]) if a["born"] and a["born"] > 0 else None),
+            ("deathDate", str(a["died"]) if a["died"] and a["died"] > 0 else None),
+            ("description", a["bio"]),
+            ("knowsAbout", [g for g in genres]),
+        ]),
+        OrderedDict([
+            ("@context", "https://schema.org"), ("@type", "ItemList"),
+            ("name", "%s — произведения" % a["name"]), ("numberOfItems", n),
+            ("itemListElement", [
+                OrderedDict([("@type", "ListItem"), ("position", i + 1),
+                             ("name", w["title"]),
+                             ("url", "%s#lit?c=%s&a=%s&w=%s" % (BASE, country["slug"], a["slug"], w["slug"]))])
+                for i, w in enumerate(works)]),
+        ]),
+        OrderedDict([
+            ("@context", "https://schema.org"), ("@type", "BreadcrumbList"),
+            ("itemListElement", [
+                OrderedDict([("@type", "ListItem"), ("position", 1), ("name", "Главная"), ("item", BASE + "/")]),
+                OrderedDict([("@type", "ListItem"), ("position", 2), ("name", "Литература"), ("item", BASE + "/lit/")]),
+                OrderedDict([("@type", "ListItem"), ("position", 3), ("name", a["name"]), ("item", canon)]),
+            ]),
+        ]),
+    ]
+    ld = [x for x in ld if x]
+    # Person с пустым birthDate ломает валидатор — чистим None
+    for o in ld:
+        for k in list(o.keys()):
+            if o[k] is None:
+                del o[k]
+
+    page = HEAD_TMPL % dict(title=esc(title), canon=esc(canon), desc=esc(desc),
+                            ogtitle=esc(h1), ogdesc=esc(desc[:200]), ogtype="profile",
+                            base=BASE, jsonld=jsonld_block(ld),
+                            crumbs=crumbs([("/", "Главная"), ("/lit/", "Литература"),
+                                           (path, a["name"])]))
+    page += '<h1 class="seo-h1">%s</h1>\n%s' % (esc(h1), body)
+    page += FOOT_TMPL % dict(product=esc(PRODUCT), org=esc(ORG),
+                             total="%d произв." % n, grades="1 стране",
+                             subjects="%d" % 1)
+    return path, title, page
+
+
+def build_lit_pages(L, pages_out):
+    """Хаб /lit/ + страницы авторов. Возвращает [(path, title, html, kind), ...]."""
+    common = L["common"]
+    out = []
+    countries = L["countries"]
+    n_auth = sum(len(c["authors"]) for c in countries)
+    n_wk = sum(len(a["works"]) for c in countries for a in c["authors"])
+    n_excl = len(L["excluded"].AUTHORS)
+
+    # ── страницы авторов ──
+    author_rows = OrderedDict()
+    for c in countries:
+        rows = []
+        for a in sorted(c["authors"], key=lambda x: (x["born"] is None, x["born"] or 0)):
+            r = lit_author_page(L, c, a)
+            if not r:
+                continue
+            path, title, html = r
+            out.append((path, title, html, "lit-author"))
+            pages_out.append(dict(path=path, title=title, kind="lit-author",
+                                  country=c["slug"], author=a["slug"]))
+            rows.append('<tr><th scope="row"><a href="%s">%s</a></th><td>%s</td>'
+                        '<td>%s</td><td>%d</td></tr>'
+                        % (esc(path), esc(a["name"]),
+                           esc("%s–%s" % (lit_year(common, a["born"]), lit_year(common, a["died"]))),
+                           esc(a["era"]), len(a["works"])))
+        author_rows[c["slug"]] = "".join(rows)
+
+    # ── хаб ──
+    title = ("Хрестоматия: %s и %s в общественном достоянии | QKC"
+             % (n_authors(n_auth), n_works(n_wk)))
+    desc = ("Русская, американская, китайская и японская классика, перешедшая в "
+            "общественное достояние: %s, %s с годами первой публикации. "
+            "Рассказы, стихи, сказки, повести и романы. Открытый проект OuRi, "
+            "без регистрации."
+            % (n_authors(n_auth), n_works(n_wk)))
+    h1 = "Литература: хрестоматия общественного достояния"
+    body = ('<p class="seo-lede">%s и %s из четырёх литератур — '
+            'русской, американской, китайской и японской. В каталог попадают только '
+            'тексты, перешедшие в общественное достояние: мы проверяем и год смерти '
+            'автора, и год первой публикации, а для переводных вещей — ещё и срок '
+            'охраны перевода. Ниже у каждого автора указаны годы жизни и полный список '
+            'произведений с годами.</p>'
+            '<div class="seo-cta"><a class="btn btn--primary btn--lg" href="/#lit">Открыть хрестоматию</a>'
+            '<a class="btn btn--ghost" href="/#setup">Тренажёр тестов</a></div>'
+            % (n_authors(n_auth), n_works(n_wk)))
+
+    for c in countries:
+        rows = author_rows.get(c["slug"], "")
+        if not rows:
+            continue
+        body += ('<section class="seo-sec"><h2 class="seo-h2">%s — %s</h2>'
+                 '<p>%s</p>'
+                 '<table class="seo-table"><thead><tr><th>Автор</th><th>Годы жизни</th>'
+                 '<th>Период</th><th>Произведений</th></tr></thead><tbody>%s</tbody></table>'
+                 '</section>' % (esc(c["name"]), esc(c["label"]), esc(c["rule"]), rows))
+
+    body += ('<section class="seo-sec"><h2 class="seo-h2">Как мы отбираем тексты</h2>'
+             '<ol class="seo-list">'
+             '<li><b>Автор умер раньше %d года.</b> В России срок охраны — жизнь плюс '
+             '70 лет; реабилитированным и погибшим в 1941–1945 он продлевается на 4 года, '
+             'поэтому порог взят с запасом.</li>'
+             '<li><b>Текст впервые опубликован раньше %d года.</b> В США с 1 января 2026 года '
+             'в общественном достоянии всё изданное до 1930-го, независимо от года смерти автора.</li>'
+             '<li><b>Перевод проверен отдельно.</b> Перевод — самостоятельное произведение '
+             'переводчика. Пока срок его охраны не подтверждён как истёкший, переводной текст '
+             'в хрестоматию не попадает.</li>'
+             '<li><b>Год — только первой публикации.</b> Посмертные публикации не проходят, '
+             'даже если написаны раньше: для права важна дата выхода в свет.</li>'
+             '</ol>'
+             '<p class="seo-note">Сокращённые пересказы охраняемых произведений мы не публикуем. '
+             'Производный текст остаётся производным независимо от объёма.</p>'
+             '</section>' % (common.PD_DEATH_CUTOFF, common.PD_PUB_CUTOFF))
+
+    if L["excluded"].AUTHORS:
+        rows = "".join(
+            '<tr><th scope="row">%s</th><td>%s</td><td>%s</td><td>%s</td></tr>'
+            % (esc(x[0]), esc(x[1]), esc(x[2]), esc(x[4]))
+            for x in L["excluded"].AUTHORS)
+        body += ('<section class="seo-sec"><h2 class="seo-h2">Кого здесь сознательно нет</h2>'
+                 '<p>Этих авторов часто ищут вместе с классикой, но их тексты всё ещё '
+                 'под охраной — или охраняется их перевод. %d имени, чтобы не было '
+                 'недопонимания.</p>'
+                 '<table class="seo-table"><thead><tr><th>Автор</th><th>Годы</th>'
+                 '<th>Страна</th><th>Почему не публикуем</th></tr></thead>'
+                 '<tbody>%s</tbody></table></section>' % (n_excl, rows))
+
+    ld = [
+        OrderedDict([
+            ("@context", "https://schema.org"), ("@type", "CollectionPage"),
+            ("name", h1), ("url", BASE + "/lit/"), ("inLanguage", "ru"),
+            ("description", desc),
+            ("isPartOf", OrderedDict([("@type", "WebSite"), ("name", PRODUCT), ("url", BASE + "/")])),
+        ]),
+        OrderedDict([
+            ("@context", "https://schema.org"), ("@type", "ItemList"),
+            ("name", "Авторы хрестоматии"), ("numberOfItems", n_auth),
+            ("itemListElement", [
+                OrderedDict([("@type", "ListItem"), ("position", i + 1),
+                             ("name", a["name"]),
+                             ("url", "%s/lit/%s/%s/" % (BASE, c["slug"], a["slug"]))])
+                for i, (c, a) in enumerate((c, a) for c in countries for a in c["authors"])]),
+        ]),
+        OrderedDict([
+            ("@context", "https://schema.org"), ("@type", "BreadcrumbList"),
+            ("itemListElement", [
+                OrderedDict([("@type", "ListItem"), ("position", 1), ("name", "Главная"), ("item", BASE + "/")]),
+                OrderedDict([("@type", "ListItem"), ("position", 2), ("name", "Литература"), ("item", BASE + "/lit/")]),
+            ]),
+        ]),
+    ]
+    page = HEAD_TMPL % dict(title=esc(title), canon=esc(BASE + "/lit/"), desc=esc(desc),
+                            ogtitle=esc(h1), ogdesc=esc(desc[:200]), ogtype="website",
+                            base=BASE, jsonld=jsonld_block(ld),
+                            crumbs=crumbs([("/", "Главная"), ("", "Литература")]))
+    page += '<h1 class="seo-h1">%s</h1>\n%s' % (esc(h1), body)
+    page += FOOT_TMPL % dict(product=esc(PRODUCT), org=esc(ORG),
+                             total="%d произв." % n_wk, grades="%d странам" % len(countries),
+                             subjects="%d" % n_auth)
+    out.insert(0, ("/lit/", title, page, "lit-hub"))
+    return out
+
+
 # ────────────────────────────────────────────────────────────── sitemap/robots/css
 def build_sitemap(pages):
     out = ['<?xml version="1.0" encoding="UTF-8"?>',
@@ -714,7 +1046,7 @@ def build_sitemap(pages):
     for p in pages:
         if p["path"] == "/":
             continue
-        pr = "0.8" if p["kind"] == "grade" else "0.9"
+        pr = "0.9" if p["kind"] == "subject" else "0.8"
         out.append('  <url><loc>%s%s</loc><changefreq>weekly</changefreq><priority>%s</priority></url>'
                    % (BASE, p["path"], pr))
     out.append("</urlset>")
@@ -889,19 +1221,37 @@ def main():
                               grade=g, subject=subj))
             print("  %-25s %s" % (path, title[:58]))
 
+    # хрестоматия: хаб + страницы авторов (данные — gen/lit/*.py)
+    L = load_lit()
+    if L:
+        lit_rows = []
+        lit_pages = build_lit_pages(L, lit_rows)
+        for path, title, html, kind in lit_pages:
+            total_bytes += write(path.lstrip("/") + "index.html", html)
+            if kind == "lit-hub":      # хаб добавляется в build_lit_pages последним,
+                lit_rows.insert(0, dict(path=path, title=title, kind=kind))   # в pages_out его не было
+        pages.extend(lit_rows)
+        print("  /lit/ и страницы авторов: %d" % len(lit_pages))
+    else:
+        print("  хрестоматия: gen/lit/*.py не найдены, страницы не собирались")
+
     write("sitemap.xml", build_sitemap(pages))
     write("robots.txt", ROBOTS)
     write("css/seo.css", SEO_CSS)
     write("assets/seo-pages.json",
           json.dumps(dict(base=BASE, generatedBy="gen/build_seo.py",
                           bankBuiltAt=D["built"], total=D["total"],
-                          count=len(pages), pages=pages),
+                          count=len(pages),
+                          lit=sum(1 for p in pages if p["kind"].startswith("lit")),
+                          pages=pages),
                      ensure_ascii=False, indent=1))
 
     n_grade = sum(1 for p in pages if p["kind"] == "grade")
     n_subj = sum(1 for p in pages if p["kind"] == "subject")
-    print("\n  собрано страниц: %d  (классов: %d, предметов: %d, индекс: %d)"
-          % (len(pages), n_grade, n_subj, len(pages) - n_grade - n_subj))
+    n_lit = sum(1 for p in pages if p["kind"].startswith("lit"))
+    n_other = len(pages) - n_grade - n_subj - n_lit
+    print("\n  собрано страниц: %d  (классов: %d, предметов: %d, литература: %d, прочие: %d)"
+          % (len(pages), n_grade, n_subj, n_lit, n_other))
     print("  суммарно: %.2f MB HTML" % (total_bytes / 1048576.0))
     print("  sitemap.xml: %d URL" % len(pages))
     return pages
