@@ -136,3 +136,10 @@ QKC is part of the connected OuRi project family:
 - [Arakul Studio — browser workspace](https://spaj7468-cell.github.io/Arakul/)
 
 Projects have different goals and maturity levels; their quality and feature sets can differ because they were built at different times. A newer project is not automatically better at everything.
+
+## Авторы
+
+| Роль | Автор | Профиль |
+|------|-------|---------|
+| Автор | **telrino** | <https://vk.ru/telrino> |
+| Соавтор | **Бро** | <https://vk.ru/id920684081> |

@@ -661,6 +661,13 @@ kbd{ font-family:var(--font-mono); font-size:.74rem; border:1px solid var(--line
 .foot__c{ font-size:.84rem; color:var(--muted); border:1px solid var(--line); border-radius:999px; padding:7px 14px; transition:.2s; max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap }
 .foot__c:hover{ color:var(--text); border-color:var(--line2); background:var(--surface2) }
 .foot__c--soon{ opacity:.55; border-style:dashed; cursor:default }
+.foot__authors{ grid-column:1/-1; display:flex; flex-wrap:wrap; gap:8px 12px;
+  align-items:center; justify-content:center; margin-top:4px; padding-top:16px;
+  border-top:1px solid var(--line) }
+.foot__authorslabel{ font-family:var(--font-mono); font-size:.68rem; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--muted2); width:100%; text-align:center }
+.foot__c--author{ display:inline-flex; align-items:center; gap:7px; font-weight:600 }
+.foot__c--author svg{ flex:none; opacity:.75 }
 .foot__c--soon:hover{ color:var(--muted); border-color:var(--line); background:transparent }
 .foot__nav{ display:flex; gap:18px; flex-wrap:wrap }
 .foot__nav a{ font-size:.86rem; color:var(--muted); transition:.2s }

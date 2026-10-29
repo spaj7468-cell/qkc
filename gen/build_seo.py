@@ -48,6 +48,32 @@ MIRROR = "https://spaj7468-cell.github.io/qkc/"
 ORG = "OuRi"
 PRODUCT = "QKC — Quick Knowledge Check"
 
+# Авторы проекта. Блок вставляется в каждый сгенерированный футер (FOOT_TMPL),
+# поэтому при пересборке `python3 gen/build_seo.py` он не теряется.
+# Правь здесь — не в готовых HTML-файлах.
+AUTHORS = [
+    # (роль, имя, ссылка)
+    ("Автор", "telrino", "https://vk.ru/telrino"),
+    ("Соавтор", "Бро", "https://vk.ru/id920684081"),
+]
+VK_GLYPH = ('<svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true" '
+            'focusable="false"><path fill="currentColor" d="M12.79 17.04c-5.14 0-8.08-3.52-'
+            '8.2-9.38h2.58c.08 4.3 1.98 6.12 3.48 6.5V7.66h2.43v3.71c1.48-.16 3.03-1.86 '
+            '3.55-3.71h2.43a6.4 6.4 0 0 1-2.94 4.67 6.66 6.66 0 0 1 3.42 4.71h-2.67c-.42-'
+            '1.32-1.47-2.34-3.79-2.58v2.58h-.29Z"/></svg>')
+
+
+def authors_html():
+    """HTML-блок «Авторы проекта» — попадает в футер каждой собранной страницы."""
+    items = "".join(
+        '<a href="%s" target="_blank" rel="noopener noreferrer" title="%s: %s — ВКонтакте">'
+        '%s<span>%s</span></a>' % (url, esc(role), esc(name), VK_GLYPH, esc(name))
+        for role, name, url in AUTHORS)
+    return ('<div class="seo-authors">\n'
+            '      <span class="seo-authors__label">Авторы проекта</span>\n'
+            '      <span class="seo-authors__list">%s</span>\n'
+            '    </div>' % items)
+
 # ────────────────────────────────────────────────────────────── словарь
 ONES = ["ноль", "один", "два", "три", "четыре", "пять", "шесть", "семь",
         "восемь", "девять", "десять", "одиннадцать"]
@@ -292,6 +318,7 @@ FOOT_TMPL = """</main>
     </p>
     <p class="seo-note">Статус BETA: в вопросах и объяснениях возможны ошибки —
     сообщи о них через форму отзыва на сайте. Лицензия MIT.</p>
+    %(authors)s
   </div>
 </footer>
 <script>
@@ -560,7 +587,7 @@ def build_subject_page(D, g, subj):
     page += ('<h1 class="seo-h1">%s</h1>\n<p class="seo-lede">%s</p>\n%s\n%s%s%s%s%s%s'
              % (esc(h1), esc(lede), cta, stats, topics_sec, quarters_sec,
                 ex_sec, faq_sec, cross))
-    page += FOOT_TMPL % dict(product=esc(PRODUCT), org=esc(ORG),
+    page += FOOT_TMPL % dict(authors=authors_html(), product=esc(PRODUCT), org=esc(ORG),
                              total=nq(D["total"]), grades=len(D["grades"]),
                              subjects=len(D["subjects"]))
     return url_path, title, page
@@ -639,7 +666,7 @@ def build_grade_page(D, g):
                             base=BASE, jsonld=jsonld_block(ld),
                             crumbs=crumbs([("/", "Главная"), ("", gl)]))
     page += '<h1 class="seo-h1">%s</h1>\n%s' % (esc(h1), body)
-    page += FOOT_TMPL % dict(product=esc(PRODUCT), org=esc(ORG),
+    page += FOOT_TMPL % dict(authors=authors_html(), product=esc(PRODUCT), org=esc(ORG),
                              total=nq(D["total"]), grades=len(D["grades"]),
                              subjects=len(D["subjects"]))
     return url_path, title, page
@@ -717,7 +744,7 @@ def build_index_page(D, index_rows):
                             base=BASE, jsonld=jsonld_block(ld),
                             crumbs=crumbs([("", "Главная")]))
     page += '<h1 class="seo-h1">%s</h1>\n%s' % (esc(h1), body)
-    page += FOOT_TMPL % dict(product=esc(PRODUCT), org=esc(ORG),
+    page += FOOT_TMPL % dict(authors=authors_html(), product=esc(PRODUCT), org=esc(ORG),
                              total=nq(total), grades=len(D["grades"]),
                              subjects=len(D["subjects"]))
     return "/", title, page
@@ -909,7 +936,7 @@ def lit_author_page(L, country, a):
                             crumbs=crumbs([("/", "Главная"), ("/lit/", "Литература"),
                                            (path, a["name"])]))
     page += '<h1 class="seo-h1">%s</h1>\n%s' % (esc(h1), body)
-    page += FOOT_TMPL % dict(product=esc(PRODUCT), org=esc(ORG),
+    page += FOOT_TMPL % dict(authors=authors_html(), product=esc(PRODUCT), org=esc(ORG),
                              total="%d произв." % n, grades="1 стране",
                              subjects="%d" % 1)
     return path, title, page
@@ -1031,7 +1058,7 @@ def build_lit_pages(L, pages_out):
                             base=BASE, jsonld=jsonld_block(ld),
                             crumbs=crumbs([("/", "Главная"), ("", "Литература")]))
     page += '<h1 class="seo-h1">%s</h1>\n%s' % (esc(h1), body)
-    page += FOOT_TMPL % dict(product=esc(PRODUCT), org=esc(ORG),
+    page += FOOT_TMPL % dict(authors=authors_html(), product=esc(PRODUCT), org=esc(ORG),
                              total="%d произв." % n_wk, grades="%d странам" % len(countries),
                              subjects="%d" % n_auth)
     out.insert(0, ("/lit/", title, page, "lit-hub"))
@@ -1181,6 +1208,20 @@ SEO_CSS = """/* ═════════════════════�
 .seo-footnav a{ border-bottom:1px solid var(--line) }
 .seo-footnav a:hover{ color:var(--text) }
 .seo-note{ color:var(--muted2); font-size:.8rem }
+
+.seo-authors{ margin-top:16px; padding-top:14px; border-top:1px solid var(--line);
+  display:flex; flex-wrap:wrap; gap:8px 14px; align-items:center; justify-content:center;
+  text-align:center }
+.seo-authors__label{ font-family:var(--font-mono); font-size:.68rem; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--muted2) }
+.seo-authors__list{ display:flex; flex-wrap:wrap; gap:8px 12px; align-items:center;
+  justify-content:center }
+.seo-authors__list a{ display:inline-flex; align-items:center; gap:7px; padding:5px 12px;
+  border:1px solid var(--line); border-radius:999px; color:var(--text2); font-size:.82rem;
+  font-weight:600; text-decoration:none; transition:.2s; max-width:100% }
+.seo-authors__list a:hover{ color:var(--text); border-color:var(--line2);
+  background:var(--surface2) }
+.seo-authors__list svg{ flex:none; opacity:.75 }
 
 @media (prefers-reduced-motion:reduce){
   .seo-nav,.seo-topcta,.seo-chip,.seo-subj a{ transition:none }
