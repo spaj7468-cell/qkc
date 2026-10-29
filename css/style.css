@@ -661,6 +661,13 @@ kbd{ font-family:var(--font-mono); font-size:.74rem; border:1px solid var(--line
 .foot__c{ font-size:.84rem; color:var(--muted); border:1px solid var(--line); border-radius:999px; padding:7px 14px; transition:.2s; max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap }
 .foot__c:hover{ color:var(--text); border-color:var(--line2); background:var(--surface2) }
 .foot__c--soon{ opacity:.55; border-style:dashed; cursor:default }
+.authors-top{ display:flex; flex-wrap:wrap; gap:6px 14px; align-items:center;
+  justify-content:center; padding:9px var(--gap); border-bottom:1px solid var(--line);
+  background:var(--bg2); color:var(--muted); font-size:.82rem; position:relative; z-index:55 }
+.authors-top__label{ font-family:var(--font-mono); font-size:.68rem; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--muted2) }
+.authors-top__sep{ opacity:.45 }
+.authors-top .foot__c{ padding:5px 12px; font-size:.8rem }
 .foot__authors{ grid-column:1/-1; display:flex; flex-wrap:wrap; gap:8px 12px;
   align-items:center; justify-content:center; margin-top:4px; padding-top:16px;
   border-top:1px solid var(--line) }

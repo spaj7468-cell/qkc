@@ -116,6 +116,9 @@
 .seo-footnav a:hover{ color:var(--text) }
 .seo-note{ color:var(--muted2); font-size:.8rem }
 
+.seo-authors-top{ display:flex; flex-wrap:wrap; gap:6px 14px; align-items:center;
+  justify-content:center; padding:9px 14px; border-bottom:1px solid var(--line);
+  background:var(--surface); color:var(--muted); font-size:.82rem }
 .seo-authors{ margin-top:16px; padding-top:14px; border-top:1px solid var(--line);
   display:flex; flex-wrap:wrap; gap:8px 14px; align-items:center; justify-content:center;
   text-align:center }

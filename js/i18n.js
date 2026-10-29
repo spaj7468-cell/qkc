@@ -215,9 +215,6 @@ window.OURI_I18N = {
     "open.r4": "Проверь, что всё живо: <code>node test/e2e.mjs</code> — должно быть «ВСЁ ЗЕЛЁНОЕ».",
     "open.r5": "Хочешь править базу — пересобери её: <code>python3 gen/assemble.py</code>.",
     "contacts.vkDev": "VK разработчика — написать лично",
-    "foot.authors": "Авторы проекта",
-    "authors.telrino": "telrino — автор",
-    "authors.bro": "Бро — соавтор",
     "contacts.ghDev": "GitHub разработчика",
     "contacts.corp": "OuRi Corp",
     "about.devCorp": "OuRi Corp — сайт компании: кто мы и почему всё открыто"
@@ -437,9 +434,6 @@ window.OURI_I18N = {
     "open.r4": "Check it is alive: <code>node test/e2e.mjs</code> — should print all green.",
     "open.r5": "To change the bank — rebuild it: <code>python3 gen/assemble.py</code>.",
     "contacts.vkDev": "Developer on VK — direct message",
-    "foot.authors": "Project authors",
-    "authors.telrino": "telrino — author",
-    "authors.bro": "Бро — co-author",
     "contacts.ghDev": "Developer on GitHub",
     "contacts.corp": "OuRi Corp",
     "about.devCorp": "OuRi Corp — company site: who we are and why everything is open"

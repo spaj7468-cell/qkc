@@ -63,6 +63,18 @@ VK_GLYPH = ('<svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true" 
             '1.32-1.47-2.34-3.79-2.58v2.58h-.29Z"/></svg>')
 
 
+def authors_top_html():
+    """Тот же блок авторов, но полосой сверху страницы (сразу под шапкой)."""
+    items = "".join(
+        '<a href="%s" target="_blank" rel="noopener noreferrer" title="%s: %s — ВКонтакте">'
+        '%s<span>%s</span></a>' % (url, esc(role), esc(name), VK_GLYPH, esc(name))
+        for role, name, url in AUTHORS)
+    return ('<div class="seo-authors-top" role="group" aria-label="Авторы проекта">\n'
+            '  <span class="seo-authors__label">Авторы проекта</span>\n'
+            '  <span class="seo-authors__list">%s</span>\n'
+            '</div>' % items)
+
+
 def authors_html():
     """HTML-блок «Авторы проекта» — попадает в футер каждой собранной страницы."""
     items = "".join(
@@ -295,6 +307,7 @@ HEAD_TMPL = """<!DOCTYPE html>
   </a>
   <a class="seo-topcta" href="/#setup">Открыть тренажёр</a>
 </header>
+%(authors_top)s
 <nav class="seo-crumbs" aria-label="Хлебные крошки">%(crumbs)s</nav>
 <main class="seo-wrap" id="main">
 """
@@ -577,7 +590,7 @@ def build_subject_page(D, g, subj):
                                           for q in (1, 2, 3, 4) if per[q - 1]])]),
     ]
 
-    page = HEAD_TMPL % dict(title=esc(title), canon=esc(canon), desc=esc(desc),
+    page = HEAD_TMPL % dict(authors_top=authors_top_html(), title=esc(title), canon=esc(canon), desc=esc(desc),
                             ogtitle=esc(h1), ogdesc=esc(desc[:200]),
                             ogtype="website", base=BASE,
                             jsonld=jsonld_block(ld),
@@ -661,7 +674,7 @@ def build_grade_page(D, g):
                                subs, key=lambda x: -qcount(D, g, x)[0]))
                            if qcount(D, g, s)[0]])])]
 
-    page = HEAD_TMPL % dict(title=esc(title), canon=esc(canon), desc=esc(desc),
+    page = HEAD_TMPL % dict(authors_top=authors_top_html(), title=esc(title), canon=esc(canon), desc=esc(desc),
                             ogtitle=esc(h1), ogdesc=esc(desc[:200]), ogtype="website",
                             base=BASE, jsonld=jsonld_block(ld),
                             crumbs=crumbs([("/", "Главная"), ("", gl)]))
@@ -739,7 +752,7 @@ def build_index_page(D, index_rows):
         ]),
     ]
 
-    page = HEAD_TMPL % dict(title=esc(title), canon=esc(canon), desc=esc(desc),
+    page = HEAD_TMPL % dict(authors_top=authors_top_html(), title=esc(title), canon=esc(canon), desc=esc(desc),
                             ogtitle=esc(h1), ogdesc=esc(desc[:200]), ogtype="website",
                             base=BASE, jsonld=jsonld_block(ld),
                             crumbs=crumbs([("", "Главная")]))
@@ -930,7 +943,7 @@ def lit_author_page(L, country, a):
             if o[k] is None:
                 del o[k]
 
-    page = HEAD_TMPL % dict(title=esc(title), canon=esc(canon), desc=esc(desc),
+    page = HEAD_TMPL % dict(authors_top=authors_top_html(), title=esc(title), canon=esc(canon), desc=esc(desc),
                             ogtitle=esc(h1), ogdesc=esc(desc[:200]), ogtype="profile",
                             base=BASE, jsonld=jsonld_block(ld),
                             crumbs=crumbs([("/", "Главная"), ("/lit/", "Литература"),
@@ -1053,7 +1066,7 @@ def build_lit_pages(L, pages_out):
             ]),
         ]),
     ]
-    page = HEAD_TMPL % dict(title=esc(title), canon=esc(BASE + "/lit/"), desc=esc(desc),
+    page = HEAD_TMPL % dict(authors_top=authors_top_html(), title=esc(title), canon=esc(BASE + "/lit/"), desc=esc(desc),
                             ogtitle=esc(h1), ogdesc=esc(desc[:200]), ogtype="website",
                             base=BASE, jsonld=jsonld_block(ld),
                             crumbs=crumbs([("/", "Главная"), ("", "Литература")]))
@@ -1209,6 +1222,9 @@ SEO_CSS = """/* ═════════════════════�
 .seo-footnav a:hover{ color:var(--text) }
 .seo-note{ color:var(--muted2); font-size:.8rem }
 
+.seo-authors-top{ display:flex; flex-wrap:wrap; gap:6px 14px; align-items:center;
+  justify-content:center; padding:9px 14px; border-bottom:1px solid var(--line);
+  background:var(--surface); color:var(--muted); font-size:.82rem }
 .seo-authors{ margin-top:16px; padding-top:14px; border-top:1px solid var(--line);
   display:flex; flex-wrap:wrap; gap:8px 14px; align-items:center; justify-content:center;
   text-align:center }
