@@ -1,9 +1,9 @@
 /* OuRi service worker — офлайн-доступ к сайту и банку вопросов */
-const CACHE = 'ouri-v1.6.0';
+const CACHE = 'ouri-v1.7.0';
 const CORE = [
   './', './index.html', './css/style.css', './js/app.js', './js/i18n.js',
   './manifest.webmanifest', './assets/bank-index.js', './js/reader.js',
-  './assets/logo.png', './assets/favicon.png', './assets/favicon.ico',
+  './js/authors-rail.js', './assets/logo.png', './assets/favicon.png', './assets/favicon.ico',
   './assets/icon-192.png', './assets/icon-512.png', './assets/apple-touch-icon.png'
 ];
 const BANKS = [1,2,3,4,5,6,7,8,9,10,11].map(n => './assets/bank-' + n + '.js');

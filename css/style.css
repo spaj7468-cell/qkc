@@ -661,13 +661,49 @@ kbd{ font-family:var(--font-mono); font-size:.74rem; border:1px solid var(--line
 .foot__c{ font-size:.84rem; color:var(--muted); border:1px solid var(--line); border-radius:999px; padding:7px 14px; transition:.2s; max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap }
 .foot__c:hover{ color:var(--text); border-color:var(--line2); background:var(--surface2) }
 .foot__c--soon{ opacity:.55; border-style:dashed; cursor:default }
-.authors-top{ display:flex; flex-wrap:wrap; gap:6px 14px; align-items:center;
-  justify-content:center; padding:9px var(--gap); border-bottom:1px solid var(--line);
-  background:var(--bg2); color:var(--muted); font-size:.82rem; position:relative; z-index:55 }
-.authors-top__label{ font-family:var(--font-mono); font-size:.68rem; letter-spacing:.16em;
-  text-transform:uppercase; color:var(--muted2) }
-.authors-top__sep{ opacity:.45 }
-.authors-top .foot__c{ padding:5px 12px; font-size:.8rem }
+/* ───────── авторы: плавающая плашка справа (PC) ───────── */
+.authors-rail{ position:fixed; top:calc(var(--nav-h) + 14px); right:16px; z-index:54;
+  display:flex; align-items:center; gap:8px; padding:6px; border:1px solid var(--line);
+  border-radius:999px; background:var(--surface2); box-shadow:0 6px 24px rgba(0,0,0,.16);
+  transition:transform .4s var(--ease), opacity .3s ease, border-radius .3s ease }
+.authors-rail__label{ font-family:var(--font-mono); font-size:.64rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--muted2); padding:0 2px 0 8px; overflow:hidden;
+  white-space:nowrap; max-width:90px; transition:opacity .2s ease, max-width .3s var(--ease), padding .3s }
+.authors-rail__pill{ display:inline-flex; align-items:center; gap:7px; padding:6px 12px;
+  border:1px solid var(--line); border-radius:999px; color:var(--text2); text-decoration:none;
+  font-size:.8rem; font-weight:600; overflow:hidden; max-width:200px;
+  transition:padding .3s var(--ease), border-radius .3s ease, background .2s, border-color .2s, color .2s }
+.authors-rail__pill:hover{ color:var(--text); border-color:var(--line2); background:var(--surface) }
+.authors-rail__pill svg{ flex:none; opacity:.8 }
+.authors-rail__txt{ display:inline-flex; align-items:baseline; gap:6px; overflow:hidden;
+  white-space:nowrap; max-width:150px; transition:opacity .22s ease, max-width .32s var(--ease) }
+.authors-rail__role{ font-weight:500; color:var(--muted2); font-size:.68rem }
+
+/* сложена в полоску (скролл вверх после низа / транзит) */
+.authors-rail[data-state="strip"]{ flex-direction:column; border-radius:14px; padding:6px }
+.authors-rail[data-state="strip"] .authors-rail__label,
+.authors-rail[data-state="hidden"] .authors-rail__label{ opacity:0; max-width:0; padding:0 }
+.authors-rail[data-state="strip"] .authors-rail__txt,
+.authors-rail[data-state="hidden"] .authors-rail__txt{ opacity:0; max-width:0 }
+.authors-rail[data-state="strip"] .authors-rail__pill,
+.authors-rail[data-state="hidden"] .authors-rail__pill{ padding:6px; border-radius:10px }
+
+/* уехала за правый край; задержка даёт сначала сложиться в полоску */
+.authors-rail[data-state="hidden"]{ transform:translateX(calc(100% + 30px)); opacity:0;
+  transition:transform .42s var(--ease) .18s, opacity .3s ease .24s }
+
+/* ───────── телефон: стеклянная плашка под большой палец ───────── */
+@media (max-width:760px){
+  .authors-rail{ top:auto; right:12px; bottom:calc(14px + env(safe-area-inset-bottom));
+    border-radius:20px; background:rgba(13,13,16,.68); backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px); box-shadow:0 10px 34px rgba(0,0,0,.4) }
+  [data-theme="light"] .authors-rail{ background:rgba(255,255,255,.74) }
+  .authors-rail[data-state="strip"]{ right:10px; bottom:calc(46% - 40px) }
+  .authors-rail__pill{ font-size:.78rem }
+}
+@media (prefers-reduced-motion:reduce){
+  .authors-rail, .authors-rail *{ transition:none !important }
+}
 .foot__authors{ grid-column:1/-1; display:flex; flex-wrap:wrap; gap:8px 12px;
   align-items:center; justify-content:center; margin-top:4px; padding-top:16px;
   border-top:1px solid var(--line) }
